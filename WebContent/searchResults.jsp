@@ -1,3 +1,5 @@
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -84,9 +86,9 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
 							<li ><a href="viajes.html">Viajes</a></li>
-							<li ><a href="mensajes.html">Mensajes</a></li>                                                                              							
-							<li><a href="#" id="Registro">Regístrate</a></li>                            
-							<li><a href="#" id="Login">Inicia sesión</a></li>                            
+							<li ><a href="mensajes.html">Mensajes</a></li>                              
+							<li><a href="#" id="Registro">RegÃ­strate</a></li>                            
+							<li><a href="#" id="Login">Inicia sesiÃ³n</a></li>                            
 						</ul>
 					</nav>
 				</div>
@@ -97,54 +99,85 @@
 
 		<div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
-		
 				<div class="row">
-					<div class="col-md-12 animate-box">
-						<h2 class="heading-title">Estudio en Sol</h2>
-					</div>
-					<div class="col-md-6 animate-box">
-                        <span class="description">
-						<p>Estudio en Sol es un acogedor alojamiento en pleno centro de Madrid, donde en cada esquina se encuentra la diversión debido a los innumerables bares, restaurantes, tiendas y mercados de la zona.
-						El apartamento cuenta con cocina americana, wifi gratis en todas las zonas, televisión, horno y microondas, lavadora, secador de pelo, cafetera y tostadora. Se facilitan sábanas y toallas a la llegada.</p> 
-                        </span>
-                        <table class="table">
-                            <tbody>
-                                <tr>                                
-                                    <th scope="row">Anfitrión:</th>
-                                    <td><span class="host">Pepe</span></td>
-                                </tr>
-                                
-                                <tr>                                
-                                        <th scope="row">Precio:</th>
-                                    <td><span class="price">30€</span></td>
-                                </tr>
-                                <tr>
-                                        <th scope="row">Nº Camas:</th>
-                                        <td><span class="beds">2</span></td>
-                                </tr>
-                                <tr>
-                                        <th scope="row">Tipo Alojamiento:</th>
-                                        <td><span class="type">Alojamiento Entero</span></td>
-                                </tr>                                
-                            </tbody>
-                        </table>
-                        <div class="col-xxs-12 col-xs-6 mt">
-                            <input type="book" class="btn btn-primary btn-block" value="Reservar">
-                        </div>
-                        <div class="col-xxs-12 col-xs-6 mt">
-                            <input type="contact" class="btn btn-primary btn-block" value="Contactar">
-                        </div>
-                                                                        
-                    </div>
-					<div class="col-md-6 animate-box">
-						<img class="img-responsive" src="images/cover_bg_2.jpg" alt="travel">
+					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+						<h3>Resultados</h3>
+						<p>Estos son los resultados de acuerdo a tu selecciÃ³n.</p>
 					</div>
 				</div>
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Estudio en Sol</h3>
+								<span>Apartamento entero. 2 camas</span>
+								<span class="price">60â¬</span>
+								<a class="btn btn-primary btn-outline" href="#">Seleccionar <i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Apartamento junto a Gran Via</h3>
+								<span>Apartamento entero. 1 cama</span>
+								<span class="price">70â¬</span>
+								<a class="btn btn-primary btn-outline" href="#">Seleccionar <i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Piso frente al Palacio Real</h3>
+								<span>Loft entero. 2 camas</span>
+								<span class="price">80â¬</span>
+								<a class="btn btn-primary btn-outline" href="#">Seleccionar <i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>CÃ©ntrico y tranquilo</h3>
+								<span>Apartamento entero. 2 camas</span>
+								<span class="price">65â¬</span>
+								<a class="btn btn-primary btn-outline" href="#">Seleccionar <i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Stunning Apartment in Sol</h3>
+								<span>Apartamento entero. 2 camas</span>
+								<span class="price">50â¬</span>
+								<a class="btn btn-primary btn-outline" href="#">Seleccionar <i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Pretty Apartment in Plaza Mayor</h3>
+								<span>Apartamento entero. 1 cama</span>
+								<span class="price">30â¬</span>
+								<a class="btn btn-primary btn-outline" href="#">Seleccionar <i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
-  
-         
-           <footer>
+            
+		<footer>
 			<div id="footer">
 				<div class="container">
 					<div class="row row-bottom-padded-md">

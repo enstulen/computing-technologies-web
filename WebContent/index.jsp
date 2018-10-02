@@ -1,3 +1,5 @@
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -78,11 +80,11 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><i class="icon-airplane"></i>TIWbnb</a></h1>
+					<h1 id="fh5co-logo"><a href="index.jsp"><i class="icon-airplane"></i>TIWbnb</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="index.html">Home</a></li>
+							<li class="active"><a href="index.jsp">Home</a></li>
 							<li ><a href="viajes.html">Viajes</a></li>
 							<li ><a href="mensajes.html">Mensajes</a></li>                              
 							<li><a href="#" id="Registro">Regístrate</a></li>                            
@@ -237,8 +239,8 @@
       </div>
 
       <div class="modal-footer">
-        <p class="text-center">¿No tienes cuenta?<a href="index.html">  Regístrate</a></p>
-        <p class="text-center"><a href="index.html"> Atrás </a></p>
+        <p class="text-center">¿No tienes cuenta?<a href="index.jsp">  Regístrate</a></p>
+        <p class="text-center"><a href="index.jsp"> Atrás </a></p>
       </div>
 
     </div>
