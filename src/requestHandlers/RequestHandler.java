@@ -1,4 +1,4 @@
-package javaPackage.RequestHandlers;
+package requestHandlers;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package javaPackage.RequestHandlers;
+package requestHandlers;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SearchResultsRequestHandler implements RequestHandler{
+public class MessagesRequestHandler implements RequestHandler{
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -14,8 +14,8 @@ public class SearchResultsRequestHandler implements RequestHandler{
 		String sView = "";
 
 		String path = request.getServletPath();
-		if (path.equals("/searchResults.html")) {
-			sView = "searchResults.jsp";
+		if (path.equals("/messages.html")) {
+			sView = "messages.jsp";
 		}
 
 		return sView;

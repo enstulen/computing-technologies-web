@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javaPackage.RequestHandlers.MessagesRequestHandler;
-import javaPackage.RequestHandlers.RequestHandler;
-import javaPackage.RequestHandlers.SearchResultsRequestHandler;
+import requestHandlers.MessagesRequestHandler;
+import requestHandlers.RequestHandler;
+import requestHandlers.SearchResultsRequestHandler;
 
 /**
  * Servlet implementation class ControllerServlet
