@@ -86,7 +86,7 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.jsp">Home</a></li>
 							<li ><a href="viajes.html">Viajes</a></li>
-							<li ><a href="mensajes.html">Mensajes</a></li>                              
+							<li ><a href="messages.html">Messages</a></li>                              
 							<li><a href="#" id="Registro">Regístrate</a></li>                            
 							<li><a href="#" id="Login">Inicia sesión</a></li>                            
 						</ul>
