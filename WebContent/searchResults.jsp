@@ -114,6 +114,14 @@
 							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 							<h3>Search Results</h3>
 							<p>These are your search results.</p>
+							<p>You searched with these parameters:</p>
+							<p><%= request.getParameter("from-place") %></p>
+							<p><%= request.getParameter("date-start") %></p>
+							<p><%= request.getParameter("date-end") %></p>
+							<p><%= request.getParameter("price") %></p>
+							<p><%= request.getParameter("type") %></p>
+							<p><%= request.getParameter("adults") %></p>
+							<p><%= request.getParameter("kids") %></p>
 						</div>
 					</div>
 					<div>
@@ -129,7 +137,8 @@
 											<span></span>
 											<h3>${home.name}</h3>
 											<span>${ home.short_description}</span> <span class="price">${home.price}</span>
-											<a class="btn btn-primary btn-outline" href="detailHome/${home.id}">Select <i
+											<a class="btn btn-primary btn-outline"
+												href="detailHome/${home.id}">Select <i
 												class="icon-arrow-right22"></i>
 											</a>
 										</div>
