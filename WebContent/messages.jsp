@@ -1,5 +1,12 @@
+<%@page import="beans.MessageBean"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+
+<%-- Access bean placed in the request by MessagesRequestHandler --%>
+<jsp:useBean id="Messages"
+  scope="request"
+  type="List<MessageBean>" />
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -87,7 +94,7 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li ><a href="index.jsp">Home</a></li>
 							<li ><a href="viajes.html">Viajes</a></li>
-							<li class="active" ><a href="mensajes.html">Mensajes</a></li>                              
+							<li class="active" ><a href="messages.html">Messages</a></li>                              
 						</ul>
 					</nav>
 				</div>
@@ -101,8 +108,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Mensajes</h3>
-						<p>Estos son los mensajes que has recibido hasta ahora.</p>
+						<h3>Messages</h3>
+						<p>These are the messages you have received until now.</p>
 				</div>
 			</div>
 			
@@ -112,15 +119,46 @@
 						<div class="panel-body">
 							<div class="pull-right">
 								<div class="btn-group">
-									<button type="button" class="btn btn-success btn-filter" data-target="leido">Leidos</button>
-									<button type="button" class="btn btn-warning btn-filter" data-target="no-leido">No Leidos</button>
-									<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+									<button type="button" class="btn btn-success btn-filter" data-target="leido">Read</button>
+									<button type="button" class="btn btn-warning btn-filter" data-target="no-leido">Unread</button>
+									<button type="button" class="btn btn-default btn-filter" data-target="all">All</button>
 								</div>
 							</div>
 							<div class="table-container">
 								<table class="table table-filter">
 									<tbody>
-										<tr data-status="no-leido" class="no-leido">
+									<%for(MessageBean message : Messages){ %>
+									<% String readstatus;
+										if (message.getMessage_Read()){
+											readstatus = "leido";
+										} else {
+											readstatus = "no-leido";
+										}
+									
+									%>
+									<tr data-status= <%out.println(readstatus);%>class=<% out.println(readstatus);%>>
+											<td>
+												<a href="javascript:;" class="star">
+													<i class="glyphicon glyphicon-star"></i>
+												</a>
+											</td>
+											<td>
+												<div class="media">
+													<h4 class="title">
+																Sender ID: <% out.println(message.getUser_SenderId()); %>
+													</h4> 
+												</div>
+											</td>                                        
+											<td>      
+													<div class="media">
+														<p class="summary"> Text: <% out.println(message.getText()); %></p>
+														<p class="meta"> Date: <% out.println(message.getTime_Stamp()); %></p>                                                
+													</div>
+											</td>
+										</tr>    
+									<%} %>
+									
+										<!-- <tr data-status="no-leido" class="no-leido">
 											<td>
 												<a href="javascript:;" class="star">
 													<i class="glyphicon glyphicon-star"></i>
@@ -159,8 +197,8 @@
 														<p class="meta">Febrero 13, 2018</p>                                                
 													</div>
 											</td>
-										</tr>    
-										<tr data-status="leido" class="leido">
+										</tr>     -->
+										<!-- <tr data-status="leido" class="leido">
 											<td>
 												<a href="javascript:;" class="star">
 													<i class="glyphicon glyphicon-star"></i>
@@ -219,7 +257,7 @@
 														<p class="meta">Febrero 13, 2018</p>                                                
 													</div>
 											</td>
-										</tr>                                        
+										</tr>               -->                          
 									</tbody>
 								</table>
 							</div>
