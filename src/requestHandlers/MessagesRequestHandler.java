@@ -27,7 +27,7 @@ public class MessagesRequestHandler implements RequestHandler{
 		if (path.equals("/messages.html")) {
 			sView = "messages.jsp";
 		}
-		request.setAttribute("Messages",(List<MessageBean>) DataStore.getMessages());
+//		request.setAttribute("Messages",(List<MessageBean>) DataStore.getMessages());
 
 		return sView;
 	}
