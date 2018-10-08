@@ -17,7 +17,7 @@ import requestHandlers.IndexRequestHandler;
 import requestHandlers.MessagesRequestHandler;
 import requestHandlers.RequestHandler;
 import requestHandlers.SearchResultsRequestHandler;
-
+import requestHandlers.BookingsRequestHandler;
 /**
  * Servlet implementation class ControllerServlet
  */
@@ -45,6 +45,7 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/index.html", new IndexRequestHandler());
 		handlerHash.put("/searchResults.html", new SearchResultsRequestHandler());
 		handlerHash.put("/messages.html", new MessagesRequestHandler());
+		handlerHash.put("/bookings.html", new BookingsRequestHandler());
 	}
 
 	/**

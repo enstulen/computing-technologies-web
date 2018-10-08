@@ -91,8 +91,8 @@
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li class="active"><a href="index.jsp">Home</a></li>
-								<li><a href="Bookings.html">Bookings</a></li>
+								<li class="active"><a href="index.html">Home</a></li>
+								<li><a href="bookings.html">Bookings</a></li>
 								<li><a href="messages.html">Messages</a></li>
 								<li><a href="#" id="Registro">Register</a></li>
 								<li><a href="#" id="Login">Login</a></li>
