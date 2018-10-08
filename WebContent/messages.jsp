@@ -93,7 +93,7 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li ><a href="index.jsp">Home</a></li>
-							<li ><a href="viajes.html">Viajes</a></li>
+							<li ><a href="bookings.html">Bookings</a></li>
 							<li class="active" ><a href="messages.html">Messages</a></li>                              
 						</ul>
 					</nav>

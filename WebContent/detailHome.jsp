@@ -85,7 +85,7 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="index.html">Home</a></li>
-							<li ><a href="viajes.html">Viajes</a></li>
+							<li ><a href="bookings.html">Viajes</a></li>
 							<li ><a href="mensajes.html">Mensajes</a></li>                                                                              							
 							<li><a href="#" id="Registro">RegÃ­strate</a></li>                            
 							<li><a href="#" id="Login">Inicia sesiÃ³n</a></li>                            
