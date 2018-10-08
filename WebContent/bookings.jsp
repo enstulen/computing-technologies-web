@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="beans.BookingBean" import="java.util.*"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -106,72 +108,19 @@
 					</div>
 				</div>
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Estudio en Sol</h3>
-								<span>Apartamento entero. 2 camas</span>
-                                <span>Fechas: 1/12/2016 hasta 5/12/2016</span>                
-								<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info <i class="icon-arrow-right22"></i></a>
+					<c:forEach items="${requestScope.bookings}" var="booking">
+						<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+							<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+								<div class="desc">
+									<span></span>
+									<h3>${booking.home.name}</h3>
+									<span>${booking.home.short_description}</span>
+	                                <span>From: ${booking.date_start} to ${booking.date_end}</span>                
+									<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info <i class="icon-arrow-right22"></i></a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Apartamento junto a Gran Via</h3>
-								<span>Apartamento entero. 1 cama</span>
-                                <span>Fechas: 1/12/2016 hasta 5/12/2016</span>       
-								<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info<i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Piso frente al Palacio Real</h3>
-								<span>Loft entero. 2 camas</span>
-                                <span>Fechas: 1/12/2016 hasta 5/12/2016</span>       
-								<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>CÃ©ntrico y tranquilo</h3>
-								<span>Apartamento entero. 2 camas</span>
-                                <span>Fechas: 1/12/2016 hasta 5/12/2016</span>       
-								<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Stunning Apartment in Sol</h3>
-								<span>Apartamento entero. 2 camas</span>
-                                <span>Fechas: 1/12/2016 hasta 5/12/2016</span>       
-								<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Pretty Apartment in Plaza Mayor</h3>
-								<span>Apartamento entero. 1 cama</span>
-                                <span>Fechas: 1/12/2016 hasta 5/12/2016</span>       
-								<a class="btn btn-primary btn-outline" href="#">MÃ¡s Info <i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 
      

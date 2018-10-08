@@ -1,17 +1,20 @@
 package beans;
 
 import java.util.Date;
+import beans.HomeBean;
 
 public class BookingBean {
 	private int bookingId;
+	private HomeBean home;
 	private Date date_booking;
 	private Date date_start;
 	private Date date_end;
 	private String card_number;
 	
-	public BookingBean(int bookingId,Date date_booking, Date date_start, Date date_end,String card_number) {
+	public BookingBean(int bookingId,HomeBean home,Date date_booking, Date date_start, Date date_end,String card_number) {
 		super();
 		this.bookingId = bookingId;
+		this.home = home;
 		this.date_booking = date_booking;
 		this.date_start = date_start;
 		this.date_end = date_end;
@@ -30,6 +33,20 @@ public class BookingBean {
 	 */
 	public void setBookingId(int bookingId) {
 		this.bookingId = bookingId;
+	}
+
+	/**
+	 * @return the home
+	 */
+	public HomeBean getHome() {
+		return home;
+	}
+
+	/**
+	 * @param home the home to set
+	 */
+	public void setHome(HomeBean home) {
+		this.home = home;
 	}
 
 	/**
@@ -87,6 +104,5 @@ public class BookingBean {
 	public void setCard_number(String card_number) {
 		this.card_number = card_number;
 	}
-	
-	
 }
+	
