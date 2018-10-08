@@ -13,7 +13,7 @@ public class BookingsRequestHandler implements RequestHandler {
 	private Datastore datastore;
 	
 	public BookingsRequestHandler() {
-		this.datastore = new Datastore();
+		this.datastore = datastore.getInstance();
 	}
 	
 	@Override

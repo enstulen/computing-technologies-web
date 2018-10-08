@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import requestHandlers.AdminRequestHandler;
 import requestHandlers.IndexRequestHandler;
 import requestHandlers.MessagesRequestHandler;
 import requestHandlers.RequestHandler;
@@ -45,6 +46,7 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/index.html", new IndexRequestHandler());
 		handlerHash.put("/searchResults.html", new SearchResultsRequestHandler());
 		handlerHash.put("/messages.html", new MessagesRequestHandler());
+		handlerHash.put("/admin.html", new AdminRequestHandler());
 		handlerHash.put("/bookings.html", new BookingsRequestHandler());
 	}
 

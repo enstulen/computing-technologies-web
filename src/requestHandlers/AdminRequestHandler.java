@@ -1,21 +1,21 @@
 package requestHandlers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import beans.HomeBean;
 import datastore.Datastore;
-import java.util.List;
 
-import beans.MessageBean;
-
-public class MessagesRequestHandler implements RequestHandler{
+public class AdminRequestHandler implements RequestHandler {
 	
-	private Datastore dataStore;
+	private Datastore datastore;
 	
-	public MessagesRequestHandler(){
-		dataStore = Datastore.getInstance();
+	public AdminRequestHandler() {
+		datastore = Datastore.getInstance();
 	}
 
 	@Override
@@ -24,10 +24,12 @@ public class MessagesRequestHandler implements RequestHandler{
 		String sView = "";
 
 		String path = request.getServletPath();
-		if (path.equals("/messages.html")) {
-			sView = "messages.jsp";
+		if (path.equals("/admin.html")) {
+			ArrayList<HomeBean> homes = (ArrayList<HomeBean>) datastore.getHomes();
+			request.setAttribute("homes", homes);
+			sView = "admin.jsp";
 		}
-//		request.setAttribute("Messages",(List<MessageBean>) dataStore.getMessages());
+		
 
 		return sView;
 	}
