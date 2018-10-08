@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import beans.HomeBean;
+import beans.UserBean;
 import beans.BookingBean;
 
 public class Datastore {
@@ -13,7 +14,7 @@ public class Datastore {
 
 	public List<HomeBean> listOfHomes = new ArrayList<HomeBean>();
 	public List<BookingBean> listOfBookings = new ArrayList<BookingBean>();
-
+	public List<UserBean> listOfUsers = new ArrayList<UserBean>();
 
 	private Datastore() {
 		HomeBean home1 = new HomeBean(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
@@ -34,10 +35,21 @@ public class Datastore {
 		listOfHomes.add(home5);
 		
 		BookingBean booking1 = new BookingBean(0, home1, new Date(), new Date(), new Date(), "123456");
-		BookingBean booking2 = new BookingBean(0, home2, new Date(), new Date(), new Date(), "546548");
+		BookingBean booking2 = new BookingBean(1, home2, new Date(), new Date(), new Date(), "546548");
 		
 		listOfBookings.add(booking1);
 		listOfBookings.add(booking2);
+		
+		UserBean user1 = new UserBean(0, "Morten", "Stulen", "stulenmorten@gmail.com", "password", new Date(), 1);
+		UserBean user2 = new UserBean(1, "John", "Legend", "johnLegend@gmail.com", "password", new Date(), 0);
+		UserBean user3 = new UserBean(2, "Peter", "Parker", "peterparker@gmail.com", "password", new Date(), 0);
+		UserBean user4 = new UserBean(3, "John", "Cena", "johncena@gmail.com", "password", new Date(), 0);
+		
+		listOfUsers.add(user1);
+		listOfUsers.add(user2);
+		listOfUsers.add(user3);
+		listOfUsers.add(user4);
+
 	}
 
 	public static Datastore getInstance() {
@@ -53,5 +65,14 @@ public class Datastore {
 	public List<BookingBean> getBookings() {
 		return (List<BookingBean>) listOfBookings;
 	}
+	
+	public List<UserBean> getUsers() {
+		return (List<UserBean>) listOfUsers;
+	}
+	
+	public HomeBean getHome(int id) {
+		return listOfHomes.get(id);
+	}
 
+	
 }

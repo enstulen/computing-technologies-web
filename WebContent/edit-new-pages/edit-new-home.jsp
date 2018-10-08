@@ -70,6 +70,8 @@
 <link rel="stylesheet" href="css/cs-skin-border.css">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+
 
 
 <!-- Modernizr JS -->
@@ -94,7 +96,7 @@
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
 							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li class="active"><a href="index.html">Home</a></li>
+								<li><a href="index.html">Home</a></li>
 								<li><a href="bookings.html">Bookings</a></li>
 								<li><a href="messages.html">Messages</a></li>
 								<li><a href="#" id="Registro">Register</a></li>
@@ -106,48 +108,57 @@
 			</header>
 
 			<!-- end:header-top -->
+			<div>
+				<h1>Home</h1>
+				<p><c:out value="${ requestScope.home.name }" /></p>
+				<form>
+					<div class="input-field">
+						<label for="from">Name</label> <input type="text"
+							class="form-control" id="from-place" name="name" value="${requestScope.home.name}" />
+					</div>
+					<div class="input-field">
+						<label for="from">Full description</label>
+						<textarea rows="5" name="full_description" class="form-control">${requestScope.home.full_description}</textarea>
+					</div>
+					<div class="input-field">
+						<label for="from">Short description</label> <input
+							name="short_description" class="form-control" value="${requestScope.home.short_description}" />
+					</div>
+					<div class="input-field-select">
+						<label for="class">Type of apartment</label> <select
+							class="cs-select cs-skin-border" name="type">
+							<option value="" disabled selected>Entire accommodation</option>
+							<option value="entire">Entire accommodation</option>
+							<option value="private">Private room</option>
+							<option value="shared">Shared room</option>
+						</select>
+					</div>
 
-			<div id="fh5co-tours" class="fh5co-section-gray">
-				<div class="container">
-					<div class="row">
-						<div
-							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-							<h3>Search Results</h3>
-							<p>These are your search results.</p>
-							<p>You searched with these parameters:</p>
-							<p><%= request.getParameter("from-place") %></p>
-							<p><%= request.getParameter("date-start") %></p>
-							<p><%= request.getParameter("date-end") %></p>
-							<p><%= request.getParameter("price") %></p>
-							<p><%= request.getParameter("type") %></p>
-							<p><%= request.getParameter("adults") %></p>
-							<p><%= request.getParameter("kids") %></p>
-						</div>
+					<div class="input-field-select">
+						<label for="class">Price</label> <select name="price"
+							class="cs-select cs-skin-border">
+							<option value="" disabled selected>Less than 35€</option>
+							<option value="P1">Less than 35€</option>
+							<option value="P2">36€ - 69€</option>
+							<option value="P3">70€ - 130€</option>
+							<option value="P4">131€ or more</option>
+						</select>
 					</div>
-					<div>
-						<div class="row row-bottom-padded-md">
-							<c:forEach items="${requestScope.homes}" var="home">
-								<div class="col-md-4 col-sm-6 fh5co-tours animate-box"
-									data-animate-effect="fadeIn">
-									<div href="#">
-										<img src="images/place-1.jpg"
-											alt="Free HTML5 Website Template by FreeHTML5.co"
-											class="img-responsive">
-										<div class="desc">
-											<span></span>
-											<h3>${home.name}</h3>
-											<span>${ home.short_description}</span> <span class="price">${home.price}</span>
-											<a class="btn btn-primary btn-outline"
-												href="detailHome?id=${home.id}">Select <i
-												class="icon-arrow-right22"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
+					<div class="input-field">
+						<label for="date-start">Start of stay:</label> <input type="text"
+							class="form-control" id="date-start" name="date-start"
+							placeholder="mm/dd/yyyy" value="${requestScope.home.date_available_start}" />
 					</div>
-				</div>
+					<div class="input-field">
+						<label for="date-end">End of stay:</label> <input type="text"
+							class="form-control" id="date-end" name="date-end"
+							placeholder="mm/dd/yyyy" value="${requestScope.home.date_available_end}" />
+					</div>
+					<div class="input-field">
+						<input type="submit" value="Submit" />
+					</div>
+				</form>
+
 			</div>
 
 			<footer>
