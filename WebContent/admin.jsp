@@ -70,6 +70,8 @@
 <link rel="stylesheet" href="css/cs-skin-border.css">
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+
 
 
 <!-- Modernizr JS -->
@@ -106,12 +108,117 @@
 			</header>
 
 			<!-- end:header-top -->
-			<div>
-				<form>
-					<input type="text">
-					<input type="submit" value="Submit">
-				</form>
+			<div class="container">
+				<div class="row">
+					<h1 class="admin-title">Homes</h1>
+					<table class="table table-hover table-custom">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Admin</th>
+						</tr>
+						<c:forEach items="${requestScope.homes}" var="home">
+							<tr class='clickable-row'
+								data-href='/fakebnb/edit-new-home.html?id=${home.id}'>
+								<td>${home.id}</td>
+								<td>${home.name}</td>
+								<td>${home.price}</td>
+								<td><div class="admin-delete-button"
+										onclick="deleteButtonPressed(${home.id})">x</div></td>
+							</tr>
+						</c:forEach>
+					</table>
+					<div class="col-md-2">
+						<a href="/fakebnb/edit-new-home.html"
+							class="btn btn-primary btn-block"">Add new</a>
+					</div>
+				</div>
+				<div class="row">
+					<h1 class="admin-title">Bookings</h1>
+					<table class="table table-hover table-custom">
+						<tr>
+							<th>ID</th>
+							<th>Home</th>
+							<th>Starting date</th>
+							<th>Ending date</th>
+							<th>Admin</th>
 
+						</tr>
+						<c:forEach items="${requestScope.bookings}" var="booking">
+							<tr class='clickable-row'
+								data-href='/fakebnb/edit-new-booking.html?id=${booking.bookingId }'>
+								<td>${booking.bookingId}</td>
+								<td>${booking.home}</td>
+								<td>${booking.date_start}</td>
+								<td>${booking.date_end}</td>
+								<td><div class="admin-delete-button"
+										onclick="deleteButtonPressed(${booking.bookingId})">x</div></td>
+
+							</tr>
+						</c:forEach>
+					</table>
+					<div class="col-md-2">
+						<a href="/fakebnb/edit-new-booking.html"
+							class="btn btn-primary btn-block"">Add new</a>
+					</div>
+				</div>
+				<div class="row">
+					<h1 class="admin-title">Users</h1>
+					<table class="table table-hover table-custom">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Surname</th>
+							<th>Email</th>
+							<th>Admin</th>
+						</tr>
+						<c:forEach items="${requestScope.users}" var="user">
+							<tr class='clickable-row'
+								data-href='/fakebnb/edit-new-user.html?id=${user.userId}'>
+								<td>${user.userId}</td>
+								<td>${user.name}</td>
+								<td>${user.surname}</td>
+								<td>${user.email}</td>
+								<td><div class="admin-delete-button"
+										onclick="deleteButtonPressed(${user.userId})">x</div></td>
+
+							</tr>
+						</c:forEach>
+					</table>
+					<div class="col-md-2">
+						<a href="/fakebnb/edit-new-user.html"
+							class="btn btn-primary btn-block"">Add new</a>
+					</div>
+				</div>
+				<div class="row">
+					<h1 class="admin-title">Messages</h1>
+					<table class="table table-hover table-custom">
+						<tr>
+							<th>ID</th>
+							<th>Text</th>
+							<th>Sender</th>
+							<th>Reciever</th>
+							<th>Admin</th>
+						</tr>
+						<c:forEach items="${requestScope.messages}" var="message">
+							<tr class='clickable-row'
+								data-href='/fakebnb/edit-new-message.html?id=${message.messageId}'>
+								<td>${message.messageId}</td>
+								<td>${message.text}</td>
+								<td>${message.user_SenderId}</td>
+								<td>${message.user_ReceiverId}</td>
+								<td><div class="admin-delete-button"
+										onclick="deleteButtonPressed(${message.messageId})">x</div></td>
+
+							</tr>
+						</c:forEach>
+					</table>
+					<div class="col-md-2">
+						<a href="/fakebnb/edit-new-message.html"
+							class="btn btn-primary btn-block"">Add new</a>
+					</div>
+				</div>
 			</div>
 
 			<footer>
@@ -219,6 +326,8 @@
 
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/admin.js"></script>
+
 
 
 	<script>

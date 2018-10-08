@@ -28,6 +28,10 @@ public class HomeBean {
 		this.date_available_start = date_available_start;
 		this.date_available_end = date_available_end;
 	}
+	
+	public String toString() { 
+		return this.name;
+	} 
 
 	public int getId() {
 		return id;
