@@ -15,7 +15,7 @@ public class SearchResultsRequestHandler implements RequestHandler{
 	private Datastore datastore;
 
 	public SearchResultsRequestHandler() {
-		datastore = new Datastore();
+		datastore = Datastore.getInstance();
 	}
 
 	@Override
