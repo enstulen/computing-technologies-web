@@ -94,7 +94,7 @@
 							<ul class="sf-menu" id="fh5co-primary-menu">
 								<li><a href="index.html">Home</a></li>
 								<li class="active"><a href="viajes.html">Bookings</a></li>
-								<li><a href="mensajes.html">Messages</a></li>
+								<li><a href="messages.html">Messages</a></li>
 							</ul>
 						</nav>
 					</div>
