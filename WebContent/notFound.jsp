@@ -7,7 +7,7 @@
 <title>Not found</title>
 </head>
 <body>
-	<%@ include file="/components/Navbar.html"%>
+	<%@ include file="/components/Navbar.jsp"%>
 
 	<p>Not found</p>
 </body>

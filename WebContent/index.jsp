@@ -80,7 +80,7 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-		<%@ include file="/components/Navbar.html" %>
+		<%@ include file="/components/Navbar.jsp" %>
 			<div class="fh5co-hero">
 				<div class="fh5co-overlay"></div>
 				<div class="fh5co-cover" data-stellar-background-ratio="0.5"

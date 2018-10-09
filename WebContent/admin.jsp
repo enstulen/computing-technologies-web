@@ -85,7 +85,7 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-			<%@ include file="/components/Navbar.html"%>
+			<%@ include file="/components/Navbar.jsp"%>
 			<div class="container">
 				<div class="row">
 					<h1 class="admin-title">Homes</h1>

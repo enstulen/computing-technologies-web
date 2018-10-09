@@ -80,7 +80,7 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-			<%@ include file="/components/Navbar.html"%>
+			<%@ include file="/components/Navbar.jsp"%>
 			<div id="fh5co-tours" class="fh5co-section-gray">
 				<div class="container">
 
