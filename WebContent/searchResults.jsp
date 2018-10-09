@@ -115,13 +115,13 @@
 							<h3>Search Results</h3>
 							<p>These are your search results.</p>
 							<p>You searched with these parameters:</p>
-							<p><%= request.getParameter("from-place") %></p>
-							<p><%= request.getParameter("date-start") %></p>
-							<p><%= request.getParameter("date-end") %></p>
-							<p><%= request.getParameter("price") %></p>
-							<p><%= request.getParameter("type") %></p>
-							<p><%= request.getParameter("adults") %></p>
-							<p><%= request.getParameter("kids") %></p>
+							<p><%=request.getParameter("from-place")%></p>
+							<p><%=request.getParameter("date-start")%></p>
+							<p><%=request.getParameter("date-end")%></p>
+							<p><%=request.getParameter("price")%></p>
+							<p><%=request.getParameter("type")%></p>
+							<p><%=request.getParameter("adults")%></p>
+							<p><%=request.getParameter("kids")%></p>
 						</div>
 					</div>
 					<div>
@@ -155,52 +155,36 @@
 					<div class="container">
 						<div class="row row-bottom-padded-md">
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>About TIWbnb</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Nulla porttitor enim et libero pharetra, Nam ipsum augue,
-									eleifend ut dui eu, egestas malesuada velit.</p>
+								<h3>About FakeBnB</h3>
+								<p>Unforgettable trips start with FakeBnb. Find adventures
+									nearby or in faraway places and access unique homes,
+									experiences, and places around the world.</p>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>FakeBnb</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Careers</a></li>
+									<li><a href="#">Press</a></li>
+									<li><a href="#">Policies</a></li>
+									<li><a href="#">Help</a></li>
 								</ul>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>Discover</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Trust & Safety</a></li>
+									<li><a href="#">Travel Credit</a></li>
+									<li><a href="#">Business Travel</a></li>
+									<li><a href="#">Guidebooks</a></li>
 								</ul>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>Hosting</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Hospitality</a></li>
+									<li><a href="#">Hosting</a></li>
+									<li><a href="#">Community Center</a></li>
+									<li><a href="#">Host an Experience</a></li>
 								</ul>
 							</div>
 						</div>
@@ -218,7 +202,6 @@
 					</div>
 				</div>
 			</footer>
-
 
 
 		</div>

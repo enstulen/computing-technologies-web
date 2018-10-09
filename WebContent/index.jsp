@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>TIWbnb</title>
+<title>FakeBnB</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 <meta name="keywords"
@@ -86,7 +86,7 @@
 					<div class="nav-header">
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
 						<h1 id="fh5co-logo">
-							<a href="index.jsp"><i class="icon-airplane"></i>TIWbnb</a>
+							<a href="index.jsp"><i class="icon-airplane"></i>FakeBnB</a>
 						</h1>
 						<!-- START #fh5co-menu-wrap -->
 						<nav id="fh5co-menu-wrap" role="navigation">
@@ -244,32 +244,31 @@
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h1 class="h3 mb-3 font-weight-normal">Iniciar sesión para
-								continuar</h1>
+							<h1 class="h3 mb-3 font-weight-normal">Sign in to continue</h1>
 						</div>
 						<div class="modal-body">
 							<form class="form-signin">
 								<input type="email" id="loginEmail" class="form-control"
-									placeholder="Dirección de correo electrónico" required
+									placeholder="Email" required
 									autofocus> <input type="password" id="loginPassword"
-									class="form-control" placeholder="Contraseña" required>
+									class="form-control" placeholder="Password" required>
 								<div class="checkbox mb-3">
 									<label> <input type="checkbox" value="remember-me">
-										Recordarme
+										Remember me
 									</label>
 								</div>
 								<button class="btn btn-lg btn-primary btn-block" type="submit"
-									id="IniciaSesion">Inicia sesión</button>
+									id="IniciaSesion">Sign in</button>
 							</form>
 
 						</div>
 
 						<div class="modal-footer">
 							<p class="text-center">
-								¿No tienes cuenta?<a href="index.jsp"> Regístrate</a>
+								No account?<a href="index.jsp"> Regíster</a>
 							</p>
 							<p class="text-center">
-								<a href="index.jsp"> Atrás </a>
+								<a href="index.jsp"> Back </a>
 							</p>
 						</div>
 
@@ -290,28 +289,28 @@
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h1 class="h3 mb-3 font-weight-normal">Introduce tus datos</h1>
+							<h1 class="h3 mb-3 font-weight-normal">Enter your details</h1>
 						</div>
 						<div class="modal-body">
 							<form class="form-registro">
 								<input type="email" id="inputEmail" class="form-control"
-									placeholder="Dirección de correo electrónico" required
+									placeholder="Email" required
 									autofocus> <input type="name" id="inputName"
-									class="form-control" placeholder="Nombre" required> <input
+									class="form-control" placeholder="Name" required> <input
 									type="surname" id="inputSurname" class="form-control"
-									placeholder="Apellidos" required> <input
+									placeholder="Surname" required> <input
 									type="password" id="inputPassword" class="form-control"
-									placeholder="Establece una contraseña" required>
+									placeholder="Set a password" required>
 								<button class="btn btn-lg btn-primary btn-block" type="submit"
-									id="Registrate">Registrate</button>
+									id="Registrate">Register</button>
 							</form>
 
 						</div>
 
 						<div class="modal-footer">
 							<p class="text-center">
-								¿Ya tienes una cuenta TIWbnb?<a href="#" id="goRegistroLogin">
-									Inicia sesión</a>
+								You already have an account?<a href="#" id="goRegistroLogin">
+									Sign in</a>
 							</p>
 						</div>
 
@@ -324,52 +323,36 @@
 					<div class="container">
 						<div class="row row-bottom-padded-md">
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>About TIWbnb</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Nulla porttitor enim et libero pharetra, Nam ipsum augue,
-									eleifend ut dui eu, egestas malesuada velit.</p>
+								<h3>About FakeBnB</h3>
+								<p>Unforgettable trips start with FakeBnb. Find adventures
+									nearby or in faraway places and access unique homes,
+									experiences, and places around the world.</p>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>FakeBnb</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Careers</a></li>
+									<li><a href="#">Press</a></li>
+									<li><a href="#">Policies</a></li>
+									<li><a href="#">Help</a></li>
 								</ul>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>Discover</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Trust & Safety</a></li>
+									<li><a href="#">Travel Credit</a></li>
+									<li><a href="#">Business Travel</a></li>
+									<li><a href="#">Guidebooks</a></li>
 								</ul>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>Hosting</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Hospitality</a></li>
+									<li><a href="#">Hosting</a></li>
+									<li><a href="#">Community Center</a></li>
+									<li><a href="#">Host an Experience</a></li>
 								</ul>
 							</div>
 						</div>
