@@ -83,30 +83,7 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-			<header id="fh5co-header-section" class="sticky-banner">
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-						<h1 id="fh5co-logo">
-							<a href="index.html"><i class="icon-airplane"></i>TIWbnb</a>
-						</h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li class="active"><a href="index.html">Home</a></li>
-								<li><a href="bookings.html">Bookings</a></li>
-								<li><a href="messages.html">Messages</a></li>
-								<li><a href="#" id="Registro">Register</a></li>
-								<li><a href="#" id="Login">Login</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
-
-			<!-- end:header-top -->
-
+			<%@ include file="/components/Navbar.html"%>
 			<div id="fh5co-tours" class="fh5co-section-gray">
 				<div class="container">
 					<div class="row">
@@ -115,13 +92,13 @@
 							<h3>Search Results</h3>
 							<p>These are your search results.</p>
 							<p>You searched with these parameters:</p>
-							<p><%= request.getParameter("from-place") %></p>
-							<p><%= request.getParameter("date-start") %></p>
-							<p><%= request.getParameter("date-end") %></p>
-							<p><%= request.getParameter("price") %></p>
-							<p><%= request.getParameter("type") %></p>
-							<p><%= request.getParameter("adults") %></p>
-							<p><%= request.getParameter("kids") %></p>
+							<p><%=request.getParameter("from-place")%></p>
+							<p><%=request.getParameter("date-start")%></p>
+							<p><%=request.getParameter("date-end")%></p>
+							<p><%=request.getParameter("price")%></p>
+							<p><%=request.getParameter("type")%></p>
+							<p><%=request.getParameter("adults")%></p>
+							<p><%=request.getParameter("kids")%></p>
 						</div>
 					</div>
 					<div>
