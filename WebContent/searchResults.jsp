@@ -185,6 +185,8 @@
 		<!-- END fh5co-page -->
 
 	</div>
+	<%@ include file="/components/Modal.jsp"%>
+	
 	<!-- END fh5co-wrapper -->
 
 

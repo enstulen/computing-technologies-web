@@ -8,7 +8,8 @@
 </head>
 <body>
 	<%@ include file="/components/Navbar.jsp"%>
-
+	<%@ include file="/components/Modal.jsp"%>
+	
 	<p>Not found</p>
 </body>
 </html>
