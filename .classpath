@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/gf-client.jar"/>
 	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/javaee.jar"/>
 	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/jndi-properties.jar"/>
+	<classpathentry kind="lib" path="/home/tiw/Downloads/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
