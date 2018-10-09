@@ -7,6 +7,7 @@ import java.util.List;
 import beans.HomeBean;
 import beans.UserBean;
 import beans.BookingBean;
+import beans.MessageBean;
 
 public class Datastore {
 
@@ -15,6 +16,7 @@ public class Datastore {
 	public List<HomeBean> listOfHomes = new ArrayList<HomeBean>();
 	public List<BookingBean> listOfBookings = new ArrayList<BookingBean>();
 	public List<UserBean> listOfUsers = new ArrayList<UserBean>();
+	public List<MessageBean> listOfMessages = new ArrayList<MessageBean>();
 
 	private Datastore() {
 		HomeBean home1 = new HomeBean(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
@@ -49,6 +51,15 @@ public class Datastore {
 		listOfUsers.add(user2);
 		listOfUsers.add(user3);
 		listOfUsers.add(user4);
+		
+		MessageBean message1 = new MessageBean(0, "Here is a message from user 1 to user 2", new Date(), 1, 2);
+		MessageBean message2 = new MessageBean(1, "Here is a reply from user 2 to user 1", new Date(), 2, 1);
+		MessageBean message3 = new MessageBean(2, "Here is a message from 1 to 2 that should be read.", new Date(), 1, 2);
+		message3.setMessage_Read(true);
+		
+		listOfMessages.add(message1);
+		listOfMessages.add(message2);
+		listOfMessages.add(message3);
 
 	}
 
@@ -68,6 +79,10 @@ public class Datastore {
 	
 	public List<UserBean> getUsers() {
 		return (List<UserBean>) listOfUsers;
+	}
+	
+	public List<MessageBean> getMessages() {
+		return (List<MessageBean>) listOfMessages;
 	}
 	
 	public HomeBean getHome(int id) {

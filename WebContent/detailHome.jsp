@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>TIWbnb</title>
+<title>FakeBnB</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 <meta name="keywords"
@@ -84,6 +84,9 @@
 			<div id="fh5co-tours" class="fh5co-section-gray">
 				<div class="container">
 
+			<div id="fh5co-tours" class="fh5co-section-gray">
+				<div class="container">
+
 					<div class="row">
 						<div class="col-md-12 animate-box">
 							<h2 class="heading-title">Estudio en Sol</h2>
@@ -137,58 +140,41 @@
 				</div>
 			</div>
 
-
 			<footer>
 				<div id="footer">
 					<div class="container">
 						<div class="row row-bottom-padded-md">
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>About TIWbnb</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Nulla porttitor enim et libero pharetra, Nam ipsum augue,
-									eleifend ut dui eu, egestas malesuada velit.</p>
+								<h3>About FakeBnB</h3>
+								<p>Unforgettable trips start with FakeBnb. Find adventures
+									nearby or in faraway places and access unique homes,
+									experiences, and places around the world.</p>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>FakeBnb</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Careers</a></li>
+									<li><a href="#">Press</a></li>
+									<li><a href="#">Policies</a></li>
+									<li><a href="#">Help</a></li>
 								</ul>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>Discover</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Trust & Safety</a></li>
+									<li><a href="#">Travel Credit</a></li>
+									<li><a href="#">Business Travel</a></li>
+									<li><a href="#">Guidebooks</a></li>
 								</ul>
 							</div>
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
+								<h3>Hosting</h3>
 								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
+									<li><a href="#">Hospitality</a></li>
+									<li><a href="#">Hosting</a></li>
+									<li><a href="#">Community Center</a></li>
+									<li><a href="#">Host an Experience</a></li>
 								</ul>
 							</div>
 						</div>
@@ -208,6 +194,8 @@
 			</footer>
 
 
+		</div>
+		<!-- END fh5co-page -->
 
 		</div>
 		<!-- END fh5co-page -->
