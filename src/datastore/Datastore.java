@@ -26,13 +26,13 @@ import beans.BookingBean;
 import beans.MessageBean;
 
 public class Datastore {
-	
+
 //    @PersistenceContext(unitName = "fakebnb")
 //	private EntityManager entityManager;
 //    
 //    @Resource
 //    UserTransaction ut;
-    
+
 	private EntityManager entityManager;
 
 	private static Datastore single_instance = null;
@@ -43,10 +43,10 @@ public class Datastore {
 	public List<MessageBean> listOfMessages = new ArrayList<MessageBean>();
 
 	private Datastore() {
-		
+
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fakebnb");
 		entityManager = factory.createEntityManager();
-		
+
 		Home home1 = new Home(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
 				new Date());
 		Home home2 = new Home(1, "Name2", "Long description", "Short description", 0, 5, null, 1000, new Date(),
@@ -63,28 +63,29 @@ public class Datastore {
 		listOfHomes.add(home3);
 		listOfHomes.add(home4);
 		listOfHomes.add(home5);
-		
+
 		BookingBean booking1 = new BookingBean(0, home1, new Date(), new Date(), new Date(), "123456");
 		BookingBean booking2 = new BookingBean(1, home2, new Date(), new Date(), new Date(), "546548");
-		
+
 		listOfBookings.add(booking1);
 		listOfBookings.add(booking2);
-		
+
 		UserBean user1 = new UserBean(0, "Morten", "Stulen", "stulenmorten@gmail.com", "password", new Date(), 1);
 		UserBean user2 = new UserBean(1, "John", "Legend", "johnLegend@gmail.com", "password", new Date(), 0);
 		UserBean user3 = new UserBean(2, "Peter", "Parker", "peterparker@gmail.com", "password", new Date(), 0);
 		UserBean user4 = new UserBean(3, "John", "Cena", "johncena@gmail.com", "password", new Date(), 0);
-		
+
 		listOfUsers.add(user1);
 		listOfUsers.add(user2);
 		listOfUsers.add(user3);
 		listOfUsers.add(user4);
-		
+
 		MessageBean message1 = new MessageBean(0, "Here is a message from user 1 to user 2", new Date(), 1, 2);
 		MessageBean message2 = new MessageBean(1, "Here is a reply from user 2 to user 1", new Date(), 2, 1);
-		MessageBean message3 = new MessageBean(2, "Here is a message from 1 to 2 that should be read.", new Date(), 1, 2);
+		MessageBean message3 = new MessageBean(2, "Here is a message from 1 to 2 that should be read.", new Date(), 1,
+				2);
 		message3.setMessage_Read(true);
-		
+
 		listOfMessages.add(message1);
 		listOfMessages.add(message2);
 		listOfMessages.add(message3);
@@ -99,8 +100,6 @@ public class Datastore {
 
 	public List<Home> getHomes() {
 
-	
-		
 //		Home home1 = new Home(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
 //				new Date());
 //		
@@ -109,43 +108,35 @@ public class Datastore {
 //		ut.commit();
 //
 //		entityManager.close();
-		
-		List<Home> homes =  getAllHomes();
-		if (homes != null) {
-			System.out.println(homes);
 
-			for ( Home home : homes ) {
-				System.out.println(home.getName());
-			}
-		} else {
-			System.out.println("null man");
+		List<Home> homes = getAllHomes();
+		for (Home home : homes) {
+			System.out.println(home.getName());
 		}
 
 		return homes;
 	}
-	
+
 	public List<Home> getAllHomes() {
-		System.out.println(entityManager);
-	     Query query = entityManager.createQuery("SELECT h FROM Home h");
-	     return query.getResultList();
+		Query query = entityManager.createQuery("SELECT h FROM Home h");
+		return query.getResultList();
 	}
-	
+
 	public List<BookingBean> getBookings() {
-		
+
 		return (List<BookingBean>) listOfBookings;
 	}
-	
+
 	public List<UserBean> getUsers() {
 		return (List<UserBean>) listOfUsers;
 	}
-	
+
 	public List<MessageBean> getMessages() {
 		return (List<MessageBean>) listOfMessages;
 	}
-	
+
 	public Home getHome(int id) {
 		return listOfHomes.get(id);
 	}
 
-	
 }
