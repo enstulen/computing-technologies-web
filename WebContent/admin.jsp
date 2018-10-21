@@ -98,12 +98,12 @@
 						</tr>
 						<c:forEach items="${requestScope.homes}" var="home">
 							<tr class='clickable-row'
-								data-href='/fakebnb/edit-new-home.html?id=${home.id}'>
-								<td>${home.id}</td>
+								data-href='/fakebnb/edit-new-home.html?id=${home.homeid}'>
+								<td>${home.homeid}</td>
 								<td>${home.name}</td>
 								<td>${home.price}</td>
 								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${home.id})">x</div></td>
+										onclick="deleteButtonPressed(${home.homeid})">x</div></td>
 							</tr>
 						</c:forEach>
 					</table>
