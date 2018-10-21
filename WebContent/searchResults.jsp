@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="beans.HomeBean"
+<%@page contentType="text/html" import="beans.Home"
 	import="java.util.*"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -115,7 +115,7 @@
 											<h3>${home.name}</h3>
 											<span>${ home.short_description}</span> <span class="price">${home.price}</span>
 											<a class="btn btn-primary btn-outline"
-												href="detailHome?id=${home.id}">Select <i
+												href="detailHome?id=${home.homeid}">Select <i
 												class="icon-arrow-right22"></i>
 											</a>
 										</div>

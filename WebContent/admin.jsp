@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="beans.HomeBean"
+<%@page contentType="text/html" import="beans.Home"
 	import="java.util.*"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

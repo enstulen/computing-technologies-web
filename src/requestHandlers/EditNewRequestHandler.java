@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.HomeBean;
+import beans.Home;
 import datastore.Datastore;
 
 public class EditNewRequestHandler implements RequestHandler {
@@ -22,7 +22,7 @@ public class EditNewRequestHandler implements RequestHandler {
 			if (requestString != null) {
 				String parameters[] = requestString.split("=");
 				String id = parameters[parameters.length - 1]; //Since there is only 1 query param atm
-				HomeBean home = Datastore.getInstance().getHome(Integer.parseInt(id));
+				Home home = Datastore.getInstance().getHome(Integer.parseInt(id));
 				request.setAttribute("home", home);
 			}			
 			sView = "/edit-new-pages/edit-new-home.jsp";

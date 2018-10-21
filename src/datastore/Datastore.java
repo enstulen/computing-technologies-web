@@ -4,30 +4,58 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import beans.HomeBean;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.NamedQuery;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
+
+import beans.Home;
 import beans.UserBean;
 import beans.BookingBean;
 import beans.MessageBean;
 
 public class Datastore {
+	
+//    @PersistenceContext(unitName = "fakebnb")
+//	private EntityManager entityManager;
+//    
+//    @Resource
+//    UserTransaction ut;
+    
+	private EntityManager entityManager;
 
 	private static Datastore single_instance = null;
 
-	public List<HomeBean> listOfHomes = new ArrayList<HomeBean>();
+	public List<Home> listOfHomes = new ArrayList<Home>();
 	public List<BookingBean> listOfBookings = new ArrayList<BookingBean>();
 	public List<UserBean> listOfUsers = new ArrayList<UserBean>();
 	public List<MessageBean> listOfMessages = new ArrayList<MessageBean>();
 
 	private Datastore() {
-		HomeBean home1 = new HomeBean(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
+		
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fakebnb");
+		entityManager = factory.createEntityManager();
+		
+		Home home1 = new Home(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
 				new Date());
-		HomeBean home2 = new HomeBean(1, "Name2", "Long description", "Short description", 0, 5, null, 1000, new Date(),
+		Home home2 = new Home(1, "Name2", "Long description", "Short description", 0, 5, null, 1000, new Date(),
 				new Date());
-		HomeBean home3 = new HomeBean(2, "Name3", "Long description", "Short description", 0, 5, null, 1500, new Date(),
+		Home home3 = new Home(2, "Name3", "Long description", "Short description", 0, 5, null, 1500, new Date(),
 				new Date());
-		HomeBean home4 = new HomeBean(3, "Name4", "Long description", "Short description", 0, 5, null, 2000, new Date(),
+		Home home4 = new Home(3, "Name4", "Long description", "Short description", 0, 5, null, 2000, new Date(),
 				new Date());
-		HomeBean home5 = new HomeBean(4, "Name5", "Long description", "Short description", 0, 5, null, 2500, new Date(),
+		Home home5 = new Home(4, "Name5", "Long description", "Short description", 0, 5, null, 2500, new Date(),
 				new Date());
 
 		listOfHomes.add(home1);
@@ -69,11 +97,41 @@ public class Datastore {
 		return single_instance;
 	}
 
-	public List<HomeBean> getHomes() {
-		return (List<HomeBean>) listOfHomes;
+	public List<Home> getHomes() {
+
+	
+		
+//		Home home1 = new Home(0, "Name1", "Long description", "Short description", 0, 5, null, 500, new Date(),
+//				new Date());
+//		
+//		ut.begin();
+//		entityManager.persist(home1);
+//		ut.commit();
+//
+//		entityManager.close();
+		
+		List<Home> homes =  getAllHomes();
+		if (homes != null) {
+			System.out.println(homes);
+
+			for ( Home home : homes ) {
+				System.out.println(home.getName());
+			}
+		} else {
+			System.out.println("null man");
+		}
+
+		return homes;
+	}
+	
+	public List<Home> getAllHomes() {
+		System.out.println(entityManager);
+	     Query query = entityManager.createQuery("SELECT h FROM Home h");
+	     return query.getResultList();
 	}
 	
 	public List<BookingBean> getBookings() {
+		
 		return (List<BookingBean>) listOfBookings;
 	}
 	
@@ -85,7 +143,7 @@ public class Datastore {
 		return (List<MessageBean>) listOfMessages;
 	}
 	
-	public HomeBean getHome(int id) {
+	public Home getHome(int id) {
 		return listOfHomes.get(id);
 	}
 
