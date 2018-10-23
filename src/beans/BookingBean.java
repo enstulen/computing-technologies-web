@@ -1,17 +1,17 @@
 package beans;
 
 import java.util.Date;
-import beans.HomeBean;
+import beans.Home;
 
 public class BookingBean {
 	private int bookingId;
-	private HomeBean home;
+	private Home home;
 	private Date date_booking;
 	private Date date_start;
 	private Date date_end;
 	private String card_number;
 	
-	public BookingBean(int bookingId,HomeBean home,Date date_booking, Date date_start, Date date_end,String card_number) {
+	public BookingBean(int bookingId,Home home,Date date_booking, Date date_start, Date date_end,String card_number) {
 		super();
 		this.bookingId = bookingId;
 		this.home = home;
@@ -38,14 +38,14 @@ public class BookingBean {
 	/**
 	 * @return the home
 	 */
-	public HomeBean getHome() {
+	public Home getHome() {
 		return home;
 	}
 
 	/**
 	 * @param home the home to set
 	 */
-	public void setHome(HomeBean home) {
+	public void setHome(Home home) {
 		this.home = home;
 	}
 

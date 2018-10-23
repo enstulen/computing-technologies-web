@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="beans.HomeBean"
+<%@page contentType="text/html" import="beans.Home"
 	import="java.util.*"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -85,29 +85,7 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-			<header id="fh5co-header-section" class="sticky-banner">
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-						<h1 id="fh5co-logo">
-							<a href="index.html"><i class="icon-airplane"></i>TIWbnb</a>
-						</h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="bookings.html">Bookings</a></li>
-								<li><a href="messages.html">Messages</a></li>
-								<li><a href="#" id="Registro">Register</a></li>
-								<li><a href="#" id="Login">Login</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
-
-			<!-- end:header-top -->
+			<%@ include file="/components/Navbar.jsp"%>
 			<div class="container">
 				<div class="row">
 					<h1 class="admin-title">Homes</h1>
@@ -120,12 +98,12 @@
 						</tr>
 						<c:forEach items="${requestScope.homes}" var="home">
 							<tr class='clickable-row'
-								data-href='/fakebnb/edit-new-home.html?id=${home.id}'>
-								<td>${home.id}</td>
+								data-href='/fakebnb/edit-new-home.html?id=${home.homeid}'>
+								<td>${home.homeid}</td>
 								<td>${home.name}</td>
 								<td>${home.price}</td>
 								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${home.id})">x</div></td>
+										onclick="deleteButtonPressed(${home.homeid})">x</div></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -296,6 +274,8 @@
 		<!-- END fh5co-page -->
 
 	</div>
+	<%@ include file="/components/Modal.jsp"%>
+	
 	<!-- END fh5co-wrapper -->
 
 

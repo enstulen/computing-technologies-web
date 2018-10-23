@@ -80,30 +80,7 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-			<header id="fh5co-header-section" class="sticky-banner">
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-						<h1 id="fh5co-logo">
-							<a href="index.jsp"><i class="icon-airplane"></i>FakeBnB</a>
-						</h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li class="active"><a href="index.html">Home</a></li>
-								<li><a href="bookings.html">Bookings</a></li>
-								<li><a href="messages.html">Messages</a></li>
-								<li><a href="#" id="Registro">Register</a></li>
-								<li><a href="#" id="Login">Login</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
-
-			<!-- end:header-top -->
-
+			<%@ include file="/components/Navbar.jsp"%>
 			<div class="fh5co-hero">
 				<div class="fh5co-overlay"></div>
 				<div class="fh5co-cover" data-stellar-background-ratio="0.5"
@@ -232,6 +209,7 @@
 
 			</div>
 
+<<<<<<< HEAD
 
 			<!-- Login Modal -->
 			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
@@ -318,6 +296,8 @@
 				</div>
 			</div>
 
+=======
+>>>>>>> f1c217a0b368d916e434ad6a217da1cf78ba9247
 			<footer>
 				<div id="footer">
 					<div class="container">
@@ -377,6 +357,8 @@
 		<!-- END fh5co-page -->
 
 	</div>
+	<%@ include file="/components/Modal.jsp"%>
+
 	<!-- END fh5co-wrapper -->
 
 
@@ -408,20 +390,6 @@
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
 
-
-	<script>
-		$(document).on('click', '#Login', function() {
-			$("#loginModal").modal("show");
-		});
-		$(document).on('click', '#Registro', function() {
-			$("#RegistroModal").modal("show");
-		});
-
-		$(document).on('click', '#goRegistroLogin', function() {
-			$("#RegistroModal").modal("hide");
-			$("#loginModal").modal("show");
-		});
-	</script>
 
 </body>
 </html>
