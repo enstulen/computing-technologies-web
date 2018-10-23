@@ -68,19 +68,12 @@
 <!-- CS Select -->
 <link rel="stylesheet" href="css/cs-select.css">
 <link rel="stylesheet" href="css/cs-skin-border.css">
-<<<<<<< HEAD
+
 
 <link rel="stylesheet" href="css/style.css">
 
 <link rel="stylesheet" href="css/messaging.css">
 
-=======
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="stylesheet" href="css/messaging.css">
-
->>>>>>> master
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
 <!-- FOR IE9 below -->
@@ -93,40 +86,7 @@
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
-<<<<<<< HEAD
-			<header id="fh5co-header-section" class="sticky-banner">
-				<div class="container">
-					<div class="nav-header">
-						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-						<h1 id="fh5co-logo">
-							<a href="index.jsp"><i class="icon-airplane"></i>FakeBnB</a>
-						</h1>
-						<!-- START #fh5co-menu-wrap -->
-						<nav id="fh5co-menu-wrap" role="navigation">
-							<ul class="sf-menu" id="fh5co-primary-menu">
-								<li><a href="index.jsp">Home</a></li>
-								<li><a href="bookings.html">Bookings</a></li>
-								<li class="active"><a href="messages.html">Messages</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
-
-			<!-- end:header-top -->
-
-			<!-- end:header-top -->
-			<div id="message-container" class="fh5co-section-gray">
-				<div class="container">
-					<div class="row">
-						<div
-							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-							<h3>Messages</h3>
-							<p>These are the messages you have received until now.</p>
-						</div>
-					</div>
-
-=======
+<
 			<%@ include file="/components/Navbar.jsp"%>
 
 			<div id="message-container" class="fh5co-section-gray">
@@ -139,7 +99,6 @@
 						</div>
 					</div>
 
->>>>>>> master
 					<div class="row row-bottom-padded-md">
 						<div class="col-md-8 col-md-offset-2">
 							<div class="panel panel-default">
@@ -321,7 +280,6 @@
 					<div class="container">
 						<div class="row row-bottom-padded-md">
 							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-<<<<<<< HEAD
 								<h3>About FakeBnB</h3>
 								<p>Unforgettable trips start with FakeBnb. Find adventures
 									nearby or in faraway places and access unique homes,
@@ -352,54 +310,7 @@
 									<li><a href="#">Hosting</a></li>
 									<li><a href="#">Community Center</a></li>
 									<li><a href="#">Host an Experience</a></li>
-=======
-								<h3>About TIWbnb</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Nulla porttitor enim et libero pharetra, Nam ipsum augue,
-									eleifend ut dui eu, egestas malesuada velit.</p>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
-								</ul>
-							</div>
-							<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
-								<h3>Lorem ipsum</h3>
-								<ul>
-									<li><a href="#">Xxxxx xxxx</a></li>
-									<li><a href="#">Xxxxx xxxx</a></li>
->>>>>>> master
+
 								</ul>
 							</div>
 						</div>
