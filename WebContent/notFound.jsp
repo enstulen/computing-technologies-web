@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,9 @@
 <title>Not found</title>
 </head>
 <body>
-<p>Not found</p>
+	<%@ include file="/components/Navbar.jsp"%>
+	<%@ include file="/components/Modal.jsp"%>
+	
+	<p>Not found</p>
 </body>
 </html>

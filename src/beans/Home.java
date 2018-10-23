@@ -2,28 +2,37 @@ package beans;
 
 import java.util.Date;
 
-public class HomeBean {
-	private int id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Home {
+	@Id @GeneratedValue private int homeid;
 	private String name;
 	private String full_description;
 	private String short_description;
 	private int type;
 	private int number_of_guests;
-	private String image_path;
+	private String image;
 	private int price;
 	private Date date_available_start;
 	private Date date_available_end;
+	
+	public Home() {
+		
+	}
 
-	public HomeBean(int id, String name, String full_description, String short_description, int type,
-			int number_of_guests, String image_path, int price, Date date_available_start, Date date_available_end) {
+	public Home(int homeid, String name, String full_description, String short_description, int type,
+			int number_of_guests, String image, int price, Date date_available_start, Date date_available_end) {
 		super();
-		this.id = id;
+		this.homeid = homeid;
 		this.name = name;
 		this.full_description = full_description;
 		this.short_description = short_description;
 		this.type = type;
 		this.number_of_guests = number_of_guests;
-		this.image_path = image_path;
+		this.image = image;
 		this.price = price;
 		this.date_available_start = date_available_start;
 		this.date_available_end = date_available_end;
@@ -33,12 +42,12 @@ public class HomeBean {
 		return this.name;
 	} 
 
-	public int getId() {
-		return id;
+	public int getHomeid() {
+		return homeid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setHomeid(int homeid) {
+		this.homeid = homeid;
 	}
 
 	public String getName() {
@@ -81,12 +90,12 @@ public class HomeBean {
 		this.number_of_guests = number_of_guests;
 	}
 
-	public String getImage_path() {
-		return image_path;
+	public String getImage() {
+		return image;
 	}
 
-	public void setImage_path(String image_path) {
-		this.image_path = image_path;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public int getPrice() {
