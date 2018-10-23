@@ -80,7 +80,10 @@ public class ControllerServlet extends HttpServlet {
 		String path = request.getServletPath();
 		RequestHandler requestHandler = (RequestHandler) handlerHash.get(path);
 		String sView = requestHandler.handleRequest(request, response);
-
+	
+		if(request.getParameter("IniciaSesion") != null){
+			System.out.println("You made it");
+		}
 		request.getRequestDispatcher(sView).forward(request, response);
 
 	}

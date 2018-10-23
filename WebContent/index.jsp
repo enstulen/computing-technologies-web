@@ -247,7 +247,7 @@
 							<h1 class="h3 mb-3 font-weight-normal">Sign in to continue</h1>
 						</div>
 						<div class="modal-body">
-							<form class="form-signin">
+							<form class="form-signin" name = "login" action= "login" method = "post">
 								<input type="email" id="loginEmail" class="form-control"
 									placeholder="Email" required
 									autofocus> <input type="password" id="loginPassword"
