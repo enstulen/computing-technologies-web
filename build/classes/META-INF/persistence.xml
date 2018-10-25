@@ -4,6 +4,7 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>TIWDS</jta-data-source>
 		<class>beans.Home</class>
+		<class>beans.Message</class>
 		<shared-cache-mode>ALL</shared-cache-mode>
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE"/>

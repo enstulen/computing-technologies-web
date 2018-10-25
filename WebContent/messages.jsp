@@ -1,10 +1,10 @@
-<%@page import="beans.MessageBean"%>
+<%@page import="beans.Message"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
 <%-- Access bean placed in the request by MessagesRequestHandler --%>
-<jsp:useBean id="Messages" scope="request" type="List<MessageBean>" />
+<jsp:useBean id="Messages" scope="request" type="List<Message>" />
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -117,7 +117,7 @@
 										<table class="table table-filter">
 											<tbody>
 												<%
-													for (MessageBean message : Messages) {
+													for (Message message : Messages) {
 												%>
 												<%
 													String readstatus;

@@ -209,6 +209,8 @@
 
 			</div>
 
+		<%@ include file="/components/Modal.jsp" %>
+
 			<footer>
 				<div id="footer">
 					<div class="container">
