@@ -209,7 +209,6 @@
 
 			</div>
 
-<<<<<<< HEAD
 
 			<!-- Login Modal -->
 			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
@@ -296,8 +295,6 @@
 				</div>
 			</div>
 
-=======
->>>>>>> f1c217a0b368d916e434ad6a217da1cf78ba9247
 			<footer>
 				<div id="footer">
 					<div class="container">

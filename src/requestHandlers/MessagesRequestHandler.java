@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import datastore.Datastore;
 import java.util.List;
 
-import beans.MessageBean;
+import beans.Message;
 
 public class MessagesRequestHandler implements RequestHandler{
 	
@@ -27,7 +27,7 @@ public class MessagesRequestHandler implements RequestHandler{
 		if (path.equals("/messages.html")) {
 			sView = "messages.jsp";
 		}
-		request.setAttribute("Messages",(List<MessageBean>) dataStore.getMessages());
+		request.setAttribute("Messages",(List<Message>) dataStore.getMessages());
 
 		return sView;
 	}

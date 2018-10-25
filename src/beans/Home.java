@@ -8,7 +8,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Home {
-	@Id @GeneratedValue private int homeid;
+	@Id
+	@GeneratedValue
+	private int homeid;
 	private String name;
 	private String full_description;
 	private String short_description;
@@ -18,9 +20,9 @@ public class Home {
 	private int price;
 	private Date date_available_start;
 	private Date date_available_end;
-	
+
 	public Home() {
-		
+
 	}
 
 	public Home(int homeid, String name, String full_description, String short_description, int type,
@@ -37,10 +39,10 @@ public class Home {
 		this.date_available_start = date_available_start;
 		this.date_available_end = date_available_end;
 	}
-	
-	public String toString() { 
+
+	public String toString() {
 		return this.name;
-	} 
+	}
 
 	public int getHomeid() {
 		return homeid;

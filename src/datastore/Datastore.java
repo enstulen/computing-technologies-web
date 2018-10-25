@@ -23,7 +23,7 @@ import javax.transaction.UserTransaction;
 import beans.Home;
 import beans.UserBean;
 import beans.BookingBean;
-import beans.MessageBean;
+import beans.Message;
 
 public class Datastore {
 
@@ -40,7 +40,7 @@ public class Datastore {
 	public List<Home> listOfHomes = new ArrayList<Home>();
 	public List<BookingBean> listOfBookings = new ArrayList<BookingBean>();
 	public List<UserBean> listOfUsers = new ArrayList<UserBean>();
-	public List<MessageBean> listOfMessages = new ArrayList<MessageBean>();
+	public List<Message> listOfMessages = new ArrayList<Message>();
 
 	private Datastore() {
 
@@ -79,16 +79,16 @@ public class Datastore {
 		listOfUsers.add(user2);
 		listOfUsers.add(user3);
 		listOfUsers.add(user4);
-
-		MessageBean message1 = new MessageBean(0, "Here is a message from user 1 to user 2", new Date(), 1, 2);
-		MessageBean message2 = new MessageBean(1, "Here is a reply from user 2 to user 1", new Date(), 2, 1);
-		MessageBean message3 = new MessageBean(2, "Here is a message from 1 to 2 that should be read.", new Date(), 1,
-				2);
-		message3.setMessage_Read(true);
-
-		listOfMessages.add(message1);
-		listOfMessages.add(message2);
-		listOfMessages.add(message3);
+//
+//		Message message1 = new Message(0, "Here is a message from user 1 to user 2", new Date(), 1, 2);
+//		Message message2 = new Message(1, "Here is a reply from user 2 to user 1", new Date(), 2, 1);
+//		Message message3 = new Message(2, "Here is a message from 1 to 2 that should be read.", new Date(), 1,
+//				2);
+//		message3.setMessage_Read(true);
+//
+//		listOfMessages.add(message1);
+//		listOfMessages.add(message2);
+//		listOfMessages.add(message3);
 
 	}
 
@@ -121,6 +121,17 @@ public class Datastore {
 		Query query = entityManager.createQuery("SELECT h FROM Home h");
 		return query.getResultList();
 	}
+	
+	public List<Message> getMessages() {
+		List<Message> messages = getAllMessages();
+		return messages;
+	}
+	
+	public List<Message> getAllMessages() {
+		Query query = entityManager.createQuery("SELECT m FROM Message m");
+		return query.getResultList();
+	}
+	
 
 	public List<BookingBean> getBookings() {
 
@@ -131,9 +142,9 @@ public class Datastore {
 		return (List<UserBean>) listOfUsers;
 	}
 
-	public List<MessageBean> getMessages() {
-		return (List<MessageBean>) listOfMessages;
-	}
+//	public List<Message> getMessages() {
+//		return (List<Message>) listOfMessages;
+//	}
 
 	public Home getHome(int id) {
 		return listOfHomes.get(id);
