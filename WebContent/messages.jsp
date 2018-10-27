@@ -111,6 +111,7 @@
 												data-target="no-leido">Unread</button>
 											<button type="button" class="btn btn-default btn-filter"
 												data-target="all">All</button>
+											<button type="button" class= "btn btn-default" id="NewMessage">New Message</button>
 										</div>
 									</div>
 									<div class="table-container">
@@ -162,107 +163,6 @@
 												<%
 													}
 												%>
-
-												<!-- <tr data-status="no-leido" class="no-leido">
-											<td>
-												<a href="javascript:;" class="star">
-													<i class="glyphicon glyphicon-star"></i>
-												</a>
-											</td>
-											<td>
-												<div class="media">
-													<h4 class="title">
-																User Identifier
-													</h4>
-												</div>
-											</td>                                        
-											<td>      
-													<div class="media">
-														<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-														<p class="meta">Febrero 13, 2018</p>                                                
-													</div>
-											</td>
-										</tr>    
-										<tr data-status="no-leido" class="no-leido">
-											<td>
-												<a href="javascript:;" class="star">
-													<i class="glyphicon glyphicon-star"></i>
-												</a>
-											</td>
-											<td>
-												<div class="media">
-													<h4 class="title">
-																User Identifier
-													</h4>
-												</div>
-											</td>                                        
-											<td>      
-													<div class="media">
-														<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-														<p class="meta">Febrero 13, 2018</p>                                                
-													</div>
-											</td>
-										</tr>     -->
-												<!-- <tr data-status="leido" class="leido">
-											<td>
-												<a href="javascript:;" class="star">
-													<i class="glyphicon glyphicon-star"></i>
-												</a>
-											</td>
-											<td>
-												<div class="media">
-													<h4 class="title">
-																User Identifier
-													</h4>
-												</div>
-											</td>                                        
-											<td>      
-													<div class="media">
-														<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-														<p class="meta">Febrero 13, 2018</p>                                                
-													</div>
-											</td>
-										</tr> 
-										<tr data-status="leido" class="leido">
-											<td>
-												<a href="javascript:;" class="star">
-													<i class="glyphicon glyphicon-star"></i>
-												</a>
-											</td>
-											<td>
-												<div class="media">
-													<h4 class="title">
-																User Identifier
-													</h4>
-												</div>
-											</td>                                        
-											<td>      
-													<div class="media">
-														<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-														<p class="meta">Febrero 13, 2018</p>                                                
-													</div>
-											</td>
-										</tr>    
-										<tr data-status="leido" class="leido">
-											<td>
-												<a href="javascript:;" class="star">
-													<i class="glyphicon glyphicon-star"></i>
-												</a>
-											</td>
-											<td>
-												<div class="media">
-													<h4 class="title">
-																User Identifier
-													</h4>
-												</div>
-											</td>                                        
-											<td>      
-													<div class="media">
-														<p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p>
-														<p class="meta">Febrero 13, 2018</p>                                                
-													</div>
-											</td>
-										</tr>               -->
 											</tbody>
 										</table>
 									</div>
@@ -272,6 +172,37 @@
 					</div>
 				</div>
 			</div>
+			
+				<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h1 class="h3 mb-3 font-weight-normal">Send a message to another Fakebnb User</h1>
+				</div>
+				<div class="modal-body">
+					<form class="form-message">
+						<input type="name" id="sendername" class="form-control"
+							placeholder="Sender" required autofocus> 
+						<input
+							type="name" id="receivername" class="form-control"
+							placeholder="Receiver" required> 
+						<input type="text"
+							id="messagecontent" class="form-control" placeholder="Write Message Here"
+							required> 
+										
+						<button class="btn btn-lg btn-primary btn-block" type="submit"
+							id="Send">Send Message</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -397,6 +328,9 @@
 							});
 
 				});
+		$(document).on('click', '#NewMessage', function() {
+			$("#MessageModal").modal("show");
+		});
 	</script>
 
 </body>
