@@ -2,6 +2,7 @@ package requestHandlers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 
-import beans.Home;
+import entities.Home;
 import datastore.Datastore;
 
 public class SearchResultsRequestHandler implements RequestHandler{
@@ -32,8 +33,12 @@ public class SearchResultsRequestHandler implements RequestHandler{
 		String path = request.getServletPath();
 		if (path.equals("/searchResults") || path.equals("/searchResults.html")) {
 			List<Home> homes;
+			String name = request.getParameter("name");
+
 			try {
-				homes = (List<Home>) datastore.getHomes();
+//				homes = (List<Home>) datastore.getHomes();
+				 homes = datastore.findHome(name, new Date(), new Date(), 1, 1, 1, 1);
+
 				request.setAttribute("homes", homes);
 
 			} catch (SecurityException e) {

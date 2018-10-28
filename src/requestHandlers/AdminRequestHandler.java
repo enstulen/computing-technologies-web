@@ -13,8 +13,8 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 
-import beans.BookingBean;
-import beans.Home;
+import entities.Booking;
+import entities.Home;
 import beans.UserBean;
 import datastore.Datastore;
 
@@ -45,7 +45,7 @@ public class AdminRequestHandler implements RequestHandler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) datastore.getBookings();
+			ArrayList<Booking> bookings = (ArrayList<Booking>) datastore.getBookings();
 			ArrayList<UserBean> users = (ArrayList<UserBean>) datastore.getUsers();
 
 			request.setAttribute("bookings", bookings);

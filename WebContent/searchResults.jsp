@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="beans.Home"
+<%@page contentType="text/html" import="entities.Home"
 	import="java.util.*"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -91,14 +91,6 @@
 							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 							<h3>Search Results</h3>
 							<p>These are your search results.</p>
-							<p>You searched with these parameters:</p>
-							<p><%=request.getParameter("from-place")%></p>
-							<p><%=request.getParameter("date-start")%></p>
-							<p><%=request.getParameter("date-end")%></p>
-							<p><%=request.getParameter("price")%></p>
-							<p><%=request.getParameter("type")%></p>
-							<p><%=request.getParameter("adults")%></p>
-							<p><%=request.getParameter("kids")%></p>
 						</div>
 					</div>
 					<div>

@@ -102,14 +102,14 @@
 										<!-- Tab panes -->
 										<div class="tab-content">
 											<div role="tabpanel" class="tab-pane active" id="hotels">
-												<form action="searchResults.html" method="post">
+												<form action="searchResults.html" method="POST">
 
 													<div class="row">
 														<div class="col-xxs-12 col-xs-12 mt">
 															<div class="input-field">
-																<label for="from">City:</label> <input type="text"
-																	class="form-control" id="from-place" name="from-place"
-																	placeholder="Madrid, SPAIN" />
+																<label for="from">Name:</label> <input type="text"
+																	class="form-control" id="from-place" name="name"
+																	placeholder="Nice house" />
 															</div>
 														</div>
 														<div class="col-xxs-12 col-xs-6 mt alternate">

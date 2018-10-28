@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import beans.BookingBean;
+import entities.Booking;
 import datastore.Datastore;
 
 public class BookingsRequestHandler implements RequestHandler {
@@ -23,7 +23,7 @@ public class BookingsRequestHandler implements RequestHandler {
 
 		String path = request.getServletPath();
 		if (path.equals("/bookings.html") || path.equals("/bookings")) {
-			ArrayList<BookingBean> bookings = (ArrayList<BookingBean>) datastore.getBookings();
+			ArrayList<Booking> bookings = (ArrayList<Booking>) datastore.getBookings();
 			request.setAttribute("bookings",bookings);
 			sView = "bookings.jsp";
 		}
