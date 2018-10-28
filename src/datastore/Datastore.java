@@ -118,7 +118,7 @@ public class Datastore {
 	}
 
 	public List<Home> getAllHomes() {
-		Query query = entityManager.createQuery("SELECT h FROM Home h");
+		Query query = entityManager.createQuery("SELECT h FROM HOME h");
 		return query.getResultList();
 	}
 	
@@ -128,7 +128,7 @@ public class Datastore {
 	}
 	
 	public List<Message> getAllMessages() {
-		Query query = entityManager.createQuery("SELECT m FROM Message m");
+		Query query = entityManager.createQuery("SELECT m FROM MESSAGE m");
 		return query.getResultList();
 	}
 	

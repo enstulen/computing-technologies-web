@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-@Entity(name = "Message")
+@Entity(name = "MESSAGE")
 public class Message {
 	@Id
 	@GeneratedValue
