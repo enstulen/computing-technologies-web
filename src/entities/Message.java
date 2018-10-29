@@ -21,20 +21,27 @@ public class Message implements Serializable {
 	private String text;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="time_stamp")
-	private Date timeStamp;
+	private Date time_stamp;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_senderid")
-	private User user1;
+	private User sender;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_recieverid")
-	private User user2;
+	private User reciever;
+	
+	@Transient 
+	private boolean message_read;
 
 	public Message() {
+		this.message_read = false;
+	}
+	
+	public String toString() {
+		return this.text;
 	}
 
 	public int getMessageid() {
@@ -52,29 +59,40 @@ public class Message implements Serializable {
 	public void setText(String text) {
 		this.text = text;
 	}
-
-	public Date getTimeStamp() {
-		return this.timeStamp;
+	
+	public Date getTime_stamp() {
+		return time_stamp;
 	}
 
-	public void setTimeStamp(Date timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTime_stamp(Date time_stamp) {
+		this.time_stamp = time_stamp;
 	}
 
-	public User getUser1() {
-		return this.user1;
+
+	public User getSender() {
+		return sender;
 	}
 
-	public void setUser1(User user1) {
-		this.user1 = user1;
+	public void setSender(User sender) {
+		this.sender = sender;
 	}
 
-	public User getUser2() {
-		return this.user2;
+	public User getReciever() {
+		return reciever;
 	}
 
-	public void setUser2(User user2) {
-		this.user2 = user2;
+	public void setReciever(User reciever) {
+		this.reciever = reciever;
 	}
+
+	public boolean isMessage_read() {
+		return message_read;
+	}
+
+	public void setMessage_read(boolean message_read) {
+		this.message_read = message_read;
+	}
+	
+	
 
 }

@@ -4,27 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.NamedQuery;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
 
 import entities.Home;
 import entities.User;
-import beans.UserBean;
 import entities.Booking;
-import beans.Message;
+import entities.Message;
 
 public class Datastore {
 
@@ -50,6 +39,8 @@ public class Datastore {
 			single_instance = new Datastore();
 		return single_instance;
 	}
+	
+	//HOMES
 
 	public List<Home> getHomes() {
 		List<Home> homes = getAllHomes();
@@ -82,6 +73,10 @@ public class Datastore {
 		entityManager.remove(home);
 		tx.commit();
 	}
+	
+	public Home getHome(int id) {
+		return entityManager.find(Home.class, id);
+	}
 
 	public List<Home> findHome(String name, Date start_date, Date end_date, int price, int type, int adults, int kids) {
 //		Query query = entityManager.createQuery(
@@ -91,13 +86,10 @@ public class Datastore {
 		Query query = entityManager.createQuery(
 				"SELECT h FROM Home h WHERE h.name LIKE :name")
 				.setParameter("name", name);
-		System.out.println("HALLA");
-		System.out.println(name);
-
-		System.out.println(query.getResultList());
-
-		return query.getResultList();
+			return query.getResultList();
 	}
+	
+	//MESSAGES
 
 	public List<Message> getMessages() {
 		List<Message> messages = getAllMessages();
@@ -105,26 +97,110 @@ public class Datastore {
 	}
 
 	public List<Message> getAllMessages() {
-		Query query = entityManager.createQuery("SELECT m FROM MESSAGE m");
+		Query query = entityManager.createNamedQuery("Message.findAll", Message.class);
 		return query.getResultList();
 	}
-
-	public ArrayList<UserBean> getUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void createNewMessage(Message message) {
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.persist(message);
+		tx.commit();
+	}
+	
+	public void updateMessage(Message message) {
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.merge(message);
+		tx.commit();
 	}
 
-	public ArrayList<Booking> getBookings() {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteMessage(int id) {
+		Message message = entityManager.find(Message.class, id);
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.remove(message);
+		tx.commit();
+	}
+	
+	public Message getMessage(int id) {
+		return entityManager.find(Message.class, id);
+	}
+	
+	//BOOKINGS
+
+	public List<Booking> getBookings() {
+		List<Booking> bookings = getAllBookings();
+		return bookings;
+	}
+	
+	public List<Booking> getAllBookings() {
+		Query query = entityManager.createNamedQuery("Booking.findAll", Booking.class);
+		return query.getResultList();
+	}
+	
+	public void createNewBooking(Booking booking) {
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.persist(booking);
+		tx.commit();
+	}
+	
+	public void updateBooking(Booking booking) {
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.merge(booking);
+		tx.commit();
 	}
 
-	public Home getHome(int id) {
-		return entityManager.find(Home.class, id);
+	public void deleteBooking(int id) {
+		Booking booking = entityManager.find(Booking.class, id);
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.remove(booking);
+		tx.commit();
 	}
+	
+	public Booking getBooking(int id) {
+		return entityManager.find(Booking.class, id);
+	}
+	
+	//USERS
 
 	public User getUser(int id) {
 		return entityManager.find(User.class, id);
+	}
+	
+	public List<User> getUsers() {
+		List<User> users = getAllUsers();
+		return users;
+	}
+	
+	public List<User> getAllUsers() {
+		Query query = entityManager.createNamedQuery("User.findAll", User.class);
+		return query.getResultList();
+	}
+	
+	public void createNewUser(User user) {
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.persist(user);
+		tx.commit();
+	}
+	
+	public void updateUser(User user) {
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.merge(user);
+		tx.commit();
+	}
+
+	public void deleteUser(int id) {
+		User user = entityManager.find(User.class, id);
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.remove(user);
+		tx.commit();
 	}
 
 

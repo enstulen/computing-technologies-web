@@ -15,7 +15,8 @@ import javax.transaction.SystemException;
 
 import entities.Booking;
 import entities.Home;
-import beans.UserBean;
+import entities.Message;
+import entities.User;
 import datastore.Datastore;
 
 public class AdminRequestHandler implements RequestHandler {
@@ -34,9 +35,20 @@ public class AdminRequestHandler implements RequestHandler {
 		String path = request.getServletPath();
 		if (path.equals("/admin.html")) {
 			List<Home> homes;
+			List<Booking> bookings; 
+			List<Message> messages; 
+			List<User> users; 
+
 			try {
 				homes = (List<Home>) datastore.getHomes();
+				bookings = (List<Booking>) datastore.getBookings();
+				messages = (List<Message>) datastore.getMessages();
+				users = (List<User>) datastore.getUsers();
+
 				request.setAttribute("homes", homes);
+				request.setAttribute("bookings", bookings);
+				request.setAttribute("messages", messages);
+				request.setAttribute("users", users);
 
 			} catch (SecurityException e) {
 				// TODO Auto-generated catch block
@@ -45,11 +57,6 @@ public class AdminRequestHandler implements RequestHandler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			ArrayList<Booking> bookings = (ArrayList<Booking>) datastore.getBookings();
-			ArrayList<UserBean> users = (ArrayList<UserBean>) datastore.getUsers();
-
-			request.setAttribute("bookings", bookings);
-			request.setAttribute("users", users);
 
 			sView = "admin.jsp";
 		}

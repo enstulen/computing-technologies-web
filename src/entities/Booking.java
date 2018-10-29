@@ -18,34 +18,30 @@ public class Booking implements Serializable {
 	@Id @GeneratedValue
 	private int bookingid;
 
-	@Column(name="card_number")
-	private String cardNumber;
+	private String card_number;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_booking")
-	private Date dateBooking;
+	private Date date_booking;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_end")
-	private Date dateEnd;
+	private Date date_end;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_start")
-	private Date dateStart;
+	private Date date_start;
 
 	//bi-directional many-to-one association to Home
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="home_homeid", referencedColumnName="homeid"),
-		@JoinColumn(name="user_hostid", referencedColumnName="user_userid")
-		})
-	private Home home1;
+	@JoinColumn(name="home_homeid", referencedColumnName="homeid")
+	private Home home;
 
+	@ManyToOne
+	@JoinColumn(name="user_hostid", referencedColumnName="userid")
+	private User host;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name="user_guestid")
-	private User user;
+	@JoinColumn(name="user_guestid", referencedColumnName="userid")
+	private User guest;
 
 	public Booking() {
 	}
@@ -57,54 +53,65 @@ public class Booking implements Serializable {
 	public void setBookingid(int bookingid) {
 		this.bookingid = bookingid;
 	}
-
-	public String getCardNumber() {
-		return this.cardNumber;
+	
+	public String getCard_number() {
+		return card_number;
 	}
 
-	public void setCardNumber(String cardNumber) {
-		this.cardNumber = cardNumber;
+	public void setCard_number(String card_number) {
+		this.card_number = card_number;
 	}
 
-	public Date getDateBooking() {
-		return this.dateBooking;
+	public Date getDate_booking() {
+		return date_booking;
 	}
 
-	public void setDateBooking(Date dateBooking) {
-		this.dateBooking = dateBooking;
+	public void setDate_booking(Date date_booking) {
+		this.date_booking = date_booking;
 	}
 
-	public Date getDateEnd() {
-		return this.dateEnd;
+	public Date getDate_end() {
+		return date_end;
 	}
 
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
+	public void setDate_end(Date date_end) {
+		this.date_end = date_end;
 	}
 
-	public Date getDateStart() {
-		return this.dateStart;
+	public Date getDate_start() {
+		return date_start;
 	}
 
-	public void setDateStart(Date dateStart) {
-		this.dateStart = dateStart;
+	public void setDate_start(Date date_start) {
+		this.date_start = date_start;
 	}
 
-	public Home getHome1() {
-		return this.home1;
+	public Home getHome() {
+		return home;
 	}
 
-	public void setHome1(Home home1) {
-		this.home1 = home1;
+	public void setHome(Home home) {
+		this.home = home;
 	}
 
-
-	public User getUser() {
-		return this.user;
+	public User getHost() {
+		return host;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setHost(User host) {
+		this.host = host;
 	}
+
+	public User getGuest() {
+		return guest;
+	}
+
+	public void setGuest(User guest) {
+		this.guest = guest;
+	}
+
+	
+
+
 
 }
