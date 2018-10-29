@@ -16,7 +16,7 @@
 			<property name="eclipselink.refresh" value="true"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/web_tech"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="aXXo1212"/>
+			<property name="javax.persistence.jdbc.password" value="admin"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 		</properties>
 	</persistence-unit>
