@@ -125,13 +125,13 @@
 						</tr>
 						<c:forEach items="${requestScope.bookings}" var="booking">
 							<tr class='clickable-row'
-								data-href='/fakebnb/edit-new-booking.html?id=${booking.bookingId }'>
-								<td>${booking.bookingId}</td>
+								data-href='/fakebnb/edit-new-booking.html?id=${booking.bookingid }'>
+								<td>${booking.bookingid}</td>
 								<td>${booking.home}</td>
 								<td>${booking.date_start}</td>
 								<td>${booking.date_end}</td>
 								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${booking.bookingId})">x</div></td>
+										onclick="deleteButtonPressed(${booking.bookingid})">x</div></td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -152,13 +152,13 @@
 						</tr>
 						<c:forEach items="${requestScope.users}" var="user">
 							<tr class='clickable-row'
-								data-href='/fakebnb/edit-new-user.html?id=${user.userId}'>
-								<td>${user.userId}</td>
+								data-href='/fakebnb/edit-new-user.html?id=${user.userid}'>
+								<td>${user.userid}</td>
 								<td>${user.name}</td>
 								<td>${user.surname}</td>
 								<td>${user.email}</td>
 								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${user.userId})">x</div></td>
+										onclick="deleteButtonPressed(${user.userid})">x</div></td>
 
 							</tr>
 						</c:forEach>
@@ -180,14 +180,13 @@
 						</tr>
 						<c:forEach items="${requestScope.messages}" var="message">
 							<tr class='clickable-row'
-								data-href='/fakebnb/edit-new-message.html?id=${message.messageId}'>
-								<td>${message.messageId}</td>
+								data-href='/fakebnb/edit-new-message.html?id=${message.messageid}'>
+								<td>${message.messageid}</td>
 								<td>${message.text}</td>
-								<td>${message.user_SenderId}</td>
-								<td>${message.user_ReceiverId}</td>
+								<td>${message.sender}</td>
+								<td>${message.reciever}</td>
 								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${message.messageId})">x</div></td>
-
+										onclick="deleteButtonPressed(${message.messageid})">x</div></td>
 							</tr>
 						</c:forEach>
 					</table>

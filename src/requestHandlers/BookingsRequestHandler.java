@@ -2,6 +2,8 @@ package requestHandlers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +25,7 @@ public class BookingsRequestHandler implements RequestHandler {
 
 		String path = request.getServletPath();
 		if (path.equals("/bookings.html") || path.equals("/bookings")) {
-			ArrayList<Booking> bookings = (ArrayList<Booking>) datastore.getBookings();
+			List<Booking> bookings = (List<Booking>) datastore.getBookings();
 			request.setAttribute("bookings",bookings);
 			sView = "bookings.jsp";
 		}

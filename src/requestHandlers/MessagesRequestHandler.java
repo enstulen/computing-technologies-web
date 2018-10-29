@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import datastore.Datastore;
 import java.util.List;
 
-import beans.Message;
+import entities.Message;
 
 public class MessagesRequestHandler implements RequestHandler{
 	

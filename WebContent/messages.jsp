@@ -1,4 +1,4 @@
-<%@page import="beans.Message"%>
+<%@page import="entities.Message"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
@@ -85,8 +85,6 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
-<
 			<%@ include file="/components/Navbar.jsp"%>
 
 			<div id="message-container" class="fh5co-section-gray">
@@ -122,7 +120,7 @@
 												%>
 												<%
 													String readstatus;
-														if (message.getMessage_Read()) {
+														if (message.isMessage_read()) {
 															readstatus = "leido";
 														} else {
 															readstatus = "no-leido";
@@ -138,7 +136,7 @@
 															<h4 class="title">
 																Sender ID:
 																<%
-																out.println(message.getUser_SenderId());
+																out.println(message.getSender());
 															%>
 															</h4>
 														</div>
@@ -154,7 +152,7 @@
 															<p class="meta">
 																Date:
 																<%
-																out.println(message.getTime_Stamp());
+																out.println(message.getTime_stamp());
 															%>
 															</p>
 														</div>

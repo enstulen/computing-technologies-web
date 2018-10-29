@@ -41,7 +41,7 @@ public class Home implements Serializable {
 	private int type;
 
 	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="home1")
+	@OneToMany(mappedBy="home")
 	private List<Booking> bookings1;
 
 
@@ -50,6 +50,11 @@ public class Home implements Serializable {
 	private User user;
 
 	public Home() {
+	}
+	
+	
+	public String toString() {
+		return this.name;
 	}
 
 
@@ -184,14 +189,14 @@ public class Home implements Serializable {
 
 	public Booking addBookings1(Booking bookings1) {
 		getBookings1().add(bookings1);
-		bookings1.setHome1(this);
+		bookings1.setHome(this);
 
 		return bookings1;
 	}
 
 	public Booking removeBookings1(Booking bookings1) {
 		getBookings1().remove(bookings1);
-		bookings1.setHome1(null);
+		bookings1.setHome(null);
 
 		return bookings1;
 	}

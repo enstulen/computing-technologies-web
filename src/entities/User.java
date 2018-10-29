@@ -33,7 +33,7 @@ public class User implements Serializable {
 	private String surname;
 
 	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="guest")
 	private List<Booking> bookings;
 
 	//bi-directional many-to-one association to Home
@@ -41,12 +41,16 @@ public class User implements Serializable {
 	private List<Home> homes;
 
 	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="user1")
+	@OneToMany(mappedBy="sender")
 	private List<Message> messages1;
 
 	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="user2")
+	@OneToMany(mappedBy="reciever")
 	private List<Message> messages2;
+	
+	public String toString() {
+		return this.name + this.surname;
+	}
 
 	public User() {
 	}
@@ -117,14 +121,14 @@ public class User implements Serializable {
 
 	public Booking addBooking(Booking booking) {
 		getBookings().add(booking);
-		booking.setUser(this);
+		booking.setGuest(this);
 
 		return booking;
 	}
 
 	public Booking removeBooking(Booking booking) {
 		getBookings().remove(booking);
-		booking.setUser(null);
+		booking.setGuest(null);
 
 		return booking;
 	}
@@ -161,14 +165,14 @@ public class User implements Serializable {
 
 	public Message addMessages1(Message messages1) {
 		getMessages1().add(messages1);
-		messages1.setUser1(this);
+		messages1.setSender(this);
 
 		return messages1;
 	}
 
 	public Message removeMessages1(Message messages1) {
 		getMessages1().remove(messages1);
-		messages1.setUser1(null);
+		messages1.setSender(null);
 
 		return messages1;
 	}
@@ -183,14 +187,14 @@ public class User implements Serializable {
 
 	public Message addMessages2(Message messages2) {
 		getMessages2().add(messages2);
-		messages2.setUser2(this);
+		messages2.setReciever(this);
 
 		return messages2;
 	}
 
 	public Message removeMessages2(Message messages2) {
 		getMessages2().remove(messages2);
-		messages2.setUser2(null);
+		messages2.setReciever(null);
 
 		return messages2;
 	}
