@@ -16,32 +16,27 @@ import java.util.List;
 public class Home implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int homeid;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_available_end")
-	private Date dateAvailableEnd;
+	private Date date_available_end;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="date_available_start")
-	private Date dateAvailableStart;
+	private Date date_available_start;
 
-	@Column(name="full_description")
-	private String fullDescription;
+	private String full_description;
 
 	@Lob
 	private byte[] image;
 
 	private String name;
 
-	@Column(name="number_of_guests")
-	private int numberOfGuests;
+	private int number_of_guests;
 
 	private int price;
 
-	@Column(name="short_description")
-	private String shortDescription;
+	private String short_description;
 
 	private int type;
 
@@ -49,9 +44,6 @@ public class Home implements Serializable {
 	@OneToMany(mappedBy="home1")
 	private List<Booking> bookings1;
 
-	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="home2")
-	private List<Booking> bookings2;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -60,85 +52,127 @@ public class Home implements Serializable {
 	public Home() {
 	}
 
+
+
 	public int getHomeid() {
-		return this.homeid;
+		return homeid;
 	}
+
+
 
 	public void setHomeid(int homeid) {
 		this.homeid = homeid;
 	}
 
-	public Date getDateAvailableEnd() {
-		return this.dateAvailableEnd;
+
+
+	public Date getDate_available_end() {
+		return date_available_end;
 	}
 
-	public void setDateAvailableEnd(Date dateAvailableEnd) {
-		this.dateAvailableEnd = dateAvailableEnd;
+
+
+	public void setDate_available_end(Date date_available_end) {
+		this.date_available_end = date_available_end;
 	}
 
-	public Date getDateAvailableStart() {
-		return this.dateAvailableStart;
+
+
+	public Date getDate_available_start() {
+		return date_available_start;
 	}
 
-	public void setDateAvailableStart(Date dateAvailableStart) {
-		this.dateAvailableStart = dateAvailableStart;
+
+
+	public void setDate_available_start(Date date_available_start) {
+		this.date_available_start = date_available_start;
 	}
 
-	public String getFullDescription() {
-		return this.fullDescription;
+
+
+	public String getFull_description() {
+		return full_description;
 	}
 
-	public void setFullDescription(String fullDescription) {
-		this.fullDescription = fullDescription;
+
+
+	public void setFull_description(String full_description) {
+		this.full_description = full_description;
 	}
+
+
 
 	public byte[] getImage() {
-		return this.image;
+		return image;
 	}
+
+
 
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
+
+
 	public String getName() {
-		return this.name;
+		return name;
 	}
+
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getNumberOfGuests() {
-		return this.numberOfGuests;
+
+
+	public int getNumber_of_guests() {
+		return number_of_guests;
 	}
 
-	public void setNumberOfGuests(int numberOfGuests) {
-		this.numberOfGuests = numberOfGuests;
+
+
+	public void setNumber_of_guests(int number_of_guests) {
+		this.number_of_guests = number_of_guests;
 	}
+
+
 
 	public int getPrice() {
-		return this.price;
+		return price;
 	}
+
+
 
 	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public String getShortDescription() {
-		return this.shortDescription;
+
+
+	public String getShort_description() {
+		return short_description;
 	}
 
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
+
+
+	public void setShort_description(String short_description) {
+		this.short_description = short_description;
 	}
+
+
 
 	public int getType() {
-		return this.type;
+		return type;
 	}
+
+
 
 	public void setType(int type) {
 		this.type = type;
 	}
+
+
 
 	public List<Booking> getBookings1() {
 		return this.bookings1;
@@ -162,27 +196,6 @@ public class Home implements Serializable {
 		return bookings1;
 	}
 
-	public List<Booking> getBookings2() {
-		return this.bookings2;
-	}
-
-	public void setBookings2(List<Booking> bookings2) {
-		this.bookings2 = bookings2;
-	}
-
-	public Booking addBookings2(Booking bookings2) {
-		getBookings2().add(bookings2);
-		bookings2.setHome2(this);
-
-		return bookings2;
-	}
-
-	public Booking removeBookings2(Booking bookings2) {
-		getBookings2().remove(bookings2);
-		bookings2.setHome2(null);
-
-		return bookings2;
-	}
 
 	public User getUser() {
 		return this.user;

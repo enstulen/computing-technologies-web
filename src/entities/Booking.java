@@ -15,7 +15,7 @@ import java.util.Date;
 public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue
 	private int bookingid;
 
 	@Column(name="card_number")
@@ -41,10 +41,6 @@ public class Booking implements Serializable {
 		})
 	private Home home1;
 
-	//bi-directional many-to-one association to Home
-	@ManyToOne
-	@JoinColumn(name="home_homeid")
-	private Home home2;
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -102,13 +98,6 @@ public class Booking implements Serializable {
 		this.home1 = home1;
 	}
 
-	public Home getHome2() {
-		return this.home2;
-	}
-
-	public void setHome2(Home home2) {
-		this.home2 = home2;
-	}
 
 	public User getUser() {
 		return this.user;

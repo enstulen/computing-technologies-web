@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="beans.Home"
+<%@page contentType="text/html" import="entities.Home"
 	import="java.util.*"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -85,15 +85,18 @@
 <body>
 	<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-			<%@ include file="../components/Navbar.jsp" %>
+			<%@ include file="../components/Navbar.jsp"%>
 			<!-- end:header-top -->
 			<div>
 				<h1>Home</h1>
-				<p><c:out value="${ requestScope.home.name }" /></p>
-				<form>
+				<p>
+					<c:out value="${ requestScope.home.name }" />
+				</p>
+				<form METHOD="POST">
 					<div class="input-field">
 						<label for="from">Name</label> <input type="text"
-							class="form-control" id="from-place" name="name" value="${requestScope.home.name}" />
+							class="form-control" id="from-place" name="name"
+							value="${requestScope.home.name}" />
 					</div>
 					<div class="input-field">
 						<label for="from">Full description</label>
@@ -101,7 +104,8 @@
 					</div>
 					<div class="input-field">
 						<label for="from">Short description</label> <input
-							name="short_description" class="form-control" value="${requestScope.home.short_description}" />
+							name="short_description" class="form-control"
+							value="${requestScope.home.short_description}" />
 					</div>
 					<div class="input-field-select">
 						<label for="class">Type of apartment</label> <select
@@ -113,26 +117,37 @@
 						</select>
 					</div>
 
-					<div class="input-field-select">
-						<label for="class">Price</label> <select name="price"
-							class="cs-select cs-skin-border">
-							<option value="" disabled selected>Less than 35€</option>
-							<option value="P1">Less than 35€</option>
-							<option value="P2">36€ - 69€</option>
-							<option value="P3">70€ - 130€</option>
-							<option value="P4">131€ or more</option>
-						</select>
+					<div class="input-field">
+						<label for="number_of_guests">Number of guests</label> <input
+							name="number_of_guests" class="form-control"
+							value="${requestScope.home.number_of_guests}" />
+					</div>
+
+					<div class="input-field">
+						<label for="price">Price</label> <input name="price"
+							class="form-control" value="${requestScope.home.price}" />
 					</div>
 					<div class="input-field">
 						<label for="date-start">Start of stay:</label> <input type="text"
 							class="form-control" id="date-start" name="date-start"
-							placeholder="mm/dd/yyyy" value="${requestScope.home.date_available_start}" />
+							placeholder="mm/dd/yyyy"
+							value="${requestScope.home.date_available_start}" />
 					</div>
 					<div class="input-field">
 						<label for="date-end">End of stay:</label> <input type="text"
 							class="form-control" id="date-end" name="date-end"
-							placeholder="mm/dd/yyyy" value="${requestScope.home.date_available_end}" />
+							placeholder="mm/dd/yyyy"
+							value="${requestScope.home.date_available_end}" />
 					</div>
+
+					<c:if test="${requestScope.admin == true}">
+					<div class="input-field">
+						<label for="user_userid">User ID</label> <input name="user_userid"
+							class="form-control" value="${requestScope.home.user.userid}" />
+					</div>
+					</c:if>
+
+
 					<div class="input-field">
 						<input type="submit" value="Submit" />
 					</div>

@@ -1,4 +1,4 @@
-<%@page contentType="text/html" import="beans.Home"
+<%@page contentType="text/html" import="entities.Home"
 	import="java.util.*"%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -132,7 +132,6 @@
 								<td>${booking.date_end}</td>
 								<td><div class="admin-delete-button"
 										onclick="deleteButtonPressed(${booking.bookingId})">x</div></td>
-
 							</tr>
 						</c:forEach>
 					</table>
