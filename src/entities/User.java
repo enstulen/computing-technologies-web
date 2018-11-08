@@ -16,13 +16,10 @@ import java.util.List;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int userid;
 
 	private byte admin;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date birthday;
 
 	private String email;
 
@@ -69,14 +66,6 @@ public class User implements Serializable {
 
 	public void setAdmin(byte admin) {
 		this.admin = admin;
-	}
-
-	public Date getBirthday() {
-		return this.birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
 	}
 
 	public String getEmail() {
