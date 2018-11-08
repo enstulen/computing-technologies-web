@@ -68,14 +68,6 @@ public class User implements Serializable {
 		this.admin = admin;
 	}
 
-	public Date getBirthday() {
-		return this.birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getEmail() {
 		return this.email;
 	}
