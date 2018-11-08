@@ -15,7 +15,7 @@ import java.util.Date;
 public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int bookingid;
 
 	private String card_number;
