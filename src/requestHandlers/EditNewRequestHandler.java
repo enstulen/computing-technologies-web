@@ -12,6 +12,12 @@ import entities.Home;
 import datastore.Datastore;
 
 public class EditNewRequestHandler implements RequestHandler {
+	
+	private Datastore datastore;
+	
+	public EditNewRequestHandler() {
+		this.datastore = Datastore.getInstance();
+	} 
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +39,7 @@ public class EditNewRequestHandler implements RequestHandler {
 			}
 		} else {
 			if (id != null) {
-				Home home = Datastore.getInstance().getHome(Integer.parseInt(id));
+				Home home = datastore.getHome(Integer.parseInt(id));
 				request.setAttribute("home", home);
 			}
 			request.setAttribute("admin", true);
@@ -47,7 +53,7 @@ public class EditNewRequestHandler implements RequestHandler {
 		if (homeID == null) {
 			home = new Home();
 		} else {
-			home = Datastore.getInstance().getHome(homeID);
+			home = datastore.getHome(homeID);
 		}
 
 		String name = request.getParameter("name");
@@ -83,9 +89,9 @@ public class EditNewRequestHandler implements RequestHandler {
 		String user_id = request.getParameter("user_userid");
 
 		if (user_id != null) {
-			home.setUser(Datastore.getInstance().getUser(Integer.parseInt(user_id)));
+			home.setUser(datastore.getUser(Integer.parseInt(user_id)));
 		} else {
-			home.setUser(Datastore.currentUser);
+			home.setUser(datastore.getCurrentUser());
 		}
 
 		try {
@@ -104,9 +110,9 @@ public class EditNewRequestHandler implements RequestHandler {
 		home.setType(type);
 		home.setPrice(price);
 		if (homeID == null) {
-			Datastore.getInstance().createNewHome(home);
+			datastore.createNewHome(home);
 		} else {
-			Datastore.getInstance().updateHome(home);
+			datastore.updateHome(home);
 		}
 	}
 }

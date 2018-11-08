@@ -14,7 +14,7 @@ public class IndexRequestHandler implements RequestHandler {
 	private Datastore datastore;
 	
 	public IndexRequestHandler() {
-		this.datastore = datastore.getInstance();
+		this.datastore = Datastore.getInstance();
 	}
 
 
@@ -43,13 +43,15 @@ public class IndexRequestHandler implements RequestHandler {
 				newUser.setSurname(surname);
 				
 				datastore.createNewUser(newUser);
+				datastore.setCurrentUser(newUser);
 				request.getSession().setAttribute("user", newUser);
 				
 			} 
 			//Login
 			else if ((email != null) && (password != null)){
 				if (datastore.findUser(email, password) != null) {
-					User user = datastore.findUser(email, password);				
+					User user = datastore.findUser(email, password);	
+					datastore.setCurrentUser(user);
 					request.getSession().setAttribute("user", user);
 				}
 	

@@ -21,7 +21,7 @@ public class Datastore {
 
 	private static Datastore single_instance = null;
 
-	public static User currentUser;
+	public User currentUser;
 
 	private Datastore() {
 
@@ -223,6 +223,14 @@ public class Datastore {
 		tx.begin();
 		entityManager.remove(user);
 		tx.commit();
+	}
+	
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+	
+	public User getCurrentUser() {
+		return this.currentUser;
 	}
 
 
