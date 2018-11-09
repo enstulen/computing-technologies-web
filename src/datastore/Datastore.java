@@ -21,7 +21,7 @@ public class Datastore {
 
 	private static Datastore single_instance = null;
 
-	public static User currentUser;
+	public User currentUser;
 
 	private Datastore() {
 
@@ -139,6 +139,15 @@ public class Datastore {
 		return query.getResultList();
 	}
 	
+	//TODO
+//	public List<Booking> getBookingsFromUser(User user){
+//		Query query = entityManager.createQuery(
+//				"SELECT b FROM Booking b WHERE b.guest LIKE :user")
+//				.setParameter("user", user);
+//		List<User> users = query.getResultList();
+//		return null;
+//	}
+	
 	public void createNewBooking(Booking booking) {
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
@@ -171,6 +180,19 @@ public class Datastore {
 		return entityManager.find(User.class, id);
 	}
 	
+	public User findUser(String email, String password) {
+		Query query = entityManager.createQuery(
+				"SELECT u FROM User u WHERE u.email LIKE :email AND u.password LIKE :password")
+				.setParameter("email", email)
+				.setParameter("password", password);
+		List<User> users = query.getResultList();
+		
+		if (users.isEmpty()) {
+			return null;
+		} 
+		return users.get(0);
+	}
+	
 	public List<User> getUsers() {
 		List<User> users = getAllUsers();
 		return users;
@@ -201,6 +223,14 @@ public class Datastore {
 		tx.begin();
 		entityManager.remove(user);
 		tx.commit();
+	}
+	
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+	
+	public User getCurrentUser() {
+		return this.currentUser;
 	}
 
 
