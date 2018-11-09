@@ -186,8 +186,6 @@
 				</div>
 				<div class="modal-body">
 					<form class="form-message" method="post" action="SendMessageQueue.html">
-						<input type="name" id="sendername" class="form-control"
-							placeholder="Sender" name="sender" required autofocus> 
 						<input
 							type="name" id="receivername" class="form-control"
 							placeholder="Receiver" name="receiver" required> 

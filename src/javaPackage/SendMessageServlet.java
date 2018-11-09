@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sun.corba.ee.impl.protocol.giopmsgheaders.Message;
 
+import entities.User;
+
 import java.io.PrintWriter;
 
 import javax.annotation.Resource;
@@ -52,7 +54,8 @@ public class SendMessageServlet extends HttpServlet {
 			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			MessageProducer messageProducer = session.createProducer(queue);
 			TextMessage message = session.createTextMessage();
-			message.setStringProperty("sender",request.getParameter("sender"));
+			User sender = (User) request.getSession().getAttribute("user");
+			message.setStringProperty("sender",sender.getEmail());
 			message.setStringProperty("receiver", request.getParameter("receiver"));
 			message.setText(request.getParameter("message"));
 			messageProducer.send(message);

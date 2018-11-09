@@ -87,8 +87,8 @@ public class ReadMessageServlet extends HttpServlet {
 			Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
 			connection.start();
-			User sender = (User) request.getSession().getAttribute("user");
-			String selector = "receiver = " + "'" + sender.getEmail() + "'";
+			User currentUser = (User) request.getSession().getAttribute("user");
+			String selector = "receiver = " + "'" + currentUser.getEmail() + "'";
 			MessageConsumer consumer = session.createConsumer(queue, selector);
 			Message message = null;
 			while (true) {
@@ -98,8 +98,8 @@ public class ReadMessageServlet extends HttpServlet {
 					TextMessage m = (TextMessage) message;
 					entities.Message newMessage = new entities.Message();
 					newMessage.setText(m.getText());
-					newMessage.setReciever(datastore.findUser(m.getStringProperty("receiver")));
-					newMessage.setSender(sender);
+					newMessage.setReciever(currentUser);
+					newMessage.setSender(datastore.findUser(m.getStringProperty("sender")));
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 					newMessage.setTime_stamp(timestamp);
 					datastore.createNewMessage(newMessage);
