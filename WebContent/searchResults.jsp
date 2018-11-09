@@ -107,7 +107,7 @@
 											<h3>${home.name}</h3>
 											<span>${ home.short_description}</span> <span class="price">${home.price}</span>
 											<a class="btn btn-primary btn-outline"
-												href="detailHome?id=${home.homeid}">Select <i
+												href="details.html?id=${home.homeid}">Select <i
 												class="icon-arrow-right22"></i>
 											</a>
 										</div>
