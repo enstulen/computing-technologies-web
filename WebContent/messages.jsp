@@ -163,6 +163,7 @@
 												%>
 											</tbody>
 										</table>
+										<a href="ReadMessageQueue.html">Read Messages</a>
 									</div>
 								</div>
 							</div>
@@ -184,14 +185,14 @@
 					<h1 class="h3 mb-3 font-weight-normal">Send a message to another Fakebnb User</h1>
 				</div>
 				<div class="modal-body">
-					<form class="form-message">
+					<form class="form-message" method="post" action="SendMessageQueue.html">
 						<input type="name" id="sendername" class="form-control"
-							placeholder="Sender" required autofocus> 
+							placeholder="Sender" name="sender" required autofocus> 
 						<input
 							type="name" id="receivername" class="form-control"
-							placeholder="Receiver" required> 
+							placeholder="Receiver" name="receiver" required> 
 						<input type="text"
-							id="messagecontent" class="form-control" placeholder="Write Message Here"
+							id="messagecontent" class="form-control" placeholder="Write Message Here" name="message"
 							required> 
 										
 						<button class="btn btn-lg btn-primary btn-block" type="submit"

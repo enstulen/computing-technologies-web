@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import datastore.Datastore;
+
+import java.util.Collections;
 import java.util.List;
 
 import entities.Message;
@@ -27,7 +29,9 @@ public class MessagesRequestHandler implements RequestHandler{
 		if (path.equals("/messages.html")) {
 			sView = "messages.jsp";
 		}
-		request.setAttribute("Messages",(List<Message>) dataStore.getMessages());
+		List<Message> messages = (List<Message>) dataStore.getMessages();
+		Collections.reverse(messages);
+		request.setAttribute("Messages",messages);
 
 		return sView;
 	}

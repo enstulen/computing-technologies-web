@@ -236,6 +236,19 @@ public class Datastore {
 		EntityManager entityManager = factory.createEntityManager();
 		return entityManager.find(User.class, id);
 	}
+	
+	public User findUser(String email) {
+		EntityManager entityManager = factory.createEntityManager();
+		Query query = entityManager
+				.createQuery("SELECT u FROM User u WHERE u.email LIKE :email ")
+				.setParameter("email", email);
+		List<User> users = query.getResultList();
+
+		if (users.isEmpty()) {
+			return null;
+		}
+		return users.get(0);
+	}
 
 	public User findUser(String email, String password) {
 		EntityManager entityManager = factory.createEntityManager();
@@ -249,6 +262,8 @@ public class Datastore {
 		}
 		return users.get(0);
 	}
+	
+	
 
 	public List<User> getUsers() {
 		List<User> users = getAllUsers();

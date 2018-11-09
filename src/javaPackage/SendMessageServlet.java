@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.corba.ee.impl.protocol.giopmsgheaders.Message;
+
 import java.io.PrintWriter;
 
 import javax.annotation.Resource;
@@ -19,6 +21,7 @@ import javax.jms.Session;
 import javax.jms.MessageProducer;
 import javax.jms.TextMessage;
 
+@WebServlet(urlPatterns = {"/SendMessageQueue.html"})
 public class SendMessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,15 +51,15 @@ public class SendMessageServlet extends HttpServlet {
 			Connection connection = tiwconnectionfactory.createConnection();
 			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			MessageProducer messageProducer = session.createProducer(queue);
-			MapMessage message = session.createMapMessage();
-			message.setString("Sender",request.getParameter("sender"));
-			message.setString("Receiver", request.getParameter("receiver"));
-			message.setString("Message", request.getParameter("message"));
+			TextMessage message = session.createTextMessage();
+			message.setStringProperty("sender",request.getParameter("sender"));
+			message.setStringProperty("receiver", request.getParameter("receiver"));
+			message.setText(request.getParameter("message"));
 			messageProducer.send(message);
 			messageProducer.close();
 			session.close();
 			connection.close();
-			// out.println(" Menssage sent </BR>");
+			out.println(" Menssage sent </BR>");
 
 		} catch (javax.jms.JMSException e) {
 			System.out.println("JHC *************************************** Error in doPost: " + e);
