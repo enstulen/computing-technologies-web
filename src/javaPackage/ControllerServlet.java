@@ -19,6 +19,7 @@ import requestHandlers.MessagesRequestHandler;
 import requestHandlers.RequestHandler;
 import requestHandlers.SearchResultsRequestHandler;
 import requestHandlers.BookingsRequestHandler;
+import requestHandlers.DetailsRequestHandler;
 import requestHandlers.EditNewRequestHandler;
 /**
  * Servlet implementation class ControllerServlet
@@ -49,6 +50,7 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/messages.html", new MessagesRequestHandler());
 		handlerHash.put("/admin.html", new AdminRequestHandler());
 		handlerHash.put("/bookings.html", new BookingsRequestHandler());
+		handlerHash.put("/details.html", new DetailsRequestHandler());
 		handlerHash.put("/edit-new-home.html", new EditNewRequestHandler());
 	}
 
