@@ -102,8 +102,13 @@
 								<td>${home.homeid}</td>
 								<td>${home.name}</td>
 								<td>${home.price}</td>
-								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${home.homeid})">x</div></td>
+								<td>
+									<form class="form-delete" method="POST">
+										<input type="hidden" name="type" value="delete-home" /> <input
+											type="hidden" name="homeid" value='${home.homeid}' />
+										<button class="admin-delete-button" type="submit">X</button>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -130,8 +135,13 @@
 								<td>${booking.home}</td>
 								<td>${booking.date_start}</td>
 								<td>${booking.date_end}</td>
-								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${booking.bookingid})">x</div></td>
+								<td>
+									<form class="form-delete" method="POST">
+										<input type="hidden" name="type" value="delete-booking" /> <input
+											type="hidden" name="bookingid" value='${booking.bookingid}' />
+										<button class="admin-delete-button" type="submit">X</button>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -157,8 +167,13 @@
 								<td>${user.name}</td>
 								<td>${user.surname}</td>
 								<td>${user.email}</td>
-								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${user.userid})">x</div></td>
+								<td>
+									<form class="form-delete" method="POST">
+										<input type="hidden" name="type" value="delete-user" /> <input
+											type="hidden" name="userid" value='${user.userid}' />
+										<button class="admin-delete-button" type="submit">X</button>
+									</form>
+								</td>
 
 							</tr>
 						</c:forEach>
@@ -185,19 +200,24 @@
 								<td>${message.text}</td>
 								<td>${message.sender}</td>
 								<td>${message.reciever}</td>
-								<td><div class="admin-delete-button"
-										onclick="deleteButtonPressed(${message.messageid})">x</div></td>
+								<td>
+									<form class="form-delete" method="POST">
+										<input type="hidden" name="type" value="delete-message" /> <input
+											type="hidden" name="messageid" value='${message.messageid}' />
+										<button class="admin-delete-button" type="submit">X</button>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
 					<div class="col-md-2">
 						<a href="/fakebnb/edit-new-message.html"
-							class="btn btn-primary btn-block"">Add new</a>
+							class="btn btn-primary btn-block" id="bottomButton">Add new</a>
 					</div>
 				</div>
 			</div>
 
-			<%@ include file="/components/Footer.jsp" %>
+			<%@ include file="/components/Footer.jsp"%>
 
 
 
@@ -206,7 +226,7 @@
 
 	</div>
 	<%@ include file="/components/Modal.jsp"%>
-	
+
 	<!-- END fh5co-wrapper -->
 
 
