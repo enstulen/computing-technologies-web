@@ -17,7 +17,7 @@ import entities.Message;
 
 public class Datastore {
 
-	public EntityManager entityManager;
+	public EntityManagerFactory factory;
 
 	private static Datastore single_instance = null;
 
@@ -25,8 +25,7 @@ public class Datastore {
 
 	private Datastore() {
 
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fakebnb");
-		entityManager = factory.createEntityManager();
+		factory = Persistence.createEntityManagerFactory("fakebnb");
 
 		// This should be the actual current user, but for now we just use the first
 		// user in DB
@@ -48,37 +47,47 @@ public class Datastore {
 	}
 
 	public List<Home> getAllHomes() {
+		EntityManager entityManager = factory.createEntityManager();
 		Query query = entityManager.createNamedQuery("Home.findAll", Home.class);
 		return query.getResultList();
 	}
 
 	public void createNewHome(Home home) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.persist(home);
 		tx.commit();
+		entityManager.close();
+
 	}
 
 	public void updateHome(Home home) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.merge(home);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void deleteHome(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		Home home = entityManager.find(Home.class, id);
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.remove(home);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public Home getHome(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		return entityManager.find(Home.class, id);
 	}
 
 	public List<Home> findHome(String name, Date start_date, Date end_date, int price, int type, int adults, int kids) {
+		EntityManager entityManager = factory.createEntityManager();
 
 		String queryString = "SELECT h FROM Home h WHERE LOWER(h.name) LIKE :pattern AND h.date_available_start<=:start_date AND h.date_available_end>=:end_date AND h.number_of_guests >= :number_of_guests";
 		switch (price) {
@@ -128,33 +137,41 @@ public class Datastore {
 	}
 
 	public List<Message> getAllMessages() {
+		EntityManager entityManager = factory.createEntityManager();
 		Query query = entityManager.createNamedQuery("Message.findAll", Message.class);
 		return query.getResultList();
 	}
 
 	public void createNewMessage(Message message) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.persist(message);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void updateMessage(Message message) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.merge(message);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void deleteMessage(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		Message message = entityManager.find(Message.class, id);
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.remove(message);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public Message getMessage(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		return entityManager.find(Message.class, id);
 	}
 
@@ -166,6 +183,7 @@ public class Datastore {
 	}
 
 	public List<Booking> getAllBookings() {
+		EntityManager entityManager = factory.createEntityManager();
 		Query query = entityManager.createNamedQuery("Booking.findAll", Booking.class);
 		return query.getResultList();
 	}
@@ -180,38 +198,47 @@ public class Datastore {
 //	}
 
 	public void createNewBooking(Booking booking) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.persist(booking);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void updateBooking(Booking booking) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.merge(booking);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void deleteBooking(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		Booking booking = entityManager.find(Booking.class, id);
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.remove(booking);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public Booking getBooking(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		return entityManager.find(Booking.class, id);
 	}
 
 	// USERS
 
 	public User getUser(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		return entityManager.find(User.class, id);
 	}
 
 	public User findUser(String email, String password) {
+		EntityManager entityManager = factory.createEntityManager();
 		Query query = entityManager
 				.createQuery("SELECT u FROM User u WHERE u.email LIKE :email AND u.password LIKE :password")
 				.setParameter("email", email).setParameter("password", password);
@@ -229,30 +256,37 @@ public class Datastore {
 	}
 
 	public List<User> getAllUsers() {
+		EntityManager entityManager = factory.createEntityManager();
 		Query query = entityManager.createNamedQuery("User.findAll", User.class);
 		return query.getResultList();
 	}
 
 	public void createNewUser(User user) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.persist(user);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void updateUser(User user) {
+		EntityManager entityManager = factory.createEntityManager();
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.merge(user);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void deleteUser(int id) {
+		EntityManager entityManager = factory.createEntityManager();
 		User user = entityManager.find(User.class, id);
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
 		entityManager.remove(user);
 		tx.commit();
+		entityManager.close();
 	}
 
 	public void setCurrentUser(User currentUser) {
