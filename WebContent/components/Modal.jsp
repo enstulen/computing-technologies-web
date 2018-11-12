@@ -172,8 +172,8 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-message" method="POST">
-				<input name="home" type="hidden" "${param.home}">
-					<input name="card_number" type="text" id="cardNumber"
+					<input name="home" type="hidden" value='${param.home}' /> <input
+						name="card_number" type="text" id="cardNumber"
 						class="form-control" placeholder="Card number" required> <input
 						type="number" name="month_expire" id="monthExpire"
 						class="form-control" placeholder="Expiration month" required>

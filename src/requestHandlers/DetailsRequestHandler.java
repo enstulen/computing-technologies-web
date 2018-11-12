@@ -35,7 +35,9 @@ public class DetailsRequestHandler implements RequestHandler {
 				booking.setCard_number(card_number);
 				booking.setGuest(datastore.getCurrentUser());
 				
-				//TODO
+				//TODO rest of this
+				
+				
 			} else {
 				Home home;
 				String idString = request.getParameter("id");
