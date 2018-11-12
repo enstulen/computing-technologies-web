@@ -1,22 +1,24 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ page import="entities.Home"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
 	Home home = (Home) request.getAttribute("home");
 
 	String typeOfHouse = "default";
 	int typeId = home.getType();
 	switch (typeId) {
-	case 1:
-		typeOfHouse = "Private home";
-	case 2:
-		typeOfHouse = "Private room";
-	case 3:
-		typeOfHouse = "Shared room";
-		break;
-	default:
-		typeOfHouse = "not stated";
-		break;
+		case 1 :
+			typeOfHouse = "Private home";
+		case 2 :
+			typeOfHouse = "Private room";
+		case 3 :
+			typeOfHouse = "Shared room";
+			break;
+		default :
+			typeOfHouse = "not stated";
+			break;
 	}
 %>
 
@@ -127,24 +129,24 @@
 									</tr>
 									<tr>
 										<th scope="row">Home type:</th>
-										<td><span class="type"> <%
-															out.println(typeOfHouse);
-														%>
+										<td><span class="type"> <% out.println(typeOfHouse); %>
 										</span></td>
 									</tr>
 								</tbody>
 							</table>
-							<div class="col-xxs-12 col-xs-6 mt">
-								<input type="book" class="btn btn-primary btn-block"
-									value="Book">
-							</div>
-							<div class="col-xxs-12 col-xs-6 mt">
-								<input type="contact" class="btn btn-primary btn-block"
-									value="Contact host">
-							</div>
-
-
-
+							<c:if test="${sessionScope.user != null }">
+								<div class="col-xxs-12 col-xs-6 mt">
+									<input id="book-home-button" type="submit"
+										class="btn btn-primary btn-block" value="Book">
+								</div>
+								<div class="col-xxs-12 col-xs-6 mt">
+									<input id="contact-host-button" type="submit"
+										class="btn btn-primary btn-block" value="Contact host">
+								</div>
+							</c:if>
+							<c:if test="${sessionScope.user == null }">
+								<h3>Log in to book this home</h3>
+							</c:if>
 						</div>
 						<div class="col-md-6 animate-box">
 							<img class="img-responsive" src="images/cover_bg_2.jpg"
@@ -160,11 +162,9 @@
 		</div>
 	</div>
 
-
-
-
-	<%@ include file="/components/Modal.jsp"%>
-
+  	<jsp:include page="/components/Modal.jsp">
+        <jsp:param name="home" value="${home}"/>        
+    </jsp:include>
 	<!-- END fh5co-wrapper -->
 
 
@@ -197,9 +197,14 @@
 	<script src="js/main.js"></script>
 
 
-	<script>
-			
-		</script>
+	<script type="text/javascript">
+		$(document).on('click', '#contact-host-button', function() {
+			$("#MessageModalWithoutReciever").modal("show");
+		});
+		$(document).on('click', '#book-home-button', function() {
+			$("#bookModal").modal("show");
+		});
+	</script>
 </body>
 </html>
 
