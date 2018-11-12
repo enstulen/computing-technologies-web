@@ -13,14 +13,14 @@
 			<nav id="fh5co-menu-wrap" role="navigation">
 				<ul class="sf-menu" id="fh5co-primary-menu">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="bookings.html">Bookings</a></li>
-					<li><a href="messages.html">Messages</a></li>
+					<c:if test="${sessionScope.user != null }">
+						<li><a href="bookings.html">Bookings</a></li>
+						<li><a href="messages.html">Messages</a></li>
+						<li><a href="#" id="Logout">Logout</a></li>
+					</c:if>
 					<c:if test="${sessionScope.user == null }">
 						<li><a href="#" id="Registro">Register</a></li>
 						<li><a href="#" id="Login">Login</a></li>
-					</c:if>
-					<c:if test="${sessionScope.user != null }">
-						<li><a href="#" id="Logout">Logout</a></li>
 					</c:if>
 					<li><a href="admin.html" id="admin">Admin</a></li>
 				</ul>

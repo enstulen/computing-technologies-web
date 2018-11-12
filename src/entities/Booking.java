@@ -42,6 +42,8 @@ public class Booking implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="user_guestid", referencedColumnName="userid")
 	private User guest;
+	
+	private boolean confirmed;
 
 	public Booking() {
 	}
@@ -108,6 +110,14 @@ public class Booking implements Serializable {
 
 	public void setGuest(User guest) {
 		this.guest = guest;
+	}
+
+	public boolean isConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
 	}
 
 	

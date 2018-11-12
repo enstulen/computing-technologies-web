@@ -111,6 +111,34 @@
 							</div>
 						</c:forEach>
 					</div>
+					<div class="row">
+						<div
+							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+							<h3>Bookings as a host</h3>
+							<p>These are the bookings someone else has made for your
+								house(s) so far.</p>
+						</div>
+					</div>
+					<div class="row row-bottom-padded-md">
+						<c:forEach items="${requestScope.hostBookings}" var="booking">
+							<div class="col-md-4 col-sm-6 fh5co-tours animate-box"
+								data-animate-effect="fadeIn">
+								<div href="#">
+									<img src="images/place-1.jpg"
+										alt="Free HTML5 Website Template by FreeHTML5.co"
+										class="img-responsive">
+									<div class="desc">
+										<span></span>
+										<h3>${booking.home.name}</h3>
+										<span>${booking.home.short_description}</span> <span>From:
+											${booking.date_start} to ${booking.date_end}</span> <a
+											class="btn btn-primary btn-outline" href="#">More infos <i
+											class="icon-arrow-right22"></i></a>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 			<%@ include file="/components/Footer.jsp"%>

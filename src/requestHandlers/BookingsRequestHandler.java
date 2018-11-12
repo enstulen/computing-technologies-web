@@ -25,8 +25,12 @@ public class BookingsRequestHandler implements RequestHandler {
 
 		String path = request.getServletPath();
 		if (path.equals("/bookings.html") || path.equals("/bookings")) {
-			List<Booking> bookings = (List<Booking>) datastore.getBookings();
+			List<Booking> bookings = (List<Booking>) datastore.getBookingsForGuest();
+			List<Booking> hostBookings = (List<Booking>) datastore.getBookingsForHost();
+
 			request.setAttribute("bookings",bookings);
+			request.setAttribute("hostBookings",hostBookings);
+
 			sView = "bookings.jsp";
 		}
 
