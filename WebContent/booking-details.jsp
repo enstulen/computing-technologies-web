@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="entities.Booking" import="java.util.*"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<%@ page import="entities.Booking"%>
+
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -12,7 +13,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>FakeBnB</title>
+<title>${home.getName()}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 <meta name="keywords"
@@ -84,64 +85,61 @@
 			<%@ include file="/components/Navbar.jsp"%>
 			<div id="fh5co-tours" class="fh5co-section-gray">
 				<div class="container">
-					<div class="row">
-						<div
-							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-							<h3>Bookings</h3>
-							<p>These are the reservations you have made so far.</p>
-						</div>
-					</div>
-					<div class="row row-bottom-padded-md">
-						<c:forEach items="${requestScope.bookings}" var="booking">
-							<div class="col-md-4 col-sm-6 fh5co-tours animate-box"
-								data-animate-effect="fadeIn">
-								<div href="#">
-									<img src="images/place-1.jpg"
-										alt="Free HTML5 Website Template by FreeHTML5.co"
-										class="img-responsive">
-									<div class="desc">
-										<span></span>
-										<h3>${booking.home.name}</h3>
-										<span>${booking.home.short_description}</span> <span>From:
-											${booking.date_start} to ${booking.date_end}</span> <a
-											class="btn btn-primary btn-outline" href="booking-details.html?id=${booking.bookingid}">More infos <i
-											class="icon-arrow-right22"></i></a>
-									</div>
+					<div class="container">
+
+						<div class="row">
+							<div class="col-md-12 animate-box">
+								<h2 class="heading-title">You booked ${home.getName()}</h2>
+							</div>
+							<div class="col-md-6 animate-box">
+
+								<table class="table">
+									<tbody>
+										<tr>
+											<th scope="row">Arrival:</th>
+											<td><span class="host">${formatter.format(booking.getDate_start())}</span></td>
+										</tr>
+
+										<tr>
+											<th scope="row">Departure:</th>
+											<td><span class="price">${formatter.format(booking.getDate_end())}</span></td>
+										</tr>
+										<tr>
+											<th scope="row">Owner</th>
+											<td><span class="beds">${home.getUser()}</span></td>
+										</tr>
+										<tr>
+											<th scope="row">Booked on:</th>
+											<td><span class="type">${formatter.format(booking.getDate_booking()) }
+											</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="col-xxs-12 col-xs-6 mt">
+									<a href="details.html?id=${home.homeid}"
+										class="btn btn-primary btn-block">View home</a>
+								</div>
+								<div class="col-xxs-12 col-xs-6 mt">
+									<input type="button" class="btn btn-primary btn-block"
+										value="Cancel Booking">
 								</div>
 							</div>
-						</c:forEach>
-					</div>
-					<div class="row">
-						<div
-							class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-							<h3>Bookings as a host</h3>
-							<p>These are the bookings someone else has made for your
-								house(s) so far.</p>
+							<div class="col-md-6 animate-box">
+								<img class="img-responsive" src="images/cover_bg_2.jpg"
+									alt="travel">
+							</div>
+							<!-- END fh5co-page -->
+
 						</div>
 					</div>
-					<div class="row row-bottom-padded-md">
-						<c:forEach items="${requestScope.hostBookings}" var="booking">
-							<div class="col-md-4 col-sm-6 fh5co-tours animate-box"
-								data-animate-effect="fadeIn">
-								<div href="#">
-									<img src="images/place-1.jpg"
-										alt="Free HTML5 Website Template by FreeHTML5.co"
-										class="img-responsive">
-									<div class="desc">
-										<span></span>
-										<h3>${booking.home.name}</h3>
-										<span>${booking.home.short_description}</span> <span>From:
-											${booking.date_start} to ${booking.date_end}</span> <a
-											class="btn btn-primary btn-outline" href="#">More infos <i
-											class="icon-arrow-right22"></i></a>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
+
+
 				</div>
+				<!-- END fh5co-page -->
+
 			</div>
 			<%@ include file="/components/Footer.jsp"%>
+
 		</div>
 	</div>
 
@@ -180,8 +178,8 @@
 
 
 	<script>
-		
-	</script>
+				
+			</script>
 </body>
 </html>
 

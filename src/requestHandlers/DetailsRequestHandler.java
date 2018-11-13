@@ -49,6 +49,12 @@ public class DetailsRequestHandler implements RequestHandler {
 					e.printStackTrace();
 				}
 				home = datastore.getHome(id);
+
+				if (home==null) {
+					return "notFound.jsp";
+				}
+
+        
 				request.setAttribute("home", home);
 				sView = "detailHome.jsp";
 			}
