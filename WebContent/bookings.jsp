@@ -104,7 +104,7 @@
 										<h3>${booking.home.name}</h3>
 										<span>${booking.home.short_description}</span> <span>From:
 											${booking.date_start} to ${booking.date_end}</span> <a
-											class="btn btn-primary btn-outline" href="#">More infos <i
+											class="btn btn-primary btn-outline" href="booking-details.html?id=${booking.bookingid}">More infos <i
 											class="icon-arrow-right22"></i></a>
 									</div>
 								</div>
