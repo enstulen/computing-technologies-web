@@ -162,9 +162,10 @@
 		</div>
 	</div>
 
-  	<jsp:include page="/components/Modal.jsp">
-        <jsp:param name="home" value="${home}"/>        
-    </jsp:include>
+	<jsp:include page="/components/Modal.jsp">
+		<jsp:param name="homeid" value="${home.getHomeid()}" />
+		<jsp:param name="hostid" value="${home.getUser().getUserid()}" />
+	</jsp:include>
 	<!-- END fh5co-wrapper -->
 
 
