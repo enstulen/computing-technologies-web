@@ -20,9 +20,9 @@ import entities.User;
 import datastore.Datastore;
 
 public class AdminRequestHandler implements RequestHandler {
-	
+
 	private Datastore datastore;
-	
+
 	public AdminRequestHandler() {
 		datastore = Datastore.getInstance();
 	}
@@ -33,11 +33,28 @@ public class AdminRequestHandler implements RequestHandler {
 		String sView = "";
 
 		String path = request.getServletPath();
-		if (path.equals("/admin.html")) {
+
+		if ("POST".equalsIgnoreCase(request.getMethod())) {
+			if (request.getParameter("type") != null) {
+				if (request.getParameter("type").equals("delete-home")) {
+					int homeid = Integer.parseInt(request.getParameter("homeid"));
+					datastore.deleteHome(homeid);
+				} else if (request.getParameter("type").equals("delete-booking")) {
+					int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+					datastore.deleteBooking(bookingid);
+				} else if (request.getParameter("type").equals("delete-user")) {
+					int userid = Integer.parseInt(request.getParameter("userid"));
+					datastore.deleteUser(userid);
+				} else if (request.getParameter("type").equals("delete-message")) {
+					int messageid = Integer.parseInt(request.getParameter("messageid"));
+					datastore.deleteMessage(messageid);
+				}
+			}
+		} else {
 			List<Home> homes;
-			List<Booking> bookings; 
-			List<Message> messages; 
-			List<User> users; 
+			List<Booking> bookings;
+			List<Message> messages;
+			List<User> users;
 
 			try {
 				homes = (List<Home>) datastore.getHomes();
@@ -60,7 +77,6 @@ public class AdminRequestHandler implements RequestHandler {
 
 			sView = "admin.jsp";
 		}
-		
 
 		return sView;
 	}

@@ -1,9 +1,13 @@
 package requestHandlers;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +21,8 @@ import javax.transaction.SystemException;
 import entities.Home;
 import datastore.Datastore;
 
-public class SearchResultsRequestHandler implements RequestHandler{
-	
+public class SearchResultsRequestHandler implements RequestHandler {
+
 	private Datastore datastore;
 
 	public SearchResultsRequestHandler() {
@@ -34,19 +38,30 @@ public class SearchResultsRequestHandler implements RequestHandler{
 		if (path.equals("/searchResults") || path.equals("/searchResults.html")) {
 			List<Home> homes;
 			String name = request.getParameter("name");
+			String start_date_string = request.getParameter("date-start");
+			String end_date_string = request.getParameter("date-end");
+			int price = Integer.parseInt(request.getParameter("price"));
+			int type = Integer.parseInt(request.getParameter("type"));
+			int adults = Integer.parseInt(request.getParameter("adults"));
+			int kids = Integer.parseInt(request.getParameter("kids"));
 
 			try {
-//				homes = (List<Home>) datastore.getHomes();
-				 homes = datastore.findHome(name, new Date(), new Date(), 1, 1, 1, 1);
-
+				DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+				Date start_date = format.parse(start_date_string);
+				Date end_date = format.parse(end_date_string);
+				homes = datastore.findHome(name, start_date, end_date, price, type, adults, kids);
 				request.setAttribute("homes", homes);
 
-			} catch (SecurityException e) {
+			}  catch (SecurityException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 			sView = "searchResults.jsp";
 		}

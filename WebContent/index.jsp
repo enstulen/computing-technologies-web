@@ -108,21 +108,21 @@
 														<div class="col-xxs-12 col-xs-12 mt">
 															<div class="input-field">
 																<label for="from">Name:</label> <input type="text"
-																	class="form-control" id="from-place" name="name"
+																	 class="form-control" id="from-place" name="name"
 																	placeholder="Nice house" />
 															</div>
 														</div>
 														<div class="col-xxs-12 col-xs-6 mt alternate">
 															<div class="input-field">
 																<label for="date-start">Start of stay:</label> <input
-																	type="text" class="form-control" id="date-start"
+																	required type="text" class="form-control" id="date-start"
 																	name="date-start" placeholder="mm/dd/yyyy" />
 															</div>
 														</div>
 														<div class="col-xxs-12 col-xs-6 mt alternate">
 															<div class="input-field">
 																<label for="date-end">End of stay:</label> <input
-																	type="text" class="form-control" id="date-end"
+																	required type="text" class="form-control" id="date-end"
 																	name="date-end" placeholder="mm/dd/yyyy" />
 															</div>
 														</div>
@@ -131,12 +131,11 @@
 															<section>
 																<label for="class">Price</label> <select name="price"
 																	class="cs-select cs-skin-border">
-																	<option value="" disabled selected>Less than
-																		35€</option>
-																	<option value="P1">Less than 35€</option>
-																	<option value="P2">36€ - 69€</option>
-																	<option value="P3">70€ - 130€</option>
-																	<option value="P4">131€ or more</option>
+																	<option value="0" selected>Any price</option>
+																	<option value="1">Less than 35€</option>
+																	<option value="2">36€ - 69€</option>
+																	<option value="3">70€ - 130€</option>
+																	<option value="4">131€ or more</option>
 																</select>
 															</section>
 														</div>
@@ -145,11 +144,10 @@
 															<section>
 																<label for="class">Type of apartment</label> <select
 																	class="cs-select cs-skin-border" name="type">
-																	<option value="" disabled selected>Entire
-																		accommodation</option>
-																	<option value="entire">Entire accommodation</option>
-																	<option value="private">Private room</option>
-																	<option value="shared">Shared room</option>
+																	<option value="0" selected>Any type</option>
+																	<option value="1">Entire accommodation</option>
+																	<option value="2">Private room</option>
+																	<option value="3">Shared room</option>
 																</select>
 															</section>
 														</div>
@@ -158,8 +156,7 @@
 															<section>
 																<label for="class">Adults:</label> <select
 																	class="cs-select cs-skin-border" name="adults">
-																	<option value="" disabled selected>1</option>
-																	<option value="1">1</option>
+																	<option value="1" selected>1</option>
 																	<option value="2">2</option>
 																	<option value="3">3</option>
 																	<option value="4">4</option>
@@ -170,8 +167,7 @@
 															<section>
 																<label for="class">Kids:</label> <select
 																	class="cs-select cs-skin-border" name="kids">
-																	<option value="" disabled selected>0</option>
-																	<option value="0"></option>
+																	<option value="0" selected>0</option>
 																	<option value="1">1</option>
 																	<option value="2">2</option>
 																	<option value="3">3</option>
@@ -209,9 +205,9 @@
 
 			</div>
 
-		<%@ include file="/components/Modal.jsp" %>
+			<%@ include file="/components/Modal.jsp"%>
 
-		<%@ include file="/components/Footer.jsp" %>
+			<%@ include file="/components/Footer.jsp"%>
 
 		</div>
 		<!-- END fh5co-page -->

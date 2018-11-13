@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import datastore.Datastore;
+import entities.Booking;
 import entities.Home;
 
 public class DetailsRequestHandler implements RequestHandler {
@@ -26,31 +27,37 @@ public class DetailsRequestHandler implements RequestHandler {
 
 		String path = request.getServletPath();
 		if (path.equals("/details") || path.equals("/details.html")) {
-			Home home;
-			String idString = request.getParameter("id");
-			int id=0;
-			try {
-				id = Integer.parseInt(idString);
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-//				homes = (List<Home>) datastore.getHomes();
+			
+			if ("POST".equalsIgnoreCase(request.getMethod())) {
+				String card_number = request.getParameter("card_number");
+
+				Booking booking = new Booking();
+				booking.setCard_number(card_number);
+				booking.setGuest(datastore.getCurrentUser());
+				
+				//TODO rest of this
+				
+				
+			} else {
+				Home home;
+				String idString = request.getParameter("id");
+				int id = 0;
+				try {
+					id = Integer.parseInt(idString);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				home = datastore.getHome(id);
+
 				if (home==null) {
 					return "notFound.jsp";
 				}
-				request.setAttribute("home", home);
 
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+        
+				request.setAttribute("home", home);
+				sView = "detailHome.jsp";
 			}
-			sView = "detailHome.jsp";
 		}
 
 		return sView;
