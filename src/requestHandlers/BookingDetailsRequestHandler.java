@@ -1,22 +1,26 @@
 package requestHandlers;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import datastore.Datastore;
+import entities.Booking;
 import entities.Home;
 
-public class DetailsRequestHandler implements RequestHandler {
+public class BookingDetailsRequestHandler implements RequestHandler {
 
 	private Datastore datastore;
+	private SimpleDateFormat formatter;
 
-	public DetailsRequestHandler() {
+	public BookingDetailsRequestHandler() {
 		datastore = Datastore.getInstance();
+		formatter= new SimpleDateFormat("dd MMM YYYY");
 	}
 
 	@Override
@@ -25,10 +29,13 @@ public class DetailsRequestHandler implements RequestHandler {
 		String sView = "";
 
 		String path = request.getServletPath();
-		if (path.equals("/details") || path.equals("/details.html")) {
-			Home home;
+		if (path.equals("/booking-details") || path.equals("/booking-details.html")) {
+			Booking booking;
+			
+			
+			
 			String idString = request.getParameter("id");
-			int id=0;
+			int id = 0;
 			try {
 				id = Integer.parseInt(idString);
 			} catch (NumberFormatException e) {
@@ -37,11 +44,13 @@ public class DetailsRequestHandler implements RequestHandler {
 			}
 			try {
 //				homes = (List<Home>) datastore.getHomes();
-				home = datastore.getHome(id);
-				if (home==null) {
+				booking = datastore.getBooking(id);
+				if (booking==null) {
 					return "notFound.jsp";
 				}
-				request.setAttribute("home", home);
+				request.setAttribute("booking", booking);
+				request.setAttribute("home", booking.getHome());
+				request.setAttribute("formatter", this.formatter);
 
 			} catch (SecurityException e) {
 				// TODO Auto-generated catch block
@@ -50,9 +59,8 @@ public class DetailsRequestHandler implements RequestHandler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			sView = "detailHome.jsp";
+			sView = "booking-details.jsp";
 		}
-
 		return sView;
 	}
 
