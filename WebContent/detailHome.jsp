@@ -149,7 +149,8 @@
 							</c:if>
 						</div>
 						<div class="col-md-6 animate-box">
-							<img class="img-responsive" src="images/cover_bg_2.jpg"
+							<% String image = home.getImage(); %>
+							<img class="img-responsive" src= <%out.println(image); %>
 								alt="travel">
 						</div>
 						<!-- END fh5co-page -->
