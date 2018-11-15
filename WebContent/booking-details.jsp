@@ -121,7 +121,7 @@
 								</div>
 								<div class="col-xxs-12 col-xs-6 mt">
 
-									<form class="form-delete" method="POST" action="index.html">
+									<form class="form-delete" method="POST">
 										<input type="hidden" name="type" value="delete-booking" />
 										 <input type="hidden" name="bookingid" value='${booking.bookingid}' />
 										<input type="submit" class="btn btn-primary btn-block"
