@@ -172,15 +172,42 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-message" method="POST">
-					<input name="home" type="hidden" value='${param.home}' /> <input
-						name="card_number" type="text" id="cardNumber"
-						class="form-control" placeholder="Card number" required> <input
-						type="number" name="month_expire" id="monthExpire"
-						class="form-control" placeholder="Expiration month" required>
-					<input name="year_expire" type="number" id="yearExpire"
-						class="form-control" placeholder="Expiration year" required>
-					<input name="CV2" type="number" id="CV2" class="form-control"
-						placeholder="CV2 code" required>
+
+					<div class="col-xxs-12 col-xs-12 mt alternate">
+						<label for="card-number">Card number:</label> <input name="homeid"
+							type="hidden" value='${param.homeid}' /> <input name="hostid"
+							type="hidden" value='${param.hostid}' /> <input
+							name="card_number" type="text" id="cardNumber"
+							class="form-control" placeholder="Card number" required>
+					</div>
+					<div class="col-xxs-12 col-xs-4 mt alternate">
+						<label>Expiration month:</label> <input type="number"
+							name="month_expire" id="monthExpire" class="form-control"
+							placeholder="Expiration month" required>
+					</div>
+					<div class="col-xxs-12 col-xs-4 mt alternate">
+						<label>Expiration year:</label> <input name="year_expire"
+							type="number" id="yearExpire" class="form-control"
+							placeholder="Expiration year" required>
+					</div>
+					<div class="col-xxs-12 col-xs-4 mt alternate">
+						<label>CV2:</label> <input name="CV2" type="number" id="CV2"
+							class="form-control" placeholder="CV2 code" required>
+					</div>
+					<div class="col-xxs-12 col-xs-6 mt alternate">
+						<div class="input-field">
+							<label for="date-end">Start of stay:</label> <input required
+								type="text" class="form-control" id="date-end" name="date-start"
+								placeholder="mm/dd/yyyy" />
+						</div>
+					</div>
+					<div class="col-xxs-12 col-xs-6 mt alternate">
+						<div class="input-field">
+							<label for="date-end">End of stay:</label> <input required
+								type="text" class="form-control" id="date-end" name="date-end"
+								placeholder="mm/dd/yyyy" />
+						</div>
+					</div>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Request
 						booking</button>
 				</form>

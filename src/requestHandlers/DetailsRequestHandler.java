@@ -1,6 +1,7 @@
 package requestHandlers;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -30,12 +31,30 @@ public class DetailsRequestHandler implements RequestHandler {
 			
 			if ("POST".equalsIgnoreCase(request.getMethod())) {
 				String card_number = request.getParameter("card_number");
-
+				int hostid = Integer.parseInt(request.getParameter("hostid"));
+				int homeid = Integer.parseInt(request.getParameter("homeid"));
+				
 				Booking booking = new Booking();
 				booking.setCard_number(card_number);
 				booking.setGuest(datastore.getCurrentUser());
+				booking.setHost(datastore.getUser(hostid));
+				booking.setConfirmed(false);
+				booking.setHome(datastore.getHome(homeid));
+				booking.setDate_booking(new Date());
 				
-				//TODO rest of this
+				String date_start = request.getParameter("date-start");
+				String date_end = request.getParameter("date-end");
+
+				try {
+					Date start = new SimpleDateFormat("MM/dd/yyyy").parse(date_start);
+					Date end = new SimpleDateFormat("MM/dd/yyyy").parse(date_end);
+					booking.setDate_start(start);
+					booking.setDate_end(end);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				datastore.createNewBooking(booking);
 				
 				
 			} else {
