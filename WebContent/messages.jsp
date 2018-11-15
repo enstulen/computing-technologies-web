@@ -102,11 +102,12 @@
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="pull-right">
+									<a href="readmessage.html"> Read new messages</a>
 										<div class="btn-group">
 											<button type="button" class="btn btn-success btn-filter"
-												data-target="leido">Read</button>
+												data-target="leido" ">Read</button>
 											<button type="button" class="btn btn-warning btn-filter"
-												data-target="no-leido">Unread</button>
+												data-target="no-leido" >Unread</button>
 											<button type="button" class="btn btn-default btn-filter"
 												data-target="all">All</button>
 											<button type="button" class= "btn btn-default" id="NewMessage">New Message</button>
@@ -163,7 +164,6 @@
 												%>
 											</tbody>
 										</table>
-										<a href="ReadMessageQueue.html">Read Messages</a>
 									</div>
 								</div>
 							</div>
@@ -185,7 +185,7 @@
 					<h1 class="h3 mb-3 font-weight-normal">Send a message to another Fakebnb User</h1>
 				</div>
 				<div class="modal-body">
-					<form class="form-message" method="post" action="SendMessageQueue.html">
+					<form class="form-message" method="POST" action="sendMessage.html">
 						<input
 							type="name" id="receivername" class="form-control"
 							placeholder="Receiver" name="receiver" required> 
