@@ -42,7 +42,7 @@ public class ControllerServlet extends HttpServlet {
 	private ServletConfig config;
 
 	// Inject the connectionFactory using annotations
-	@Resource(mappedName = "tiwconnectionfactory")
+	@Resource(mappedName = "tiwConnectionFactory")
 	private ConnectionFactory tiwconnectionfactory;
 	// Inject the queue using annotations
 	@Resource(mappedName = "tiwqueue")

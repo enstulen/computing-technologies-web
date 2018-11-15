@@ -106,10 +106,10 @@
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="pull-right">
-										<a href="readmessage.html"> Read new messages</a>
 										<div class="btn-group">
+											<input type="button" class="btn btn-info btn-filter" onclick="location.href='readmessage.html'" value="Read new messages"/>
 											<button type="button" class="btn btn-success btn-filter"
-												data-target="leido"">Read</button>
+												data-target="leido">Read</button>
 											<button type="button" class="btn btn-warning btn-filter"
 												data-target="no-leido">Unread</button>
 											<button type="button" class="btn btn-default btn-filter"
@@ -194,7 +194,7 @@
 															</div>
 														</td>
 													</c:if>
-													<c:if test="${sessionScope.booking != 'Booking:'}">
+													
 														<td>
 															<div class="media">
 																<div class="btn-group">
@@ -207,9 +207,7 @@
 
 																</div>
 															</div>
-
 														</td>
-													</c:if>
 												</tr>
 												<%
 													}
