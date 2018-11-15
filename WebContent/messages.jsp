@@ -194,7 +194,9 @@
 															</div>
 														</td>
 													</c:if>
-													
+													<% boolean isread = message.isMessage_read();
+													session.setAttribute("isread",isread);%>
+													<c:if test="${sessionScope.isread == false }">
 														<td>
 															<div class="media">
 																<div class="btn-group">
@@ -208,6 +210,7 @@
 																</div>
 															</div>
 														</td>
+													</c:if>
 												</tr>
 												<%
 													}
