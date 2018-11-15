@@ -20,7 +20,7 @@ public class BookingDetailsRequestHandler implements RequestHandler {
 
 	public BookingDetailsRequestHandler() {
 		datastore = Datastore.getInstance();
-		formatter= new SimpleDateFormat("dd MMM YYYY");
+		formatter = new SimpleDateFormat("dd MMM YYYY");
 	}
 
 	@Override
@@ -31,9 +31,18 @@ public class BookingDetailsRequestHandler implements RequestHandler {
 		String path = request.getServletPath();
 		if (path.equals("/booking-details") || path.equals("/booking-details.html")) {
 			Booking booking;
-			
-			
-			
+
+			if ("POST".equalsIgnoreCase(request.getMethod())) {
+				if (request.getParameter("type") != null) {
+					if (request.getParameter("type").equals("delete-booking")) {
+						int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+						datastore.deleteBooking(bookingid);
+						sView="index.jsp";
+						return sView;
+					}
+				}
+			}
+
 			String idString = request.getParameter("id");
 			int id = 0;
 			try {
@@ -45,7 +54,7 @@ public class BookingDetailsRequestHandler implements RequestHandler {
 			try {
 //				homes = (List<Home>) datastore.getHomes();
 				booking = datastore.getBooking(id);
-				if (booking==null) {
+				if (booking == null) {
 					return "notFound.jsp";
 				}
 				request.setAttribute("booking", booking);

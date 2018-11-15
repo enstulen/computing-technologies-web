@@ -120,8 +120,15 @@
 										class="btn btn-primary btn-block">View home</a>
 								</div>
 								<div class="col-xxs-12 col-xs-6 mt">
-									<input type="button" class="btn btn-primary btn-block"
+
+									<form class="form-delete" method="POST">
+										<input type="hidden" name="type" value="delete-booking" />
+										 <input type="hidden" name="bookingid" value='${booking.bookingid}' />
+										<input type="submit" class="btn btn-primary btn-block"
 										value="Cancel Booking">
+									</form>
+
+									
 								</div>
 							</div>
 							<div class="col-md-6 animate-box">
@@ -178,8 +185,8 @@
 
 
 	<script>
-				
-			</script>
+		
+	</script>
 </body>
 </html>
 
