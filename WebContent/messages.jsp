@@ -165,6 +165,10 @@
 													<td>
 														<div class="media">
 															<div class="btn-group">
+																<form method="POST" action="mark-as-read.html">
+																<input type="hidden" name="readStatus" value=<%out.println(message.getMessageid());%>/>
+																	<button type="submit" class="btn btn-default">Mark as read</button>
+																</form>
 																<form method="POST" action="index.html">
 																	<input type="hidden" name="type" value="acceptBooking" />
 																	<button type="submit" class="btn btn-default">Accept</button>
