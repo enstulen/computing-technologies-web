@@ -176,7 +176,40 @@ public class Datastore {
 	}
 
 	// BOOKINGS
-
+	
+	public List<Booking> getBookingsForGuestUser(User user) {
+		EntityManager entityManager = factory.createEntityManager();
+		Query query = entityManager
+				.createQuery("SELECT b FROM Booking b JOIN b.guest u WHERE u.userid = :userid")
+				.setParameter("userid", user.getUserid());
+		List<Booking> bookings = query.getResultList();
+		return bookings;
+	}
+	
+	public List<Booking> getBookingsForHostUser(User user) {
+		EntityManager entityManager = factory.createEntityManager();
+		Query query = entityManager
+				.createQuery("SELECT b FROM Booking b JOIN b.host u WHERE u.userid = :userid")
+				.setParameter("userid", user.getUserid());
+		List<Booking> bookings = query.getResultList();
+		return bookings;
+	}
+	public List<Booking> getBookingsForGuest() {
+		if (currentUser != null) {
+			List<Booking> bookings = getBookingsForGuestUser(currentUser);
+			return bookings;
+		}
+		return null;
+	}
+	
+	public List<Booking> getBookingsForHost() {
+		if (currentUser != null) {
+			List<Booking> bookings = getBookingsForHostUser(currentUser);
+			return bookings;
+		}
+		return null;
+	}
+	
 	public List<Booking> getBookings() {
 		List<Booking> bookings = getAllBookings();
 		return bookings;

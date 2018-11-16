@@ -149,7 +149,7 @@
 
 
 					<div class="input-field">
-						<input type="submit" value="Submit" />
+						<input class="btn btn-primary btn-block" type="submit" value="Submit" />
 					</div>
 				</form>
 

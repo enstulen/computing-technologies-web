@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 
 import entities.User;
 import requestHandlers.AdminRequestHandler;
+import requestHandlers.BookingDetailsRequestHandler;
 import requestHandlers.IndexRequestHandler;
 import requestHandlers.MessagesRequestHandler;
 import requestHandlers.ReadMessagesRequestHandler;
@@ -67,6 +68,7 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/searchResults.html", new SearchResultsRequestHandler());
 		handlerHash.put("/messages.html", new MessagesRequestHandler());
 		handlerHash.put("/admin.html", new AdminRequestHandler());
+		handlerHash.put("/booking-details.html", new BookingDetailsRequestHandler());
 		handlerHash.put("/bookings.html", new BookingsRequestHandler());
 		handlerHash.put("/details.html", new DetailsRequestHandler());
 		handlerHash.put("/edit-new-home.html", new EditNewRequestHandler());

@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <!-- Login Modal -->
@@ -90,7 +92,7 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-signin" method="POST" action="index.html">
-				  	<input type="hidden" name="type" value="logout" />
+					<input type="hidden" name="type" value="logout" />
 					<button class="btn btn-lg btn-primary btn-block" type="submit"
 						id="IniciaSesion">Yes</button>
 				</form>
@@ -101,4 +103,117 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h1 class="h3 mb-3 font-weight-normal">Send a message to
+					another Fakebnb User</h1>
+			</div>
+			<div class="modal-body">
+				<form class="form-message">
+					<input type="name" id="receivername" class="form-control"
+						placeholder="Receiver" required> <input type="text"
+						id="messagecontent" class="form-control"
+						placeholder="Write Message Here" required>
+
+					<button class="btn btn-lg btn-primary btn-block" type="submit"
+						id="Send">Send Message</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="MessageModalWithoutReciever" tabindex="-1"
+	role="dialog" aria-labelledby="exampleModalCenterTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h1 class="h3 mb-3 font-weight-normal">Send a message to the
+					host.</h1>
+			</div>
+			<div class="modal-body">
+				<form class="form-message" method="POST">
+					<input type="text" id="messagecontent" class="form-control"
+						placeholder="Write Message Here" required>
+					<button class="btn btn-lg btn-primary btn-block" type="submit"
+						id="Send">Send Message</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="bookModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h1 class="h3 mb-3 font-weight-normal">Write your payment
+					details to request booking.</h1>
+			</div>
+			<div class="modal-body">
+				<form class="form-message" method="POST">
+
+					<div class="col-xxs-12 col-xs-12 mt alternate">
+						<label for="card-number">Card number:</label> <input name="homeid"
+							type="hidden" value='${param.homeid}' /> <input name="hostid"
+							type="hidden" value='${param.hostid}' /> <input
+							name="card_number" type="text" id="cardNumber"
+							class="form-control" placeholder="Card number" required>
+					</div>
+					<div class="col-xxs-12 col-xs-4 mt alternate">
+						<label>Expiration month:</label> <input type="number"
+							name="month_expire" id="monthExpire" class="form-control"
+							placeholder="Expiration month" required>
+					</div>
+					<div class="col-xxs-12 col-xs-4 mt alternate">
+						<label>Expiration year:</label> <input name="year_expire"
+							type="number" id="yearExpire" class="form-control"
+							placeholder="Expiration year" required>
+					</div>
+					<div class="col-xxs-12 col-xs-4 mt alternate">
+						<label>CV2:</label> <input name="CV2" type="number" id="CV2"
+							class="form-control" placeholder="CV2 code" required>
+					</div>
+					<div class="col-xxs-12 col-xs-6 mt alternate">
+						<div class="input-field">
+							<label for="date-end">Start of stay:</label> <input required
+								type="text" class="form-control" id="date-end" name="date-start"
+								placeholder="mm/dd/yyyy" />
+						</div>
+					</div>
+					<div class="col-xxs-12 col-xs-6 mt alternate">
+						<div class="input-field">
+							<label for="date-end">End of stay:</label> <input required
+								type="text" class="form-control" id="date-end" name="date-end"
+								placeholder="mm/dd/yyyy" />
+						</div>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Request
+						booking</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
 </html>

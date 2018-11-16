@@ -1,26 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<%@ page import="entities.Home"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="entities.Booking"%>
 
-<%
-	Home home = (Home) request.getAttribute("home");
-
-	String typeOfHouse = "default";
-	int typeId = home.getType();
-	switch (typeId) {
-		case 1 :
-			typeOfHouse = "Private home";
-		case 2 :
-			typeOfHouse = "Private room";
-		case 3 :
-			typeOfHouse = "Shared room";
-			break;
-		default :
-			typeOfHouse = "not stated";
-			break;
-	}
-%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -104,69 +85,73 @@
 			<%@ include file="/components/Navbar.jsp"%>
 			<div id="fh5co-tours" class="fh5co-section-gray">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-12 animate-box">
-							<h2 class="heading-title">${home.getName()}</h2>
-						</div>
-						<div class="col-md-6 animate-box">
-							<span class="description">
-								<p>${home.getFull_description()}</p>
-							</span>
-							<table class="table">
-								<tbody>
-									<tr>
-										<th scope="row">Owner:</th>
-										<td><span class="host">${home.getUser().getName()}</span></td>
-									</tr>
+					<div class="container">
 
-									<tr>
-										<th scope="row">Price:</th>
-										<td><span class="price">${home.getPrice()}€</span></td>
-									</tr>
-									<tr>
-										<th scope="row">Number of guests:</th>
-										<td><span class="beds">${home.getNumber_of_guests()}</span></td>
-									</tr>
-									<tr>
-										<th scope="row">Home type:</th>
-										<td><span class="type"> <% out.println(typeOfHouse); %>
-										</span></td>
-									</tr>
-								</tbody>
-							</table>
-							<c:if test="${sessionScope.user != null }">
+						<div class="row">
+							<div class="col-md-12 animate-box">
+								<h2 class="heading-title">You booked ${home.getName()}</h2>
+							</div>
+							<div class="col-md-6 animate-box">
+
+								<table class="table">
+									<tbody>
+										<tr>
+											<th scope="row">Arrival:</th>
+											<td><span class="host">${formatter.format(booking.getDate_start())}</span></td>
+										</tr>
+
+										<tr>
+											<th scope="row">Departure:</th>
+											<td><span class="price">${formatter.format(booking.getDate_end())}</span></td>
+										</tr>
+										<tr>
+											<th scope="row">Owner</th>
+											<td><span class="beds">${home.getUser()}</span></td>
+										</tr>
+										<tr>
+											<th scope="row">Booked on:</th>
+											<td><span class="type">${formatter.format(booking.getDate_booking()) }
+											</span></td>
+										</tr>
+									</tbody>
+								</table>
 								<div class="col-xxs-12 col-xs-6 mt">
-									<input id="book-home-button" type="submit"
-										class="btn btn-primary btn-block" value="Book">
+									<a href="details.html?id=${home.homeid}"
+										class="btn btn-primary btn-block">View home</a>
 								</div>
 								<div class="col-xxs-12 col-xs-6 mt">
-									<input id="contact-host-button" type="submit"
-										class="btn btn-primary btn-block" value="Contact host">
-								</div>
-							</c:if>
-							<c:if test="${sessionScope.user == null }">
-								<h3>Log in to book this home</h3>
-							</c:if>
-						</div>
-						<div class="col-md-6 animate-box">
-							<% String image = home.getImage(); %>
-							<img class="img-responsive" src= <%out.println(image); %>
-								alt="travel">
-						</div>
-						<!-- END fh5co-page -->
 
+									<form class="form-delete" method="POST">
+										<input type="hidden" name="type" value="delete-booking" />
+										 <input type="hidden" name="bookingid" value='${booking.bookingid}' />
+										<input type="submit" class="btn btn-primary btn-block"
+										value="Cancel Booking">
+									</form>
+
+									
+								</div>
+							</div>
+							<div class="col-md-6 animate-box">
+								<img class="img-responsive" src="images/cover_bg_2.jpg"
+									alt="travel">
+							</div>
+							<!-- END fh5co-page -->
+
+						</div>
 					</div>
+
+
 				</div>
+				<!-- END fh5co-page -->
+
 			</div>
 			<%@ include file="/components/Footer.jsp"%>
 
 		</div>
 	</div>
 
-	<jsp:include page="/components/Modal.jsp">
-		<jsp:param name="homeid" value="${home.getHomeid()}" />
-		<jsp:param name="hostid" value="${home.getUser().getUserid()}" />
-	</jsp:include>
+	<%@ include file="/components/Modal.jsp"%>
+
 	<!-- END fh5co-wrapper -->
 
 
@@ -199,13 +184,8 @@
 	<script src="js/main.js"></script>
 
 
-	<script type="text/javascript">
-		$(document).on('click', '#contact-host-button', function() {
-			$("#MessageModalWithoutReciever").modal("show");
-		});
-		$(document).on('click', '#book-home-button', function() {
-			$("#bookModal").modal("show");
-		});
+	<script>
+		
 	</script>
 </body>
 </html>
