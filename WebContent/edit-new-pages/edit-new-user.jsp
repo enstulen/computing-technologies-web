@@ -88,74 +88,44 @@
 			<%@ include file="../components/Navbar.jsp"%>
 			<!-- end:header-top -->
 			<div>
-				<h1>Home</h1>
+				<h1>${user!=null?null:"New " }User</h1>
 				<p>
-					<c:out value="${ requestScope.home.name }" />
+					<c:out value="${ user.toString() }" />
 				</p>
 				<form METHOD="POST">
 					<div class="input-field">
 						<label for="from">Name</label> <input type="text"
-							class="form-control" id="from-place" name="name"
-							value="${requestScope.home.name}" />
-					</div>
-					<div class="input-field">
-						<label for="from">Full description</label>
-						<textarea rows="5" name="full_description" class="form-control">${requestScope.home.full_description}</textarea>
-					</div>
-					<div class="input-field">
-						<label for="from">Short description</label> <input
-							name="short_description" class="form-control"
-							value="${requestScope.home.short_description}" />
-					</div>
-					<div class="input-field-select">
-						<label for="class">Type of apartment</label> <select
-							class="cs-select cs-skin-border" name="type">
-							<option value="" disabled selected>Entire accommodation</option>
-							<option value="entire">Entire accommodation</option>
-							<option value="private">Private room</option>
-							<option value="shared">Shared room</option>
-						</select>
+							class="form-control" id="from-place" name="uname"
+							value="${user!=null?user.name:null}" />
 					</div>
 
 					<div class="input-field">
-						<label for="number_of_guests">Number of guests</label> <input
-							name="number_of_guests" class="form-control"
-							value="${requestScope.home.number_of_guests}" />
+						<label for="from">Surname</label> <input type="text"
+							class="form-control" id="from-place" name="surname"
+							value="${user!=null?user.surname:null}" />
 					</div>
 
 					<div class="input-field">
-						<label for="price">Price</label> <input name="price"
-							class="form-control" value="${requestScope.home.price}" />
-					</div>
-					<div class="input-field">
-						<label for="date-start">Start of stay:</label> <input type="text"
-							class="form-control" id="date-start" name="date-start"
-							placeholder="mm/dd/yyyy"
-							value="${requestScope.home.date_available_start}" />
-					</div>
-					<div class="input-field">
-						<label for="date-end">End of stay:</label> <input type="text"
-							class="form-control" id="date-end" name="date-end"
-							placeholder="mm/dd/yyyy"
-							value="${requestScope.home.date_available_end}" />
+						<label for="from">Email</label> <input type="text"
+							class="form-control" id="from-place" name="email"
+							value="${user!=null?user.email:null}" />
 					</div>
 
-					<c:if test="${requestScope.admin == true}">
 					<div class="input-field">
-						<label for="user_userid">User ID</label> <input name="user_userid"
-							class="form-control" value="${requestScope.home.user.userid}" />
+						<label for="from">Password</label> <input type="text"
+							class="form-control" id="from-place" name="password"
+							value="${user!=null?user.password:null}" />
 					</div>
-					</c:if>
-
-
+					<br />
 					<div class="input-field">
-						<input class="btn btn-primary btn-block" type="submit" value="Submit" />
+						<input class="btn btn-primary btn-block" type="submit"
+							value="Submit" />
 					</div>
 				</form>
 
 			</div>
 
-			<%@ include file="/components/Footer.jsp" %>
+			<%@ include file="/components/Footer.jsp"%>
 
 
 		</div>

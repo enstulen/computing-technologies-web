@@ -46,7 +46,7 @@ public class User implements Serializable {
 	private List<Message> messages2;
 	
 	public String toString() {
-		return this.name + this.surname;
+		return this.name +" "+ this.surname;
 	}
 
 	public User() {
