@@ -22,7 +22,7 @@ public class EditNewRequestHandler implements RequestHandler {
 
 	public EditNewRequestHandler() {
 		this.datastore = Datastore.getInstance();
-		this.s = new SimpleDateFormat("YYY-MM-dd");
+		this.s = new SimpleDateFormat("yyyy-MM-dd");
 	}
 
 	@Override
@@ -140,10 +140,19 @@ public class EditNewRequestHandler implements RequestHandler {
 		String text=request.getParameter("message-text");
 		String senderId=request.getParameter("sender-id");
 		String receiverId=request.getParameter("receiver-id");
+		String timestamp=request.getParameter("timestamp");
+		
+		try {
+			message.setTime_stamp(s.parse(timestamp));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if(text!=null) {
 			message.setText(text);
 		}
+		
 		
 		if(senderId!=null) {
 			message.setSender(datastore.getUser(Integer.parseInt(senderId)));
@@ -180,7 +189,7 @@ public class EditNewRequestHandler implements RequestHandler {
 		}
 		
 		if(name!=null) {
-			user.setEmail(name);
+			user.setName(name);
 		}
 		
 		if(surname!=null) {
@@ -207,7 +216,9 @@ public class EditNewRequestHandler implements RequestHandler {
 			booking = datastore.getBooking(bookingId);
 		}
 		
-		Date start,end,booked=null;
+		Date start=null;
+		Date end=null;
+		Date booked=null;
 		String homeId = request.getParameter("homeId");
 		String guestId = request.getParameter("guestId");
 		String dateStart = request.getParameter("date_start");
@@ -220,17 +231,19 @@ public class EditNewRequestHandler implements RequestHandler {
 				start=s.parse(dateStart);
 				end=s.parse(dateEnd);
 				booked=s.parse(dateBooked);
+				Date anothertest=s.parse("2018-05-12");
+				String tesst=s.format(start);
 				
 				if(!start.after(end)) {
-					if (dateStart != null && start.before(booking.getDate_start())) {
+					if (dateStart != null ) {
 						booking.setDate_start(start);
 					}
-					if(dateEnd !=null && end.after(booking.getDate_end()))
+					if(dateEnd !=null )
 					{
 						booking.setDate_end(end);
 					}
 					
-					if (dateBooked != null && booked.before(booking.getDate_start())) {
+					if (dateBooked != null) {
 						booking.setDate_booking(booked);
 					}
 				}
@@ -244,9 +257,14 @@ public class EditNewRequestHandler implements RequestHandler {
 			booking.setCard_number(cardNumber);
 		}
 		
-
+		
+		
+		
 		if (homeId != null) {
-			booking.setHome(datastore.getHome(Integer.parseInt(homeId)));
+			Home home=datastore.getHome(Integer.parseInt(homeId));
+			booking.setHome(home);
+			
+			booking.setHost(home.getUser());
 		} 
 		
 		if (guestId != null) {
