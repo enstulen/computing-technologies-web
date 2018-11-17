@@ -129,12 +129,73 @@ public class EditNewRequestHandler implements RequestHandler {
 	}
 
 	private void createUpdateMessage(HttpServletRequest request, Integer messageId) {
-		// TODO Auto-generated method stub
+		Message message;
+		if(messageId==null) {
+			message=new Message();
+		}
+		else {
+			message=datastore.getMessage(messageId);
+		}
+		
+		String text=request.getParameter("message-text");
+		String senderId=request.getParameter("sender-id");
+		String receiverId=request.getParameter("receiver-id");
+		
+		if(text!=null) {
+			message.setText(text);
+		}
+		
+		if(senderId!=null) {
+			message.setSender(datastore.getUser(Integer.parseInt(senderId)));
+		}
+		
+		if(receiverId!=null) {
+			message.setReciever(datastore.getUser(Integer.parseInt(receiverId)));
+		}
+		
+
+		if (messageId == null) {
+			datastore.createNewMessage(message);
+		} else {
+			datastore.updateMessage(message);
+		}
 
 	}
 
 	private void createUpdateUser(HttpServletRequest request, Integer userId) {
-		// TODO Auto-generated method stub
+		User user;
+		if (userId == null) {
+			user = new User();
+		} else {
+			user = datastore.getUser(userId);
+		}
+		
+		String email=request.getParameter("email");
+		String name=request.getParameter("uname");
+		String surname=request.getParameter("surname");
+		String password=request.getParameter("password");
+		
+		if (email!=null) {
+			user.setEmail(email);
+		}
+		
+		if(name!=null) {
+			user.setEmail(name);
+		}
+		
+		if(surname!=null) {
+			user.setSurname(surname);
+		}
+		
+		if(password!=null) {
+			user.setPassword(password);
+		}
+		
+		if (userId == null) {
+			datastore.createNewUser(user);
+		} else {
+			datastore.updateUser(user);
+		}
 
 	}
 
