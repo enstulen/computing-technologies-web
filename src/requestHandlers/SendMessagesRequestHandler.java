@@ -101,7 +101,7 @@ public class SendMessagesRequestHandler implements RequestHandler {
 	        	
 	        	User host = dataStore.getUser(Integer.parseInt(hostidString));
 				message.setStringProperty("receiver", host.getEmail());
-				message.setText("Hi, I want to books this house: " + home.getName() + "from " + date_start + "to " + date_end);
+				message.setText("Booking: " + booking.getBookingid() +  " - Hi, I want to books this house: " + home.getName() + " from " + date_start + " to " + date_end);
 	        } else if (type.equals("messageWithoutReciever")) {
 	           	String hostidString = request.getParameter("hostid");
 	        	User host = dataStore.getUser(Integer.parseInt(hostidString));

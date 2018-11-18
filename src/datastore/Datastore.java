@@ -229,15 +229,19 @@ public class Datastore {
 		Query query = entityManager.createNamedQuery("Booking.findAll", Booking.class);
 		return query.getResultList();
 	}
+	
+	public void setBookingConfirmed(int bookingid) {
+		EntityManager entityManager = factory.createEntityManager();
+		Booking booking = getBooking(bookingid);
+		booking.setConfirmed(true);
+		EntityTransaction tx = entityManager.getTransaction();
+		tx.begin();
+		entityManager.merge(booking);
+		tx.commit();
+		entityManager.close();
+	}
 
-	// TODO
-//	public List<Booking> getBookingsFromUser(User user){
-//		Query query = entityManager.createQuery(
-//				"SELECT b FROM Booking b WHERE b.guest LIKE :user")
-//				.setParameter("user", user);
-//		List<User> users = query.getResultList();
-//		return null;
-//	}
+
 
 	public void createNewBooking(Booking booking) {
 		EntityManager entityManager = factory.createEntityManager();

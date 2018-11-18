@@ -39,6 +39,26 @@ public class MessagesRequestHandler implements RequestHandler {
 		if (path.equals("/messages.html")) {
 			sView = "messages.jsp";
 		}
+		
+		if ("POST".equalsIgnoreCase(request.getMethod())) {
+			if (request.getParameter("type") != null) {
+				String message = request.getParameter("message");
+				String messageidString = request.getParameter("messageid");
+				String[] parts = message.split(" ");
+
+				int messageid = Integer.parseInt(messageidString);
+				int bookingid = Integer.parseInt(parts[1]);
+
+				if (request.getParameter("type").equals("declineBooking")) {
+					dataStore.deleteBooking(bookingid);
+					dataStore.deleteMessage(messageid);
+				} else if (request.getParameter("type").equals("acceptBooking")) {
+					dataStore.deleteMessage(messageid);
+					dataStore.setBookingConfirmed(bookingid);
+				}
+
+			}
+		}
 		List<Message> messages = (List<Message>) dataStore.getMessagesForUser(currentUser);
 		Collections.reverse(messages);
 		request.setAttribute("Messages", messages);
