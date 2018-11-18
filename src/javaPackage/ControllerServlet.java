@@ -29,6 +29,7 @@ import requestHandlers.ReadMessagesRequestHandler;
 import requestHandlers.RequestHandler;
 import requestHandlers.SearchResultsRequestHandler;
 import requestHandlers.SendMessagesRequestHandler;
+import requestHandlers.StatusMessagesRequestHandler;
 import requestHandlers.BookingsRequestHandler;
 import requestHandlers.DetailsRequestHandler;
 import requestHandlers.EditNewRequestHandler;
@@ -77,6 +78,7 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/edit-new-booking.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-user.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-message.html", new EditNewRequestHandler());
+		handlerHash.put("/mark-as-read.html", new StatusMessagesRequestHandler());
 
 	}
 

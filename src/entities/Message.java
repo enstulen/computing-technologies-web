@@ -32,8 +32,7 @@ public class Message implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="user_recieverid")
 	private User reciever;
-	
-	@Transient 
+	 
 	private boolean message_read;
 
 	public Message() {
