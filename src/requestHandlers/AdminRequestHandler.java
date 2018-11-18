@@ -13,6 +13,7 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 
+import JDBC.UserRepo;
 import entities.Booking;
 import entities.Home;
 import entities.Message;
@@ -60,7 +61,7 @@ public class AdminRequestHandler implements RequestHandler {
 				homes = (List<Home>) datastore.getHomes();
 				bookings = (List<Booking>) datastore.getBookings();
 				messages = (List<Message>) datastore.getMessages();
-				users = (List<User>) datastore.getUsers();
+				users = UserRepo.getAllUsers();
 
 				request.setAttribute("homes", homes);
 				request.setAttribute("bookings", bookings);
