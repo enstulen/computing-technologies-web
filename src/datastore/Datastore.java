@@ -130,9 +130,18 @@ public class Datastore {
 	}
 
 	// MESSAGES
-
+	
 	public List<Message> getMessages() {
 		List<Message> messages = getAllMessages();
+		return messages;
+	}
+	
+	public List<Message> getMessagesForUser(User user) {
+		EntityManager entityManager = factory.createEntityManager();
+		Query query = entityManager
+				.createQuery("SELECT m FROM Message m JOIN m.reciever u WHERE u.userid = :userid")
+				.setParameter("userid", user.getUserid());
+		List<Message> messages = query.getResultList();
 		return messages;
 	}
 

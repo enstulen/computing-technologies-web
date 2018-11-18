@@ -32,12 +32,14 @@ public class MessagesRequestHandler implements RequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sView = "";
+		
+		User currentUser = (User) request.getSession().getAttribute("user");
 
 		String path = request.getServletPath();
 		if (path.equals("/messages.html")) {
 			sView = "messages.jsp";
 		}
-		List<Message> messages = (List<Message>) dataStore.getMessages();
+		List<Message> messages = (List<Message>) dataStore.getMessagesForUser(currentUser);
 		Collections.reverse(messages);
 		request.setAttribute("Messages", messages);
 		return sView;

@@ -149,9 +149,7 @@
 							</c:if>
 						</div>
 						<div class="col-md-6 animate-box">
-							<% String image = home.getImage(); %>
-							<img class="img-responsive" src= <%out.println(image); %>
-								alt="travel">
+							<img class="img-responsive" src="${requestScope.home.image}" alt="travel" />
 						</div>
 						<!-- END fh5co-page -->
 

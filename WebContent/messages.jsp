@@ -11,15 +11,18 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FakeBnb</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FakeBnb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+<meta name="keywords"
+	content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+<meta name="author" content="FREEHTML5.CO" />
 
 <!-- 
 	//////////////////////////////////////////////////////
@@ -102,15 +105,16 @@
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="pull-right">
-									<a href="readmessage.html"> Read new messages</a>
+										<a href="readmessage.html"> Read new messages</a>
 										<div class="btn-group">
 											<button type="button" class="btn btn-success btn-filter"
-												data-target="leido" ">Read</button>
+												data-target="leido"">Read</button>
 											<button type="button" class="btn btn-warning btn-filter"
-												data-target="no-leido" >Unread</button>
+												data-target="no-leido">Unread</button>
 											<button type="button" class="btn btn-default btn-filter"
 												data-target="all">All</button>
-											<button type="button" class= "btn btn-default" id="NewMessage">New Message</button>
+											<button type="button" class="btn btn-default" id="NewMessage">New
+												Message</button>
 										</div>
 									</div>
 									<div class="table-container">
@@ -158,6 +162,20 @@
 															</p>
 														</div>
 													</td>
+													<td>
+														<div class="media">
+															<div class="btn-group">
+																<form method="POST" action="index.html">
+																	<input type="hidden" name="type" value="acceptBooking" />
+																	<button type="submit" class="btn btn-default">Accept</button>
+																</form>
+																<form method="POST" action="index.html">
+																	<input type="hidden" name="type" value="declineBooking" />
+																	<button type="submit" class="btn btn-default">Decline</button>
+																</form>
+															</div>
+														</div>
+													</td>
 												</tr>
 												<%
 													}
@@ -171,45 +189,16 @@
 					</div>
 				</div>
 			</div>
-			
-				<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h1 class="h3 mb-3 font-weight-normal">Send a message to another Fakebnb User</h1>
-				</div>
-				<div class="modal-body">
-					<form class="form-message" method="POST" action="sendMessage.html">
-						<input
-							type="name" id="receivername" class="form-control"
-							placeholder="Receiver" name="receiver" required> 
-						<input type="text"
-							id="messagecontent" class="form-control" placeholder="Write Message Here" name="message"
-							required> 
-										
-						<button class="btn btn-lg btn-primary btn-block" type="submit"
-							id="Send">Send Message</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+			<%@ include file="/components/Footer.jsp"%>
 
-		<%@ include file="/components/Footer.jsp" %>
-		
 
 		</div>
 		<!-- END fh5co-page -->
 
 	</div>
 	<%@ include file="/components/Modal.jsp"%>
-	
+
 	<!-- END fh5co-wrapper -->
 
 

@@ -38,6 +38,8 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sView = "";
+		
+		User currentUser = (User) request.getSession().getAttribute("user");
 
 		String path = request.getServletPath();
 		if (path.equals("/readmessage.html")) {
@@ -48,7 +50,6 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 			Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
 			connection.start();
-			User currentUser = (User) request.getSession().getAttribute("user");
 			String selector = "receiver = " + "'" + currentUser.getEmail() + "'";
 			MessageConsumer consumer = session.createConsumer(queue, selector);
 			Message message = null;
@@ -62,7 +63,7 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 					newMessage.setReciever(currentUser);
 					newMessage.setSender(datastore.findUser(m.getStringProperty("sender")));
 					Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-					newMessage.setTime_stamp(timestamp);
+					newMessage.setTime_stamp(timestamp);	
 					datastore.createNewMessage(newMessage);
 				} else {
 					break;
@@ -75,7 +76,7 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 		} catch (Exception e) {
 			System.out.println("JHC *************************************** Error in doPost: " + e);
 		}
-		List<entities.Message> messages = (List<entities.Message>) datastore.getMessages();
+		List<entities.Message> messages = (List<entities.Message>) datastore.getMessagesForUser(currentUser);
 		Collections.reverse(messages);
 		request.setAttribute("Messages", messages);
 		return sView;
