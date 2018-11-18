@@ -5,6 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,21 +20,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entities.User;
 import requestHandlers.AdminRequestHandler;
 import requestHandlers.BookingDetailsRequestHandler;
 import requestHandlers.IndexRequestHandler;
 import requestHandlers.MessagesRequestHandler;
+import requestHandlers.ReadMessagesRequestHandler;
 import requestHandlers.RequestHandler;
 import requestHandlers.SearchResultsRequestHandler;
+import requestHandlers.SendMessagesRequestHandler;
 import requestHandlers.BookingsRequestHandler;
 import requestHandlers.DetailsRequestHandler;
 import requestHandlers.EditNewRequestHandler;
+
 /**
  * Servlet implementation class ControllerServlet
  */
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
+
+	// Inject the connectionFactory using annotations
+	@Resource(mappedName = "tiwconnectionfactory")
+	private ConnectionFactory tiwconnectionfactory;
+	// Inject the queue using annotations
+	@Resource(mappedName = "tiwqueue")
+	private Queue queue;
 
 	// Hash table of RequestHandler instances, keyed by request URL
 	private Map handlerHash = new HashMap();
@@ -54,9 +72,12 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/bookings.html", new BookingsRequestHandler());
 		handlerHash.put("/details.html", new DetailsRequestHandler());
 		handlerHash.put("/edit-new-home.html", new EditNewRequestHandler());
+		handlerHash.put("/sendMessage.html", new SendMessagesRequestHandler(tiwconnectionfactory, queue));
+		handlerHash.put("/readmessage.html", new ReadMessagesRequestHandler(tiwconnectionfactory, queue));
 		handlerHash.put("/edit-new-booking.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-user.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-message.html", new EditNewRequestHandler());
+
 	}
 
 	/**
@@ -87,8 +108,8 @@ public class ControllerServlet extends HttpServlet {
 		String path = request.getServletPath();
 		RequestHandler requestHandler = (RequestHandler) handlerHash.get(path);
 		String sView = requestHandler.handleRequest(request, response);
-	
-		if(request.getParameter("IniciaSesion") != null){
+
+		if (request.getParameter("IniciaSesion") != null) {
 			System.out.println("You made it");
 		}
 		request.getRequestDispatcher(sView).forward(request, response);

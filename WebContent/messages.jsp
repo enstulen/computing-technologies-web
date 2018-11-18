@@ -11,15 +11,18 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FakeBnb</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FakeBnb</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+<meta name="keywords"
+	content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+<meta name="author" content="FREEHTML5.CO" />
 
 <!-- 
 	//////////////////////////////////////////////////////
@@ -102,14 +105,16 @@
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="pull-right">
+										<a href="readmessage.html"> Read new messages</a>
 										<div class="btn-group">
 											<button type="button" class="btn btn-success btn-filter"
-												data-target="leido">Read</button>
+												data-target="leido"">Read</button>
 											<button type="button" class="btn btn-warning btn-filter"
 												data-target="no-leido">Unread</button>
 											<button type="button" class="btn btn-default btn-filter"
 												data-target="all">All</button>
-											<button type="button" class= "btn btn-default" id="NewMessage">New Message</button>
+											<button type="button" class="btn btn-default" id="NewMessage">New
+												Message</button>
 										</div>
 									</div>
 									<div class="table-container">
@@ -157,6 +162,20 @@
 															</p>
 														</div>
 													</td>
+													<td>
+														<div class="media">
+															<div class="btn-group">
+																<form method="POST" action="index.html">
+																	<input type="hidden" name="type" value="acceptBooking" />
+																	<button type="submit" class="btn btn-default">Accept</button>
+																</form>
+																<form method="POST" action="index.html">
+																	<input type="hidden" name="type" value="declineBooking" />
+																	<button type="submit" class="btn btn-default">Decline</button>
+																</form>
+															</div>
+														</div>
+													</td>
 												</tr>
 												<%
 													}
@@ -170,16 +189,16 @@
 					</div>
 				</div>
 			</div>
-			
-		<%@ include file="/components/Footer.jsp" %>
-		
+
+			<%@ include file="/components/Footer.jsp"%>
+
 
 		</div>
 		<!-- END fh5co-page -->
 
 	</div>
 	<%@ include file="/components/Modal.jsp"%>
-	
+
 	<!-- END fh5co-wrapper -->
 
 

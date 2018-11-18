@@ -118,11 +118,12 @@
 					another Fakebnb User</h1>
 			</div>
 			<div class="modal-body">
-				<form class="form-message">
-					<input type="name" id="receivername" class="form-control"
-						placeholder="Receiver" required> <input type="text"
-						id="messagecontent" class="form-control"
-						placeholder="Write Message Here" required>
+				<form class="form-message" method="POST" action="sendMessage.html">
+					<input name="type" type="hidden" value='message' /> <input
+						type="name" id="receivername" class="form-control"
+						placeholder="Receiver" name="receiver" required> <input
+						type="text" id="messagecontent" class="form-control"
+						placeholder="Write Message Here" name="message" required>
 
 					<button class="btn btn-lg btn-primary btn-block" type="submit"
 						id="Send">Send Message</button>
@@ -146,9 +147,12 @@
 					host.</h1>
 			</div>
 			<div class="modal-body">
-				<form class="form-message" method="POST">
-					<input type="text" id="messagecontent" class="form-control"
-						placeholder="Write Message Here" required>
+				<form class="form-message" method="POST" action="sendMessage.html">
+					<input name="homeid" type="hidden" value='${param.homeid}' /> <input
+						name="hostid" type="hidden" value='${param.hostid}' /> <input
+						name="type" type="hidden" value='messageWithoutReciever' /> <input
+						type="text" id="messagecontent" class="form-control"
+						placeholder="Write Message Here" name="message" required>
 					<button class="btn btn-lg btn-primary btn-block" type="submit"
 						id="Send">Send Message</button>
 				</form>
@@ -171,10 +175,11 @@
 					details to request booking.</h1>
 			</div>
 			<div class="modal-body">
-				<form class="form-message" method="POST">
+				<form class="form-message" method="POST" action="sendMessage.html">
 
 					<div class="col-xxs-12 col-xs-12 mt alternate">
-						<label for="card-number">Card number:</label> <input name="homeid"
+						<label for="card-number">Card number:</label> <input name="type"
+							type="hidden" value='booking' /> <input name="homeid"
 							type="hidden" value='${param.homeid}' /> <input name="hostid"
 							type="hidden" value='${param.hostid}' /> <input
 							name="card_number" type="text" id="cardNumber"
