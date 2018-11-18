@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
 	public static Connection getConnection() {
 		try {
-			dbconnection = DriverManager.getConnection(connectionString, "root", "fx8350");
+			dbconnection = DriverManager.getConnection(connectionString, "root", "admin");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
