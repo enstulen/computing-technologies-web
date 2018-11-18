@@ -91,48 +91,48 @@
 			<div>
 				<h1>Home</h1>
 				<p>
-					<c:out value="${booking.getBookingid()}" />
+					<c:out value="${booking != null ? booking.getBookingid() : null}" />
 				</p>
 				<form METHOD="POST">
 					<div class="input-field">
 						<label for="from">Home Id</label>
 						 <input type="text"
 							class="form-control" id="from-place" name="homeId"
-							value="${booking.getHome().getHomeid()}" />
+							value="${booking != null ?booking.getHome().getHomeid() : null}" />
 							<br/>
-						<label>Home: ${booking.getHome().getName()}</label><br/>
-						<label>Host: ${booking.getHome().getUser().getName()}</label>
+						<label>Home: ${booking != null ?booking.getHome().getName() : null}</label><br/>
+						<label>Host: ${booking != null ?booking.getHome().getUser().getName() : null}</label>
 					</div>
 					
 					<div class="input-field">
 						<label for="from">Guest id: </label> <input
 							name="guestId" class="form-control"
-							value="${booking.getGuest().getUserid()}" /><br/>
-							<label for="from">Guest Name:${booking.getGuest().getName()} </label> 
+							value="${booking != null ?booking.getGuest().getUserid() : null}" /><br/>
+							<label for="from">Guest Name:${booking != null ?booking.getGuest().getName() : null} </label> 
 					</div>						
 					
 					<div class="input-field">
 						<label for="from">Start date: </label> <input type="date"
 							name="date_start" class="form-control"
-							value="${formatter.format(booking.getDate_start()) }" /><br/>							
+							value="${booking != null ?formatter.format(booking.getDate_start())  : null}" /><br/>							
 					</div>
 					
 					<div class="input-field">
 						<label for="from">End date: </label> <input type="date"
 							name="date_end" class="form-control"
-							value="${formatter.format(booking.getDate_end()) }" /><br/>							
+							value="${booking != null ?formatter.format(booking.getDate_end())  : null}" /><br/>							
 					</div>
 					
 					<div class="input-field">
 						<label for="from">Date of booking: </label> <input type="date"
 							name="date_booked" class="form-control"
-							value="${formatter.format(booking.getDate_booking()) }" /><br/>							
+							value="${booking != null ?formatter.format(booking.getDate_booking()) : null }" /><br/>							
 					</div>
 					
 					<div class="input-field">
 						<label for="from">Card number: </label> <input type="string"
 							name="card_number" class="form-control"
-							value="${booking.getCard_number() }" /><br/>							
+							value="${booking != null ?booking.getCard_number()  : null}" /><br/>							
 					</div>
 					
 					
