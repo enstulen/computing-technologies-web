@@ -27,10 +27,6 @@ public class Datastore {
 
 		factory = Persistence.createEntityManagerFactory("fakebnb");
 
-		// This should be the actual current user, but for now we just use the first
-		// user in DB
-		// currentUser = entityManager.find(User.class, 1);
-
 	}
 
 	public static Datastore getInstance() {
