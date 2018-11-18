@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- Access bean placed in the request by MessagesRequestHandler --%>
 <jsp:useBean id="Messages" scope="request" type="List<Message>" />
@@ -162,20 +163,42 @@
 															</p>
 														</div>
 													</td>
-													<td>
-														<div class="media">
-															<div class="btn-group">
-																<form method="POST" action="index.html">
-																	<input type="hidden" name="type" value="acceptBooking" />
-																	<button type="submit" class="btn btn-default">Accept</button>
-																</form>
-																<form method="POST" action="index.html">
-																	<input type="hidden" name="type" value="declineBooking" />
-																	<button type="submit" class="btn btn-default">Decline</button>
-																</form>
+													<%
+														String messageString = message.getText();
+															String[] parts = messageString.split(" ");
+															session.setAttribute("booking", parts[0]);
+																						%>
+													<c:if test="${sessionScope.booking == 'Booking:'}">
+														<td>
+
+															<div class="media">
+																<div class="btn-group">
+																	<form method="POST" action="messages.html">
+																		<input type="hidden" name="type" value="acceptBooking" />
+																		<input type="hidden" name="messageid"
+																			value=<%out.println(message.getMessageid());%> />
+																		<input type="hidden" name="message"
+																			value="<%out.println(message.getText());%>" />
+																		<button type="submit" class="btn btn-default">Accept</button>
+																	</form>
+																	<form method="POST" action="messages.html">
+																		<input type="hidden" name="type"
+																			value="declineBooking" /> <input type="hidden"
+																			name="messageid"
+																			value=<%out.println(message.getMessageid());%> />
+																		<input type="hidden" name="message"
+																			value="<%out.println(message.getText());%>" />
+																		<button type="submit" class="btn btn-default">Decline</button>
+																	</form>
+																</div>
 															</div>
-														</div>
-													</td>
+														</td>
+													</c:if>
+													<c:if test="${sessionScope.booking != 'Booking:'}">
+														<td>
+															<div class="media"></div>
+														</td>
+													</c:if>
 												</tr>
 												<%
 													}

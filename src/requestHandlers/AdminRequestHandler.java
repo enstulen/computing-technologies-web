@@ -51,33 +51,32 @@ public class AdminRequestHandler implements RequestHandler {
 					datastore.deleteMessage(messageid);
 				}
 			}
-		} else {
-			List<Home> homes;
-			List<Booking> bookings;
-			List<Message> messages;
-			List<User> users;
-
-			try {
-				homes = (List<Home>) datastore.getHomes();
-				bookings = (List<Booking>) datastore.getBookings();
-				messages = (List<Message>) datastore.getMessages();
-				users = UserRepo.getAllUsers();
-
-				request.setAttribute("homes", homes);
-				request.setAttribute("bookings", bookings);
-				request.setAttribute("messages", messages);
-				request.setAttribute("users", users);
-
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			sView = "admin.jsp";
 		}
+		List<Home> homes;
+		List<Booking> bookings;
+		List<Message> messages;
+		List<User> users;
+
+		try {
+			homes = (List<Home>) datastore.getHomes();
+			bookings = (List<Booking>) datastore.getBookings();
+			messages = (List<Message>) datastore.getMessages();
+			users = UserRepo.getAllUsers();
+
+			request.setAttribute("homes", homes);
+			request.setAttribute("bookings", bookings);
+			request.setAttribute("messages", messages);
+			request.setAttribute("users", users);
+
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		sView = "admin.jsp";
 
 		return sView;
 	}
