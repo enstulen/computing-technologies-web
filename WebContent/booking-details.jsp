@@ -136,8 +136,8 @@
 								</div>
 							</div>
 							<div class="col-md-6 animate-box">
-								<img class="img-responsive" src="images/cover_bg_2.jpg"
-									alt="travel">
+								<img class="img-responsive" src="${requestScope.home.image}"
+									alt="travel" />
 							</div>
 							<!-- END fh5co-page -->
 
