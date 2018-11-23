@@ -47,6 +47,19 @@ public class Datastore {
 		Query query = entityManager.createNamedQuery("Home.findAll", Home.class);
 		return query.getResultList();
 	}
+	
+	public List<Home> getHomesForHost(User user) {
+		EntityManager entityManager = factory.createEntityManager();
+
+		String queryString = "SELECT h FROM Home h JOIN h.user u WHERE u.userid = :userid";
+				
+		Query query = entityManager
+				.createQuery(queryString)
+				.setParameter("userid", user.getUserid());
+		List<Home> homes = query.getResultList();
+		return homes;
+
+	}
 
 	public void createNewHome(Home home) {
 		EntityManager entityManager = factory.createEntityManager();

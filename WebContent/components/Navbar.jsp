@@ -17,6 +17,7 @@
 						<li><a href="bookings.html">Bookings</a></li>
 						<li><a href="messages.html">Messages</a></li>
 						<li><a href="#" id="Logout">Logout</a></li>
+						<li><a href="managehome.html">Manage homes</a></li>
 					</c:if>
 					<c:if test="${sessionScope.user == null }">
 						<li><a href="#" id="Registro">Register</a></li>

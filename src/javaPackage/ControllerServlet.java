@@ -24,6 +24,7 @@ import entities.User;
 import requestHandlers.AdminRequestHandler;
 import requestHandlers.BookingDetailsRequestHandler;
 import requestHandlers.IndexRequestHandler;
+import requestHandlers.ManageHomeRequestHandler;
 import requestHandlers.MessagesRequestHandler;
 import requestHandlers.ReadMessagesRequestHandler;
 import requestHandlers.RequestHandler;
@@ -79,6 +80,7 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/edit-new-user.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-message.html", new EditNewRequestHandler());
 		handlerHash.put("/mark-as-read.html", new StatusMessagesRequestHandler());
+		handlerHash.put("/managehome.html", new ManageHomeRequestHandler());
 
 	}
 
