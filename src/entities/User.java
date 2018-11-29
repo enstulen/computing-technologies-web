@@ -5,18 +5,9 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * The persistent class for the USER database table.
- * 
- */
-@Entity
-@Table(name="USER")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int userid;
 
 	private byte admin;
@@ -29,20 +20,12 @@ public class User implements Serializable {
 
 	private String surname;
 
-	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="guest")
 	private List<Booking> bookings;
 
-	//bi-directional many-to-one association to Home
-	@OneToMany(mappedBy="user")
 	private List<Home> homes;
 
-	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="sender")
 	private List<Message> messages1;
 
-	//bi-directional many-to-one association to Message
-	@OneToMany(mappedBy="reciever")
 	private List<Message> messages2;
 	
 	public String toString() {

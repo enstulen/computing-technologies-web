@@ -61,7 +61,7 @@ public class AdminRequestHandler implements RequestHandler {
 			homes = (List<Home>) datastore.getHomes();
 			bookings = (List<Booking>) datastore.getBookings();
 			messages = (List<Message>) datastore.getMessages();
-			users = UserRepo.getAllUsers();
+			users = (List<User>) datastore.getUsers();
 
 			request.setAttribute("homes", homes);
 			request.setAttribute("bookings", bookings);

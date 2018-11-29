@@ -4,43 +4,23 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
-/**
- * The persistent class for the BOOKING database table.
- * 
- */
-@Entity
-@Table(name="BOOKING")
-@NamedQuery(name="Booking.findAll", query="SELECT b FROM Booking b")
 public class Booking implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int bookingid;
 
 	private String card_number;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_booking;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_end;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_start;
 
-	//bi-directional many-to-one association to Home
-	@ManyToOne
-	@JoinColumn(name="home_homeid", referencedColumnName="homeid")
 	private Home home;
 
-	@ManyToOne
-	@JoinColumn(name="user_hostid", referencedColumnName="userid")
 	private User host;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_guestid", referencedColumnName="userid")
 	private User guest;
 	
 	private boolean confirmed;

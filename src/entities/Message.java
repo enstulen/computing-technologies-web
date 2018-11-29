@@ -4,33 +4,17 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
-/**
- * The persistent class for the MESSAGE database table.
- * 
- */
-@Entity
-@Table(name="MESSAGE")
-@NamedQuery(name="Message.findAll", query="SELECT m FROM Message m")
 public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int messageid;
 
 	private String text;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date time_stamp;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_senderid")
 	private User sender;
 
-	//bi-directional many-to-one association to User
-	@ManyToOne
-	@JoinColumn(name="user_recieverid")
 	private User reciever;
 	 
 	private boolean message_read;

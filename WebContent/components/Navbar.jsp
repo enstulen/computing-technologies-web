@@ -23,9 +23,7 @@
 						<li><a href="#" id="Registro">Register</a></li>
 						<li><a href="#" id="Login">Login</a></li>
 					</c:if>
-					<c:if test="${sessionScope.admin != null }">
 						<li><a href="admin.html" id="admin">Admin</a></li>
-					</c:if>
 				</ul>
 			</nav>
 		</div>

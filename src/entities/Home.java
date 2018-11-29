@@ -6,23 +6,13 @@ import java.util.Date;
 import java.util.List;
 
 
-/**
- * The persistent class for the HOME database table.
- * 
- */
-@Entity
-@Table(name="HOME")
-@NamedQuery(name="Home.findAll", query="SELECT h FROM Home h")
 public class Home implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private int homeid;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_available_end;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_available_start;
 
 	private String full_description;
@@ -39,13 +29,8 @@ public class Home implements Serializable {
 
 	private int type;
 
-	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="home")
 	private List<Booking> bookings1;
 
-
-	//bi-directional many-to-one association to User
-	@ManyToOne
 	private User user;
 
 	public Home() {
