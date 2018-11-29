@@ -57,7 +57,7 @@ public class Datastore {
 		return null;
 
 	}
-	
+
 	public List<Home> getHomesForHost(User user) {
 //		EntityManager entityManager = factory.createEntityManager();
 //
@@ -154,12 +154,12 @@ public class Datastore {
 	}
 
 	// MESSAGES
-	
+
 	public List<Message> getMessages() {
 		List<Message> messages = getAllMessages();
 		return messages;
 	}
-	
+
 	public List<Message> getMessagesForUser(User user) {
 //		EntityManager entityManager = factory.createEntityManager();
 //		Query query = entityManager
@@ -215,7 +215,7 @@ public class Datastore {
 	}
 
 	// BOOKINGS
-	
+
 	public List<Booking> getBookingsForGuestUser(User user) {
 //		EntityManager entityManager = factory.createEntityManager();
 //		Query query = entityManager
@@ -226,7 +226,7 @@ public class Datastore {
 		return null;
 
 	}
-	
+
 	public List<Booking> getBookingsForHostUser(User user) {
 //		EntityManager entityManager = factory.createEntityManager();
 //		Query query = entityManager
@@ -237,6 +237,7 @@ public class Datastore {
 		return null;
 
 	}
+
 	public List<Booking> getBookingsForGuest() {
 //		if (currentUser != null) {
 //			List<Booking> bookings = getBookingsForGuestUser(currentUser);
@@ -244,7 +245,7 @@ public class Datastore {
 //		}
 		return null;
 	}
-	
+
 	public List<Booking> getBookingsForHost() {
 //		if (currentUser != null) {
 //			List<Booking> bookings = getBookingsForHostUser(currentUser);
@@ -252,7 +253,7 @@ public class Datastore {
 //		}
 		return null;
 	}
-	
+
 	public List<Booking> getBookings() {
 		List<Booking> bookings = getAllBookings();
 		return bookings;
@@ -264,7 +265,7 @@ public class Datastore {
 //		return query.getResultList();
 		return null;
 	}
-	
+
 	public void setBookingConfirmed(int bookingid) {
 //		EntityManager entityManager = factory.createEntityManager();
 //		Booking booking = getBooking(bookingid);
@@ -275,8 +276,6 @@ public class Datastore {
 //		tx.commit();
 //		entityManager.close();
 	}
-
-
 
 	public void createNewBooking(Booking booking) {
 //		EntityManager entityManager = factory.createEntityManager();
@@ -317,42 +316,33 @@ public class Datastore {
 	// USERS
 
 	public User getUser(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		return entityManager.find(User.class, id);
-		return null;
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8090/users/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		User user = response.readEntity(new GenericType<User>(){});
+		return user;
 
 	}
-	
-	public User findUser(String email) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager
-//				.createQuery("SELECT u FROM User u WHERE u.email LIKE :email ")
-//				.setParameter("email", email);
-//		List<User> users = query.getResultList();
-//
-//		if (users.isEmpty()) {
-//			return null;
-//		}
-//		return users.get(0);
-		return null;
 
+	public User findUser(String email) {
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8090/users/find/" + email);
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		User user = response.readEntity(new GenericType<User>(){});
+		return user;
 	}
 
 	public User findUser(String email, String password) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager
-//				.createQuery("SELECT u FROM User u WHERE u.email LIKE :email AND u.password LIKE :password")
-//				.setParameter("email", email).setParameter("password", password);
-//		List<User> users = query.getResultList();
-//
-//		if (users.isEmpty()) {
-//			return null;
-//		}
-//		return users.get(0);
-		return null;
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8090/users/find");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		System.out.println(String.format("{'email':'%s', 'password': '%s'}", email, password));
+		Response response = invocationBuilder.post(Entity.entity(String.format("{'email':'%s', 'password': '%s'}", email, password), MediaType.APPLICATION_JSON_TYPE));
+		User user = response.readEntity(new GenericType<User>(){});
+		return user;
 	}
-	
-	
 
 	public List<User> getUsers() {
 		List<User> users = getAllUsers();
@@ -364,39 +354,29 @@ public class Datastore {
 		WebTarget webResource = client.target("http://localhost:8090/users");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
-		List<User> list = response.readEntity(new GenericType<List<User>>() {});
+		List<User> list = response.readEntity(new GenericType<List<User>>(){});
 		return list;
 	}
 
 	public void createNewUser(User user) {
 		Client client = ClientBuilder.newClient();
-		System.out.println(user.getName());
 		WebTarget webResource = client.target("http://localhost:8090/users");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-	    Response response = invocationBuilder.post(Entity.json(user)); 
-	    System.out.println(response);
-	    System.out.println(response.getEntity());
-	    System.out.println(response.getMediaType());
-
+		Response response = invocationBuilder.post(Entity.entity(user, MediaType.APPLICATION_JSON));
 	}
 
 	public void updateUser(User user) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.merge(user);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8090/users");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.put(Entity.entity(user, MediaType.APPLICATION_JSON));
 	}
 
 	public void deleteUser(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		User user = entityManager.find(User.class, id);
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.remove(user);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8090/users/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.delete();
 	}
 
 	public void setCurrentUser(User currentUser) {
