@@ -51,60 +51,51 @@ public class Datastore {
 	}
 
 	public List<Home> getAllHomes() {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager.createNamedQuery("Home.findAll", Home.class);
-//		return query.getResultList();
-		return null;
-
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Home> list = response.readEntity(new GenericType<List<Home>>(){});
+		return list;
 	}
 
 	public List<Home> getHomesForHost(User user) {
-//		EntityManager entityManager = factory.createEntityManager();
-//
-//		String queryString = "SELECT h FROM Home h JOIN h.user u WHERE u.userid = :userid";
-//				
-//		Query query = entityManager
-//				.createQuery(queryString)
-//				.setParameter("userid", user.getUserid());
-//		List<Home> homes = query.getResultList();
-//		return homes;
-		return null;
-
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes/find/" + String.valueOf(user.getUserid()));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Home> list = response.readEntity(new GenericType<List<Home>>(){});
+		return list;
 	}
 
 	public void createNewHome(Home home) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.persist(home);
-//		tx.commit();
-//		entityManager.close();
-
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.post(Entity.entity(home, MediaType.APPLICATION_JSON));
 	}
 
 	public void updateHome(Home home) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.merge(home);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes" + String.valueOf(home.getHomeid()));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.put(Entity.entity(home, MediaType.APPLICATION_JSON));
 	}
 
 	public void deleteHome(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Home home = entityManager.find(Home.class, id);
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.remove(home);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.delete();
 	}
 
 	public Home getHome(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		return entityManager.find(Home.class, id);
-		return null;
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		Home home = response.readEntity(new GenericType<Home>(){});
+		return home;
 
 	}
 
