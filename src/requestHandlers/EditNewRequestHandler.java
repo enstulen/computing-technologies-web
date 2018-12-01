@@ -1,13 +1,18 @@
 package requestHandlers;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.pathType;
 
 import entities.Booking;
 import entities.Home;
@@ -25,6 +30,17 @@ public class EditNewRequestHandler implements RequestHandler {
 		this.s = new SimpleDateFormat("yyyy-MM-dd");
 	}
 
+	private String extractFileName(Part part) {
+		String contentDisp = part.getHeader("content-disposition");
+		String[] items = contentDisp.split(";");
+		for (String s : items) {
+			if (s.trim().startsWith("filename")) {
+				return s.substring(s.indexOf("=") + 2, s.length() - 1);
+			}
+		}
+		return "";
+	}
+
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -40,10 +56,20 @@ public class EditNewRequestHandler implements RequestHandler {
 			}
 
 			if ("POST".equalsIgnoreCase(request.getMethod())) {
+
+				String fileName = "";
+				for (Part part : request.getParts()) {
+					if (part.getName().equals("file")) {
+						fileName = extractFileName(part);
+						fileName = new File(fileName).getName();
+						part.write(fileName);
+					}
+				}
+
 				if (id != null) {
-					createUpdateHome(request, Integer.parseInt(id));
+					createUpdateHome(request, Integer.parseInt(id), fileName);
 				} else {
-					createUpdateHome(request, null);
+					createUpdateHome(request, null, fileName);
 				}
 			} else {
 				if (id != null) {
@@ -120,7 +146,7 @@ public class EditNewRequestHandler implements RequestHandler {
 					request.setAttribute("message", message);
 				}
 				request.setAttribute("admin", true);
-				
+
 				request.setAttribute("formatter", s);
 				sView = "/edit-new-pages/edit-new-message.jsp";
 			}
@@ -130,38 +156,35 @@ public class EditNewRequestHandler implements RequestHandler {
 
 	private void createUpdateMessage(HttpServletRequest request, Integer messageId) {
 		Message message;
-		if(messageId==null) {
-			message=new Message();
+		if (messageId == null) {
+			message = new Message();
+		} else {
+			message = datastore.getMessage(messageId);
 		}
-		else {
-			message=datastore.getMessage(messageId);
-		}
-		
-		String text=request.getParameter("message-text");
-		String senderId=request.getParameter("sender-id");
-		String receiverId=request.getParameter("receiver-id");
-		String timestamp=request.getParameter("timestamp");
-		
+
+		String text = request.getParameter("message-text");
+		String senderId = request.getParameter("sender-id");
+		String receiverId = request.getParameter("receiver-id");
+		String timestamp = request.getParameter("timestamp");
+
 		try {
 			message.setTime_stamp(s.parse(timestamp));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(text!=null) {
+
+		if (text != null) {
 			message.setText(text);
 		}
-		
-		
-		if(senderId!=null) {
+
+		if (senderId != null) {
 			message.setSender(datastore.getUser(Integer.parseInt(senderId)));
 		}
-		
-		if(receiverId!=null) {
+
+		if (receiverId != null) {
 			message.setReciever(datastore.getUser(Integer.parseInt(receiverId)));
 		}
-		
 
 		if (messageId == null) {
 			datastore.createNewMessage(message);
@@ -178,28 +201,28 @@ public class EditNewRequestHandler implements RequestHandler {
 		} else {
 			user = datastore.getUser(userId);
 		}
-		
-		String email=request.getParameter("email");
-		String name=request.getParameter("uname");
-		String surname=request.getParameter("surname");
-		String password=request.getParameter("password");
-		
-		if (email!=null) {
+
+		String email = request.getParameter("email");
+		String name = request.getParameter("uname");
+		String surname = request.getParameter("surname");
+		String password = request.getParameter("password");
+
+		if (email != null) {
 			user.setEmail(email);
 		}
-		
-		if(name!=null) {
+
+		if (name != null) {
 			user.setName(name);
 		}
-		
-		if(surname!=null) {
+
+		if (surname != null) {
 			user.setSurname(surname);
 		}
-		
-		if(password!=null) {
+
+		if (password != null) {
 			user.setPassword(password);
 		}
-		
+
 		if (userId == null) {
 			datastore.createNewUser(user);
 		} else {
@@ -215,66 +238,57 @@ public class EditNewRequestHandler implements RequestHandler {
 		} else {
 			booking = datastore.getBooking(bookingId);
 		}
-		
-		Date start=null;
-		Date end=null;
-		Date booked=null;
+
+		Date start = null;
+		Date end = null;
+		Date booked = null;
 		String homeId = request.getParameter("homeId");
 		String guestId = request.getParameter("guestId");
 		String dateStart = request.getParameter("date_start");
-		String dateEnd=request.getParameter("date_end");
-		String dateBooked=request.getParameter("date_booked");
-		String cardNumber=request.getParameter("card_number");
-		
-		if (dateStart!=null &&dateEnd != null) {
-			try {				
-				start=s.parse(dateStart);
-				end=s.parse(dateEnd);
-				booked=s.parse(dateBooked);
-				Date anothertest=s.parse("2018-05-12");
-				String tesst=s.format(start);
-				
-				if(!start.after(end)) {
-					if (dateStart != null ) {
+		String dateEnd = request.getParameter("date_end");
+		String dateBooked = request.getParameter("date_booked");
+		String cardNumber = request.getParameter("card_number");
+
+		if (dateStart != null && dateEnd != null) {
+			try {
+				start = s.parse(dateStart);
+				end = s.parse(dateEnd);
+				booked = s.parse(dateBooked);
+				Date anothertest = s.parse("2018-05-12");
+				String tesst = s.format(start);
+
+				if (!start.after(end)) {
+					if (dateStart != null) {
 						booking.setDate_start(start);
 					}
-					if(dateEnd !=null )
-					{
+					if (dateEnd != null) {
 						booking.setDate_end(end);
 					}
-					
+
 					if (dateBooked != null) {
 						booking.setDate_booking(booked);
 					}
 				}
-			}
-			catch(ParseException e) {
-			
+			} catch (ParseException e) {
+
 			}
 		}
-		
-		if(cardNumber!=null) {
+
+		if (cardNumber != null) {
 			booking.setCard_number(cardNumber);
 		}
-		
-		
-		
-		
+
 		if (homeId != null) {
-			Home home=datastore.getHome(Integer.parseInt(homeId));
+			Home home = datastore.getHome(Integer.parseInt(homeId));
 			booking.setHome(home);
-			
+
 			booking.setHost(home.getUser());
-		} 
-		
+		}
+
 		if (guestId != null) {
 			booking.setGuest(datastore.getUser(Integer.parseInt(guestId)));
-		} 
+		}
 
-		
-		
-
-		
 		if (bookingId == null) {
 			datastore.createNewBooking(booking);
 		} else {
@@ -283,7 +297,7 @@ public class EditNewRequestHandler implements RequestHandler {
 
 	}
 
-	private void createUpdateHome(HttpServletRequest request, Integer homeID) {
+	private void createUpdateHome(HttpServletRequest request, Integer homeID, String fileName) {
 		Home home = null;
 		if (homeID == null) {
 			home = new Home();
@@ -337,7 +351,10 @@ public class EditNewRequestHandler implements RequestHandler {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		String imagePathString = "images/";
+		if (!fileName.equals("")) {
+			home.setImage(imagePathString + fileName);
+		}
 		home.setNumber_of_guests(number_of_guests);
 		home.setName(name);
 		home.setFull_description(full_description);
