@@ -61,7 +61,7 @@ public class Datastore {
 
 	public List<Home> getHomesForHost(User user) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8100/homes/find/" + String.valueOf(user.getUserid()));
+		WebTarget webResource = client.target("http://localhost:8100/homes/find/user/" + String.valueOf(user.getUserid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		List<Home> list = response.readEntity(new GenericType<List<Home>>(){});
@@ -77,7 +77,7 @@ public class Datastore {
 
 	public void updateHome(Home home) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8100/homes" + String.valueOf(home.getHomeid()));
+		WebTarget webResource = client.target("http://localhost:8100/homes/" + String.valueOf(home.getHomeid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.put(Entity.entity(home, MediaType.APPLICATION_JSON));
 	}
