@@ -100,6 +100,13 @@ public class Datastore {
 	}
 
 	public List<Home> findHome(String name, Date start_date, Date end_date, int price, int type, int adults, int kids) {
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8100/homes/" + String.valueOf(name) + "/" + String.valueOf(start_date)+ "/" + String.valueOf(end_date)+ "/" + price+ "/" + type +"/" + adults + "/" + kids);
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Home> listHomes = response.readEntity(new GenericType<List<Home>>(){});
+		return listHomes;
+		
 //		EntityManager entityManager = factory.createEntityManager();
 //
 //		String queryString = "SELECT h FROM Home h WHERE LOWER(h.name) LIKE :pattern AND h.date_available_start<=:start_date AND h.date_available_end>=:end_date AND h.number_of_guests >= :number_of_guests";
@@ -143,7 +150,7 @@ public class Datastore {
 		return null;
 
 	}
-
+	
 	// MESSAGES
 
 	public List<Message> getMessages() {
