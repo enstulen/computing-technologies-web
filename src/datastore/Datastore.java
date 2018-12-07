@@ -161,7 +161,7 @@ public class Datastore {
 
 	public List<Message> getMessagesForUser(User user) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8110/messages/" + String.valueOf(user.getUserid()));
+		WebTarget webResource = client.target("http://localhost:8110/messages/find/" + String.valueOf(user.getUserid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		List<Message> messages = response.readEntity(new GenericType<List<Message>>(){});
