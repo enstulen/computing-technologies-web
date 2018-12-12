@@ -59,6 +59,7 @@ public class MessagesRequestHandler implements RequestHandler {
 
 			}
 		}
+		//System.out.println("current user :"+currentUser.getName());
 		List<Message> messages = (List<Message>) dataStore.getMessagesForUser(currentUser);
 		Collections.reverse(messages);
 		request.setAttribute("Messages", messages);

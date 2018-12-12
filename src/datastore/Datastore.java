@@ -161,10 +161,16 @@ public class Datastore {
 
 	public List<Message> getMessagesForUser(User user) {
 		Client client = ClientBuilder.newClient();
+		System.out.println("Helloworld!!!");
+		System.out.println("Name of the user : "+ user.getName());
 		WebTarget webResource = client.target("http://localhost:8110/messages/find/" + String.valueOf(user.getUserid()));
+		System.out.println("ah");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		List<Message> messages = response.readEntity(new GenericType<List<Message>>(){});
+		System.out.println("!!!!");
+		System.out.println(messages.toString());
+		System.out.println(user.toString());
 		return messages;
 
 	}
