@@ -34,6 +34,7 @@ public class MessagesRequestHandler implements RequestHandler {
 		String sView = "";
 		
 		User currentUser = (User) request.getSession().getAttribute("user");
+		//User currentUser = (User) dataStore.getCurrentUser();
 
 		String path = request.getServletPath();
 		if (path.equals("/messages.html")) {

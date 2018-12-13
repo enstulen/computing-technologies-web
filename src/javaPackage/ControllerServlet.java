@@ -84,8 +84,8 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/bookings.html", new BookingsRequestHandler());
 		handlerHash.put("/details.html", new DetailsRequestHandler());
 		handlerHash.put("/edit-new-home.html", new EditNewRequestHandler());
-		handlerHash.put("/sendMessage.html", new SendMessagesRequestHandler(tiwconnectionfactory, queue));
-		handlerHash.put("/readmessage.html", new ReadMessagesRequestHandler(tiwconnectionfactory, queue));
+		handlerHash.put("/sendMessage.html", new SendMessagesRequestHandler());
+		handlerHash.put("/readmessage.html", new ReadMessagesRequestHandler());
 		handlerHash.put("/edit-new-booking.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-user.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-message.html", new EditNewRequestHandler());
