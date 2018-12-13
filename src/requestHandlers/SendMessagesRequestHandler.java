@@ -100,7 +100,7 @@ public class SendMessagesRequestHandler implements RequestHandler {
 				message.setText(request.getParameter("message"));
 	        }
         	else if (type.equals("message")) {
-        		User reciever = (User)dataStore.findUser(request.getParameter("reciever"));
+        		User reciever = (User)dataStore.findUser(request.getParameter("receiver"));
 				message.setReciever(reciever);
 				message.setText(request.getParameter("message"));
 	        }
