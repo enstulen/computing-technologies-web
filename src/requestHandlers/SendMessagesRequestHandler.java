@@ -53,6 +53,7 @@ public class SendMessagesRequestHandler implements RequestHandler {
 			Message message = new Message();
 			User sender = (User) request.getSession().getAttribute("user");
 			message.setSender(sender);
+			message.setTime_stamp(new Date());
 			
 	        if (type.equals("booking")) {
 	        	
