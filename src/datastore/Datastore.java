@@ -194,7 +194,7 @@ public class Datastore {
 
 	public void updateMessage(Message message) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8110/messages");
+		WebTarget webResource = client.target("http://localhost:8110/messages/"+String.valueOf(message.getMessageid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.put(Entity.entity(message, MediaType.APPLICATION_JSON));
 	}
