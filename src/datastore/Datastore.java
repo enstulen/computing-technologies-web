@@ -113,60 +113,7 @@ public class Datastore {
 		Response response = invocationBuilder.post(Entity.entity(String.format("{'name':'%s', 'start':'%s', 'end':'%s', 'price':'%s', 'type':'%s', 'adults':'%s', 'kids':'%s'}",
 											name, start, end, price, type, adults, kids), MediaType.APPLICATION_JSON_TYPE));
 		List<Home> listHomes = response.readEntity(new GenericType<List<Home>>(){});
-		return listHomes;
-// Morten's findUser body:
-	/*
-		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8090/users/find");
-		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-		System.out.println(String.format("{'email':'%s', 'password': '%s'}", email, password));
-		Response response = invocationBuilder.post(Entity.entity(String.format("{'email':'%s', 'password': '%s'}", email, password), MediaType.APPLICATION_JSON_TYPE));
-		User user = response.readEntity(new GenericType<User>(){});
-		return user;
-	*/
-		
-		
-//		EntityManager entityManager = factory.createEntityManager();
-//
-//		String queryString = "SELECT h FROM Home h WHERE LOWER(h.name) LIKE :pattern AND h.date_available_start<=:start_date AND h.date_available_end>=:end_date AND h.number_of_guests >= :number_of_guests";
-//		switch (price) {
-//		case 0:
-//			queryString = queryString;
-//			break;
-//		case 1:
-//			queryString = queryString + " AND h.price < 35";
-//			break;
-//		case 2:
-//			queryString = queryString + " AND h.price > 35 AND h.price < 69";
-//			break;
-//		case 3:
-//			queryString = queryString + " AND h.price > 70 AND h.price < 130";
-//			break;
-//		case 4:
-//			queryString = queryString + " AND h.price > 131";
-//			break;
-//		default:
-//			queryString = queryString;
-//			break;
-//		}
-//
-//		Query query;
-//		String pattern = "%" + name.toLowerCase() + "%";
-//		int number_of_guests = adults + kids;
-//
-//		if (type != 0) {
-//			queryString = queryString + " AND h.type LIKE :type";
-//			query = entityManager.createQuery(queryString).setParameter("pattern", pattern)
-//					.setParameter("start_date", start_date).setParameter("end_date", end_date)
-//					.setParameter("number_of_guests", number_of_guests).setParameter("type", type);
-//		} else {
-//			query = entityManager.createQuery(queryString).setParameter("pattern", pattern)
-//					.setParameter("start_date", start_date).setParameter("end_date", end_date)
-//					.setParameter("number_of_guests", number_of_guests);
-//		}
-//
-//		return query.getResultList();
-		
+		return listHomes;		
 	}
 	
 	// MESSAGES
