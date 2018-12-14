@@ -92,7 +92,7 @@
 				<p>
 					<c:out value="${ requestScope.home.name }" />
 				</p>
-				<form METHOD="POST">
+				<form METHOD="POST" enctype="multipart/form-data">
 					<div class="input-field">
 						<label for="from">Name</label> <input type="text"
 							class="form-control" id="from-place" name="name"
@@ -141,21 +141,25 @@
 					</div>
 
 					<c:if test="${requestScope.admin == true}">
-					<div class="input-field">
-						<label for="user_userid">User ID</label> <input name="user_userid"
-							class="form-control" value="${requestScope.home.user.userid}" />
-					</div>
+						<div class="input-field">
+							<label for="user_userid">User ID</label> <input
+								name="user_userid" class="form-control"
+								value="${requestScope.home.user.userid}" />
+						</div>
 					</c:if>
+					<img class="img-responsive" src="${requestScope.home.image}" alt="travel" />
 
+					<input type="file" name="file" size="60" /><br /> <br /> 
 
 					<div class="input-field">
-						<input class="btn btn-primary btn-block" type="submit" value="Submit" />
+						<input class="btn btn-primary btn-block" type="submit"
+							value="Submit" />
 					</div>
 				</form>
 
 			</div>
 
-			<%@ include file="/components/Footer.jsp" %>
+			<%@ include file="/components/Footer.jsp"%>
 
 
 		</div>

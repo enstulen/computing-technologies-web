@@ -1,11 +1,16 @@
 package javaPackage;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
@@ -13,7 +18,9 @@ import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +45,9 @@ import requestHandlers.EditNewRequestHandler;
 /**
  * Servlet implementation class ControllerServlet
  */
+@MultipartConfig(location="/Users/enstulen2/git/computing-technologies-web/WebContent/images", fileSizeThreshold=1024*1024*2, // 2MB
+maxFileSize=1024*1024*10,      // 10MB
+maxRequestSize=1024*1024*50)   // 50MB
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
@@ -74,8 +84,8 @@ public class ControllerServlet extends HttpServlet {
 		handlerHash.put("/bookings.html", new BookingsRequestHandler());
 		handlerHash.put("/details.html", new DetailsRequestHandler());
 		handlerHash.put("/edit-new-home.html", new EditNewRequestHandler());
-		handlerHash.put("/sendMessage.html", new SendMessagesRequestHandler(tiwconnectionfactory, queue));
-		handlerHash.put("/readmessage.html", new ReadMessagesRequestHandler(tiwconnectionfactory, queue));
+		handlerHash.put("/sendMessage.html", new SendMessagesRequestHandler());
+		handlerHash.put("/readmessage.html", new ReadMessagesRequestHandler());
 		handlerHash.put("/edit-new-booking.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-user.html", new EditNewRequestHandler());
 		handlerHash.put("/edit-new-message.html", new EditNewRequestHandler());

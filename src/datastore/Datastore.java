@@ -1,4 +1,4 @@
-package datastore;
+ package datastore;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,7 +61,7 @@ public class Datastore {
 
 	public List<Home> getHomesForHost(User user) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8100/homes/find/" + String.valueOf(user.getUserid()));
+		WebTarget webResource = client.target("http://localhost:8100/homes/find/user/" + String.valueOf(user.getUserid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		List<Home> list = response.readEntity(new GenericType<List<Home>>(){});
@@ -77,7 +77,7 @@ public class Datastore {
 
 	public void updateHome(Home home) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8100/homes" + String.valueOf(home.getHomeid()));
+		WebTarget webResource = client.target("http://localhost:8100/homes/" + String.valueOf(home.getHomeid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.put(Entity.entity(home, MediaType.APPLICATION_JSON));
 	}
@@ -152,65 +152,68 @@ public class Datastore {
 	}
 	
 	// MESSAGES
+	
+	public Message getMessage(int id) {
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8110/messages/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		Message message = response.readEntity(new GenericType<Message>(){});
+		return message;
+	}
 
 	public List<Message> getMessages() {
-		List<Message> messages = getAllMessages();
-		return messages;
+		return getAllMessages();
 	}
 
 	public List<Message> getMessagesForUser(User user) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager
-//				.createQuery("SELECT m FROM Message m JOIN m.reciever u WHERE u.userid = :userid")
-//				.setParameter("userid", user.getUserid());
-//		List<Message> messages = query.getResultList();
-//		return messages;
-		return null;
+		Client client = ClientBuilder.newClient();
+		System.out.println("Helloworld!!!");
+		System.out.println("Name of the user : "+ user.getName());
+		WebTarget webResource = client.target("http://localhost:8110/messages/find/" + String.valueOf(user.getUserid()));
+		System.out.println("ah");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Message> messages = response.readEntity(new GenericType<List<Message>>(){});
+		System.out.println("!!!!");
+		System.out.println(messages.toString());
+		System.out.println(user.toString());
+		return messages;
 
 	}
 
 	public List<Message> getAllMessages() {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager.createNamedQuery("Message.findAll", Message.class);
-//		return query.getResultList();
-		return null;
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8110/messages");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Message> messages = response.readEntity(new GenericType<List<Message>>(){});
+		return messages;
 
 	}
 
 	public void createNewMessage(Message message) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.persist(message);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8110/messages");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.post(Entity.entity(message, MediaType.APPLICATION_JSON));
 	}
 
 	public void updateMessage(Message message) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.merge(message);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8110/messages/"+String.valueOf(message.getMessageid()));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.put(Entity.entity(message, MediaType.APPLICATION_JSON));
 	}
 
 	public void deleteMessage(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Message message = entityManager.find(Message.class, id);
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.remove(message);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8110/messages/"+String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.delete();
 	}
 
-	public Message getMessage(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		return entityManager.find(Message.class, id);
-		return null;
-
-	}
+	
 
 	// BOOKINGS
 

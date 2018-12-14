@@ -27,14 +27,8 @@ public class SendMessagesRequestHandler implements RequestHandler {
 
 	private Datastore dataStore;
 
-	private ConnectionFactory connectionFactory;
-	private Queue queue;
-
-	public SendMessagesRequestHandler(ConnectionFactory connection, Queue queue) {
+	public SendMessagesRequestHandler() {
 		dataStore = Datastore.getInstance();
-		this.connectionFactory = connection;
-		this.queue = queue;
-
 	}
 
 	@Override
@@ -56,12 +50,10 @@ public class SendMessagesRequestHandler implements RequestHandler {
         
 		try {
 
-			Connection connection = connectionFactory.createConnection();
-			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-			MessageProducer messageProducer = session.createProducer(queue);
-			TextMessage message = session.createTextMessage();
+			Message message = new Message();
 			User sender = (User) request.getSession().getAttribute("user");
-			message.setStringProperty("sender", sender.getEmail());
+			message.setSender(sender);
+			message.setTime_stamp(new Date());
 			
 	        if (type.equals("booking")) {
 	        	
@@ -100,31 +92,22 @@ public class SendMessagesRequestHandler implements RequestHandler {
 	        	String hostidString = request.getParameter("hostid");
 	        	
 	        	User host = dataStore.getUser(Integer.parseInt(hostidString));
-				message.setStringProperty("receiver", host.getEmail());
+				message.setReciever(host);
 				message.setText("Booking: " + booking.getBookingid() +  " - Hi, I want to books this house: " + home.getName() + " from " + date_start + " to " + date_end);
 	        } else if (type.equals("messageWithoutReciever")) {
 	           	String hostidString = request.getParameter("hostid");
 	        	User host = dataStore.getUser(Integer.parseInt(hostidString));
-				message.setStringProperty("receiver", host.getEmail());
+				message.setReciever(host);
 				message.setText(request.getParameter("message"));
 	        }
         	else if (type.equals("message")) {
-				message.setStringProperty("receiver", request.getParameter("receiver"));
+        		User reciever = (User)dataStore.findUser(request.getParameter("receiver"));
+				message.setReciever(reciever);
 				message.setText(request.getParameter("message"));
 	        }
+			dataStore.createNewMessage(message);
 			
-			messageProducer.send(message);
-			messageProducer.close();
-			session.close();
-			connection.close();
-		} catch (javax.jms.JMSException e) {
-			System.out.println("JHC *************************************** Error in doPost: " + e);
-			System.out.println(
-					"JHC *************************************** Error MQ: " + e.getLinkedException().getMessage());
-			System.out.println(
-					"JHC *************************************** Error MQ: " + e.getLinkedException().toString());
-
-		} catch (Exception e) {
+		}catch (Exception e) {
 			System.out.println("JHC *************************************** Error in doPost: " + e.toString());
 
 		}

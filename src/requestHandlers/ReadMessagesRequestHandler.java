@@ -24,14 +24,8 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 
 	private Datastore datastore;
 
-	private ConnectionFactory connectionFactory;
-	private Queue queue;
-
-	public ReadMessagesRequestHandler(ConnectionFactory connection, Queue queue) {
+	public ReadMessagesRequestHandler() {
 		datastore = Datastore.getInstance();
-		this.connectionFactory = connection;
-		this.queue = queue;
-
 	}
 
 	@Override
@@ -45,6 +39,7 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 		if (path.equals("/readmessage.html")) {
 			sView = "messages.jsp";
 		}
+		/*
 		try {
 			Connection connection = connectionFactory.createConnection();
 			Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
@@ -75,7 +70,7 @@ public class ReadMessagesRequestHandler implements RequestHandler {
 			connection.close();
 		} catch (Exception e) {
 			System.out.println("JHC *************************************** Error in doPost: " + e);
-		}
+		} */
 		List<entities.Message> messages = (List<entities.Message>) datastore.getMessagesForUser(currentUser);
 		Collections.reverse(messages);
 		request.setAttribute("Messages", messages);
