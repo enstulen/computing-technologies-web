@@ -100,12 +100,31 @@ public class Datastore {
 	}
 
 	public List<Home> findHome(String name, Date start_date, Date end_date, int price, int type, int adults, int kids) {
+		
+		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String start = sdf.format(start_date);
+		String end = sdf.format(end_date);
+		
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8100/homes/" + String.valueOf(name) + "/" + String.valueOf(start_date)+ "/" + String.valueOf(end_date)+ "/" + price+ "/" + type +"/" + adults + "/" + kids);
+		WebTarget webResource = client.target("http://localhost:8100/homes/search");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-		Response response = invocationBuilder.get();
+		System.out.println(String.format("{'name':'%s', 'start':'%s', 'end':'%s', 'price':'%s', 'type':'%s', 'adults':'%s', 'kids':'%s'}",
+											name, start, end, price, type, adults, kids));
+		Response response = invocationBuilder.post(Entity.entity(String.format("{'name':'%s', 'start':'%s', 'end':'%s', 'price':'%s', 'type':'%s', 'adults':'%s', 'kids':'%s'}",
+											name, start, end, price, type, adults, kids), MediaType.APPLICATION_JSON_TYPE));
 		List<Home> listHomes = response.readEntity(new GenericType<List<Home>>(){});
 		return listHomes;
+// Morten's findUser body:
+	/*
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8090/users/find");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		System.out.println(String.format("{'email':'%s', 'password': '%s'}", email, password));
+		Response response = invocationBuilder.post(Entity.entity(String.format("{'email':'%s', 'password': '%s'}", email, password), MediaType.APPLICATION_JSON_TYPE));
+		User user = response.readEntity(new GenericType<User>(){});
+		return user;
+	*/
+		
 		
 //		EntityManager entityManager = factory.createEntityManager();
 //
@@ -147,8 +166,7 @@ public class Datastore {
 //		}
 //
 //		return query.getResultList();
-		return null;
-
+		
 	}
 	
 	// MESSAGES
