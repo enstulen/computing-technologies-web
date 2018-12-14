@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.input-field-select {
+	display: flex;
+	flex-direction: column;
+}
+
+.table-custom {
+	cursor: pointer;
+}
+
+.admin-title {
+	padding-top: 30px;
+	padding-bottom: 10px;
+}
+
+.admin-delete-button {
+	color: #F3854A;
+}
