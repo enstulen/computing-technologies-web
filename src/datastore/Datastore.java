@@ -115,7 +115,7 @@ public class Datastore {
 		List<Home> listHomes = response.readEntity(new GenericType<List<Home>>(){});
 		return listHomes;		
 	}
-	}
+
 
 	// MESSAGES
 	
