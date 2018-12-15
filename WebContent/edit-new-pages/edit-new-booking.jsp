@@ -101,7 +101,6 @@
 							value="${booking != null ?booking.getHome().getHomeid() : null}" />
 							<br/>
 						<label>Home: ${booking != null ?booking.getHome().getName() : null}</label><br/>
-						<label>Host: ${booking != null ?booking.getHome().getUser().getName() : null}</label>
 					</div>
 					
 					<div class="input-field">

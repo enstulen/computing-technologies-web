@@ -23,7 +23,7 @@ public class Booking implements Serializable {
 
 	private User guest;
 	
-	private boolean confirmed;
+	private int confirmed;
 
 	public Booking() {
 	}
@@ -92,13 +92,14 @@ public class Booking implements Serializable {
 		this.guest = guest;
 	}
 
-	public boolean isConfirmed() {
+	public int getConfirmed() {
 		return confirmed;
 	}
 
-	public void setConfirmed(boolean confirmed) {
+	public void setConfirmed(int confirmed) {
 		this.confirmed = confirmed;
 	}
+
 
 	
 

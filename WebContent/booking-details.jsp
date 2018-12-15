@@ -105,17 +105,13 @@
 											<td><span class="price">${formatter.format(booking.getDate_end())}</span></td>
 										</tr>
 										<tr>
-											<th scope="row">Owner</th>
-											<td><span class="beds">${home.getUser()}</span></td>
-										</tr>
-										<tr>
 											<th scope="row">Booked on:</th>
 											<td><span class="type">${formatter.format(booking.getDate_booking()) }
 											</span></td>
 										</tr>
 										<tr>
 											<th scope="row">Confirmed:</th>
-											<td><span class="confirmed">${booking.isConfirmed()}</span></td>
+											<td><span class="confirmed">${booking.getConfirmed()}</span></td>
 										</tr>
 									</tbody>
 								</table>

@@ -66,7 +66,8 @@ public class SendMessagesRequestHandler implements RequestHandler {
 				booking.setCard_number(card_number);
 				booking.setGuest(dataStore.getCurrentUser());
 				booking.setHost(dataStore.getUser(hostid));
-				booking.setConfirmed(false);
+				booking.setConfirmed(0);
+				
 				booking.setHome(dataStore.getHome(homeid));
 				booking.setDate_booking(new Date());
 				

@@ -134,16 +134,10 @@ public class Datastore {
 
 	public List<Message> getMessagesForUser(User user) {
 		Client client = ClientBuilder.newClient();
-		System.out.println("Helloworld!!!");
-		System.out.println("Name of the user : "+ user.getName());
 		WebTarget webResource = client.target("http://localhost:8110/messages/find/" + String.valueOf(user.getUserid()));
-		System.out.println("ah");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		List<Message> messages = response.readEntity(new GenericType<List<Message>>(){});
-		System.out.println("!!!!");
-		System.out.println(messages.toString());
-		System.out.println(user.toString());
 		return messages;
 
 	}
@@ -183,41 +177,37 @@ public class Datastore {
 
 	// BOOKINGS
 
-	public List<Booking> getBookingsForGuestUser(User user) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager
-//				.createQuery("SELECT b FROM Booking b JOIN b.guest u WHERE u.userid = :userid")
-//				.setParameter("userid", user.getUserid());
-//		List<Booking> bookings = query.getResultList();
-//		return bookings;
-		return null;
-
+	public List<Booking> getBookingsForGuestUser(User user) {	
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings/guest/" + String.valueOf(user.getUserid()));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Booking> list = response.readEntity(new GenericType<List<Booking>>(){});
+		return list;
 	}
 
 	public List<Booking> getBookingsForHostUser(User user) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager
-//				.createQuery("SELECT b FROM Booking b JOIN b.host u WHERE u.userid = :userid")
-//				.setParameter("userid", user.getUserid());
-//		List<Booking> bookings = query.getResultList();
-//		return bookings;
-		return null;
-
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings/host/" + String.valueOf(user.getUserid()));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Booking> list = response.readEntity(new GenericType<List<Booking>>(){});
+		return list;
 	}
 
 	public List<Booking> getBookingsForGuest() {
-//		if (currentUser != null) {
-//			List<Booking> bookings = getBookingsForGuestUser(currentUser);
-//			return bookings;
-//		}
+		if (currentUser != null) {
+			List<Booking> bookings = getBookingsForGuestUser(currentUser);
+			return bookings;
+		}
 		return null;
 	}
 
 	public List<Booking> getBookingsForHost() {
-//		if (currentUser != null) {
-//			List<Booking> bookings = getBookingsForHostUser(currentUser);
-//			return bookings;
-//		}
+		if (currentUser != null) {
+			List<Booking> bookings = getBookingsForHostUser(currentUser);
+			return bookings;
+		}
 		return null;
 	}
 
@@ -227,10 +217,12 @@ public class Datastore {
 	}
 
 	public List<Booking> getAllBookings() {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Query query = entityManager.createNamedQuery("Booking.findAll", Booking.class);
-//		return query.getResultList();
-		return null;
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		List<Booking> list = response.readEntity(new GenericType<List<Booking>>(){});
+		return list;
 	}
 
 	public void setBookingConfirmed(int bookingid) {
@@ -245,42 +237,36 @@ public class Datastore {
 	}
 
 	public void createNewBooking(Booking booking) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.persist(booking);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.post(Entity.entity(booking, MediaType.APPLICATION_JSON));
 	}
 
 	public void updateBooking(Booking booking) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.merge(booking);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.put(Entity.entity(booking, MediaType.APPLICATION_JSON));
 	}
 
 	public void deleteBooking(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Booking booking = entityManager.find(Booking.class, id);
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.remove(booking);
-//		tx.commit();
-//		entityManager.close();
-
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.delete();
 	}
 
 	public Booking getBooking(int id) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		return entityManager.find(Booking.class, id);
-		return null;
-
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(id));
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		Booking booking = response.readEntity(new GenericType<Booking>(){});
+		return booking;
 	}
-
-	// USERS
+	
+	//USERS
 
 	public User getUser(int id) {
 		Client client = ClientBuilder.newClient();
