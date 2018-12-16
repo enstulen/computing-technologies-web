@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -25,16 +24,11 @@ import entities.Message;
 
 public class Datastore {
 
-	public EntityManagerFactory factory;
-
 	private static Datastore single_instance = null;
 
 	public User currentUser;
 
 	private Datastore() {
-
-		factory = Persistence.createEntityManagerFactory("fakebnb");
-
 	}
 
 	public static Datastore getInstance() {
@@ -226,14 +220,7 @@ public class Datastore {
 	}
 
 	public void setBookingConfirmed(int bookingid) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Booking booking = getBooking(bookingid);
-//		booking.setConfirmed(true);
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.merge(booking);
-//		tx.commit();
-//		entityManager.close();
+
 	}
 
 	public void createNewBooking(Booking booking) {
