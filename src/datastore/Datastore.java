@@ -18,6 +18,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.client.Entity;
 
+
+
 import entities.Home;
 import entities.User;
 import entities.Booking;
@@ -181,7 +183,13 @@ public class Datastore {
 		Client client = ClientBuilder.newClient();
 		WebTarget webResource = client.target("http://localhost:8104/bookings/guest/" + String.valueOf(user.getUserid()));
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-		Response response = invocationBuilder.get();
+		Response response=null;
+		try {
+			response = invocationBuilder.get();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		List<Booking> list = response.readEntity(new GenericType<List<Booking>>(){});
 		return list;
 	}
@@ -226,14 +234,10 @@ public class Datastore {
 	}
 
 	public void setBookingConfirmed(int bookingid) {
-//		EntityManager entityManager = factory.createEntityManager();
-//		Booking booking = getBooking(bookingid);
-//		booking.setConfirmed(true);
-//		EntityTransaction tx = entityManager.getTransaction();
-//		tx.begin();
-//		entityManager.merge(booking);
-//		tx.commit();
-//		entityManager.close();
+		Client client = ClientBuilder.newClient();
+		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(bookingid)+"/confirmation");
+		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.put(null);
 	}
 
 	public void createNewBooking(Booking booking) {
@@ -252,9 +256,9 @@ public class Datastore {
 
 	public void deleteBooking(int id) {
 		Client client = ClientBuilder.newClient();
-		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(id));
+		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(id)+"/cancelation");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-		Response response = invocationBuilder.delete();
+		Response response = invocationBuilder.put(null);
 	}
 
 	public Booking getBooking(int id) {

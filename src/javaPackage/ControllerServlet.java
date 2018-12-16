@@ -11,12 +11,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.MessageProducer;
-import javax.jms.Queue;
-import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+
 
 import entities.User;
 import requestHandlers.AdminRequestHandler;
@@ -51,13 +47,6 @@ maxRequestSize=1024*1024*50)   // 50MB
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
-
-	// Inject the connectionFactory using annotations
-	@Resource(mappedName = "tiwconnectionfactory")
-	private ConnectionFactory tiwconnectionfactory;
-	// Inject the queue using annotations
-	@Resource(mappedName = "tiwqueue")
-	private Queue queue;
 
 	// Hash table of RequestHandler instances, keyed by request URL
 	private Map handlerHash = new HashMap();

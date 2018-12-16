@@ -13,7 +13,6 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 
-import JDBC.UserRepo;
 import entities.Booking;
 import entities.Home;
 import entities.Message;
