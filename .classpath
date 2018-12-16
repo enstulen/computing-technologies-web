@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.glassfish.tools.lib.system">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/appserv-rt.jar"/>
+	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/gf-client.jar"/>
+	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/javaee.jar"/>
+	<classpathentry kind="lib" path="/opt/glassfish/payara41/glassfish/lib/jndi-properties.jar"/>
+	<classpathentry kind="lib" path="/home/tiw/Downloads/jstl-1.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
