@@ -41,14 +41,11 @@ public class IndexRequestHandler implements RequestHandler {
 				newUser.setPassword(password);
 				newUser.setName(name);
 				newUser.setSurname(surname);
-				
 				datastore.createNewUser(newUser);
 				datastore.setCurrentUser(newUser);
-				request.getSession().setAttribute("user", newUser);
-				if (newUser.getAdmin() == 1) {
-					request.getSession().setAttribute("admin", true);
-				}
-				
+				User user = datastore.findUser(email, password);	
+				request.getSession().setAttribute("user", user);
+				System.out.println(request.getSession().getAttribute("user"));
 			} 
 			//Login
 			else if ((email != null) && (password != null)){
@@ -56,7 +53,6 @@ public class IndexRequestHandler implements RequestHandler {
 					User user = datastore.findUser(email, password);	
 					datastore.setCurrentUser(user);
 					request.getSession().setAttribute("user", user);
-					System.out.println(user.getAdmin());
 					if (user.getAdmin() == 1) {
 						request.getSession().setAttribute("admin", true);
 					}

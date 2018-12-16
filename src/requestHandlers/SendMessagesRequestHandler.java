@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
@@ -51,8 +50,7 @@ public class SendMessagesRequestHandler implements RequestHandler {
 		try {
 
 			Message message = new Message();
-			User sender = (User) request.getSession().getAttribute("user");
-			message.setSender(sender);
+			message.setSender(currentUser);
 			message.setTime_stamp(new Date());
 			
 	        if (type.equals("booking")) {
