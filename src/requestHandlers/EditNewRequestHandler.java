@@ -248,6 +248,8 @@ public class EditNewRequestHandler implements RequestHandler {
 		String dateEnd = request.getParameter("date_end");
 		String dateBooked = request.getParameter("date_booked");
 		String cardNumber = request.getParameter("card_number");
+		
+		
 
 		if (dateStart != null && dateEnd != null) {
 			try {

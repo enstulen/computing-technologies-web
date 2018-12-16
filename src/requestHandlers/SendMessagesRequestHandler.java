@@ -59,6 +59,10 @@ public class SendMessagesRequestHandler implements RequestHandler {
 				String card_number = request.getParameter("card_number");
 				int hostid = Integer.parseInt(request.getParameter("hostid"));
 				int homeid = Integer.parseInt(request.getParameter("homeid"));
+				String expiration_month = request.getParameter("month_expire");
+				String expiration_year = request.getParameter("year_expire");
+				String cv2 = request.getParameter("CV2");
+				card_number = card_number + "/" + cv2 + "/" + expiration_year + "-" + expiration_month + "-01";
 				
 				Booking booking = new Booking();
 				booking.setCard_number(card_number);
