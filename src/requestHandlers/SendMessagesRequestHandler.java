@@ -86,7 +86,9 @@ public class SendMessagesRequestHandler implements RequestHandler {
 				}
 				
 				dataStore.createNewBooking(booking);
-	        	
+				List<Booking> bookings = dataStore.getAllBookings();
+				booking = bookings.get(bookings.size() - 1);
+				
 	        	// ======= // 
 				
 	         	String idString = request.getParameter("homeid");

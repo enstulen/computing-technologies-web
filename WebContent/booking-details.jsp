@@ -1,6 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ page import="entities.Booking"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -111,7 +112,18 @@
 										</tr>
 										<tr>
 											<th scope="row">Confirmed:</th>
-											<td><span class="confirmed">${booking.getConfirmed()}</span></td>
+											<td><span class="confirmed"> <c:if
+														test="${requestScope.booking.confirmed == 0 }">
+														Pending
+											</c:if> <c:if test="${requestScope.booking.confirmed == 1 }">
+														Cancelled by host
+											</c:if> <c:if test="${requestScope.booking.confirmed == 2 }">
+														Cancelled by bank
+											</c:if> <c:if test="${requestScope.booking.confirmed == 3 }">
+														Confirmed
+											</c:if>
+
+											</span></td>
 										</tr>
 									</tbody>
 								</table>

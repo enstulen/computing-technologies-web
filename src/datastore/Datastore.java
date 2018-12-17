@@ -231,7 +231,8 @@ public class Datastore {
 		Client client = ClientBuilder.newClient();
 		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(bookingid)+"/confirmation");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-		Response response = invocationBuilder.put(null);
+		Booking booking = new Booking();
+		Response response = invocationBuilder.put(Entity.entity(booking, MediaType.APPLICATION_JSON));
 	}
 
 	public void createNewBooking(Booking booking) {
@@ -252,7 +253,8 @@ public class Datastore {
 		Client client = ClientBuilder.newClient();
 		WebTarget webResource = client.target("http://localhost:8104/bookings/" + String.valueOf(id)+"/cancelation");
 		Invocation.Builder invocationBuilder = webResource.request(MediaType.APPLICATION_JSON);
-		Response response = invocationBuilder.put(null);
+		Booking booking = new Booking();
+		Response response = invocationBuilder.put(Entity.entity(booking, MediaType.APPLICATION_JSON));
 	}
 
 	public Booking getBooking(int id) {
